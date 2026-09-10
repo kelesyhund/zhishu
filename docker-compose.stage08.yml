@@ -1,0 +1,117 @@
+name: knowledge-chat-stage08
+
+x-backend-environment: &backend-environment
+  DEBUG: "true"
+  DATABASE_ENGINE: "postgresql"
+  POSTGRES_HOST: "postgres"
+  POSTGRES_PORT: "5432"
+  MEDIA_ROOT: "/stage08-media"
+  CELERY_BROKER_URL: "redis://redis:6379/0"
+  CELERY_RESULT_BACKEND: "redis://redis:6379/1"
+  CELERY_TASK_ALWAYS_EAGER: "false"
+  DOCUMENT_TASK_LOCK_BACKEND: "redis"
+  DOCUMENT_TASK_LOCK_REDIS_URL: "redis://redis:6379/2"
+  DOCUMENT_TASK_SOFT_TIME_LIMIT: "300"
+  DOCUMENT_TASK_TIME_LIMIT: "360"
+  DOCUMENT_TASK_LOCK_TIMEOUT: "420"
+  OPENAI_API_KEY: ""
+  LLM_MODEL: ""
+  EMBEDDING_MODEL: ""
+
+services:
+  redis:
+    image: redis:7.4-alpine
+    command: ["redis-server", "--appendonly", "yes"]
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 2s
+      timeout: 2s
+      retries: 20
+    volumes:
+      - stage08_redis:/data
+    networks: [stage08]
+
+  postgres:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    env_file:
+      - .env.stage08
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $$POSTGRES_USER -d $$POSTGRES_DB"]
+      interval: 2s
+      timeout: 3s
+      retries: 30
+    volumes:
+      - stage08_postgres:/var/lib/postgresql/data
+    networks: [stage08]
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.stage08
+    command: ["sh", "-c", "python manage.py migrate && gunicorn config.wsgi:application --bind 0.0.0.0:8000 --workers 4 --threads 4 --timeout 60 --access-logfile -"]
+    env_file:
+      - .env.stage08
+    environment: *backend-environment
+    ports:
+      - "127.0.0.1:18000:8000"
+    volumes:
+      - ./backend:/app
+      - stage08_media:/stage08-media
+    depends_on:
+      redis:
+        condition: service_healthy
+      postgres:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/admin/login/', timeout=2)"]
+      interval: 3s
+      timeout: 3s
+      retries: 30
+    networks: [stage08]
+
+  worker:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.stage08
+    command: ["celery", "-A", "config", "worker", "--loglevel=INFO", "--concurrency=4", "--hostname=stage08@%h"]
+    env_file:
+      - .env.stage08
+    environment: *backend-environment
+    volumes:
+      - ./backend:/app
+      - stage08_media:/stage08-media
+    depends_on:
+      redis:
+        condition: service_healthy
+      postgres:
+        condition: service_healthy
+      backend:
+        condition: service_healthy
+    stop_grace_period: 30s
+    networks: [stage08]
+
+  locust:
+    image: locustio/locust:2.42.1
+    profiles: ["loadtest"]
+    command: ["-f", "/mnt/locust/stage08_locustfile.py", "--host", "http://backend:8000"]
+    env_file:
+      - .env.stage08
+    ports:
+      - "127.0.0.1:18089:8089"
+    volumes:
+      - ./loadtests:/mnt/locust
+    depends_on:
+      backend:
+        condition: service_healthy
+    networks: [stage08]
+
+volumes:
+  stage08_redis:
+  stage08_postgres:
+  stage08_media:
+
+networks:
+  stage08:
+    internal: false

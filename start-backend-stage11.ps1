@@ -1,0 +1,8 @@
+$env:RERANKER_MODEL_PATH = ".models/stage11-mmarco-minilm-l12"
+$env:RERANKER_MODEL_REVISION = "1427fd652930e4ba29e8149678df786c240d8825"
+$env:RERANKER_DEVICE = "cpu"
+$env:RERANKER_BATCH_SIZE = "8"
+$env:RERANKER_MAX_LENGTH = "512"
+$env:RERANKER_TIMEOUT_SECONDS = "30"
+
+& "$PSScriptRoot\start-backend.ps1"

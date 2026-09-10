@@ -1,0 +1,3 @@
+Stage 8 浏览器验收资料。
+Celery Worker 从 Redis 队列接收任务，并将处理结果保存到 PostgreSQL。
+文档重新处理失败时必须保留原有切片。

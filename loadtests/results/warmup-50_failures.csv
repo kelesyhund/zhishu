@@ -1,0 +1,2 @@
+Method,Name,Error,Occurrences
+POST,setup: login,CatchResponseError('login returned 0'),1

@@ -1,0 +1,7315 @@
+{
+  "run_id": "20260901T145847Z",
+  "created_at": "2026-09-01T14:58:47.205953+00:00",
+  "dataset": "stage09-dev.jsonl",
+  "dataset_sha256": "90d313f7436b67bd517d3fea65dc889f27d0114ffabaef4b5894b7a04c924085",
+  "case_count": 60,
+  "synthetic": true,
+  "knowledge_base_id": 2,
+  "paragraph_count": 100,
+  "strategies": [
+    "VECTOR",
+    "WEIGHTED",
+    "RRF",
+    "RRF_RERANK"
+  ],
+  "summary": {
+    "VECTOR": {
+      "cases": 60,
+      "hit_at_1": {
+        "hits": 34,
+        "total": 60
+      },
+      "hit_at_3": {
+        "hits": 52,
+        "total": 60
+      },
+      "recall_at_5": 0.9333333333333333,
+      "mrr_at_10": 0.7305555555555555,
+      "ndcg_at_10": 0.7965193307916261,
+      "latency_p50_ms": 20,
+      "latency_p95_ms": 25,
+      "reranker_fallback": {
+        "count": 0,
+        "total": 60
+      }
+    },
+    "WEIGHTED": {
+      "cases": 60,
+      "hit_at_1": {
+        "hits": 60,
+        "total": 60
+      },
+      "hit_at_3": {
+        "hits": 60,
+        "total": 60
+      },
+      "recall_at_5": 1.0,
+      "mrr_at_10": 1.0,
+      "ndcg_at_10": 1.0,
+      "latency_p50_ms": 20,
+      "latency_p95_ms": 25,
+      "reranker_fallback": {
+        "count": 0,
+        "total": 60
+      }
+    },
+    "RRF": {
+      "cases": 60,
+      "hit_at_1": {
+        "hits": 54,
+        "total": 60
+      },
+      "hit_at_3": {
+        "hits": 58,
+        "total": 60
+      },
+      "recall_at_5": 0.9833333333333333,
+      "mrr_at_10": 0.9319444444444445,
+      "ndcg_at_10": 0.9486302249792146,
+      "latency_p50_ms": 20,
+      "latency_p95_ms": 26,
+      "reranker_fallback": {
+        "count": 0,
+        "total": 60
+      }
+    },
+    "RRF_RERANK": {
+      "cases": 60,
+      "hit_at_1": {
+        "hits": 54,
+        "total": 60
+      },
+      "hit_at_3": {
+        "hits": 58,
+        "total": 60
+      },
+      "recall_at_5": 0.9833333333333333,
+      "mrr_at_10": 0.9319444444444445,
+      "ndcg_at_10": 0.9486302249792146,
+      "latency_p50_ms": 20,
+      "latency_p95_ms": 25,
+      "reranker_fallback": {
+        "count": 60,
+        "total": 60
+      }
+    }
+  },
+  "rows": {
+    "VECTOR": [
+      {
+        "case_id": "stage09-001",
+        "question": "在异步任务主题中，验证标记celery_01对应的机制是什么？",
+        "category": "异步任务",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          79
+        ],
+        "ranked_paragraph_ids": [
+          81,
+          80,
+          83,
+          88,
+          79,
+          84,
+          85,
+          87,
+          82,
+          86
+        ],
+        "latency_ms": 21,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 0,
+        "hit_at_3": 0,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 0.2,
+        "ndcg_at_10": 0.38685280723454163
+      },
+      {
+        "case_id": "stage09-002",
+        "question": "在异步任务主题中，验证标记celery_02对应的机制是什么？",
+        "category": "异步任务",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          80
+        ],
+        "ranked_paragraph_ids": [
+          80,
+          81,
+          83,
+          88,
+          84,
+          85,
+          87,
+          82,
+          79,
+          86
+        ],
+        "latency_ms": 20,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-003",
+        "question": "在异步任务主题中，验证标记celery_03对应的机制是什么？",
+        "category": "异步任务",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          81
+        ],
+        "ranked_paragraph_ids": [
+          81,
+          80,
+          83,
+          88,
+          84,
+          85,
+          87,
+          82,
+          79,
+          86
+        ],
+        "latency_ms": 21,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-004",
+        "question": "在异步任务主题中，验证标记celery_04对应的机制是什么？",
+        "category": "异步任务",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          82
+        ],
+        "ranked_paragraph_ids": [
+          81,
+          80,
+          82,
+          83,
+          88,
+          84,
+          85,
+          87,
+          79,
+          86
+        ],
+        "latency_ms": 19,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 0,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 0.3333333333333333,
+        "ndcg_at_10": 0.5
+      },
+      {
+        "case_id": "stage09-005",
+        "question": "在异步任务主题中，验证标记celery_05对应的机制是什么？",
+        "category": "异步任务",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          83
+        ],
+        "ranked_paragraph_ids": [
+          83,
+          81,
+          87,
+          80,
+          88,
+          84,
+          85,
+          82,
+          79,
+          86
+        ],
+        "latency_ms": 19,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-006",
+        "question": "在异步任务主题中，验证标记celery_06对应的机制是什么？",
+        "category": "异步任务",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          84
+        ],
+        "ranked_paragraph_ids": [
+          81,
+          84,
+          80,
+          83,
+          88,
+          85,
+          87,
+          82,
+          79,
+          86
+        ],
+        "latency_ms": 19,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 0,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 0.5,
+        "ndcg_at_10": 0.6309297535714575
+      },
+      {
+        "case_id": "stage09-007",
+        "question": "在异步任务主题中，验证标记celery_07对应的机制是什么？",
+        "category": "异步任务",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          85
+        ],
+        "ranked_paragraph_ids": [
+          81,
+          85,
+          80,
+          83,
+          88,
+          84,
+          87,
+          82,
+          79,
+          86
+        ],
+        "latency_ms": 19,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 0,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 0.5,
+        "ndcg_at_10": 0.6309297535714575
+      },
+      {
+        "case_id": "stage09-008",
+        "question": "在异步任务主题中，验证标记celery_08对应的机制是什么？",
+        "category": "异步任务",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          86
+        ],
+        "ranked_paragraph_ids": [
+          81,
+          80,
+          83,
+          88,
+          84,
+          85,
+          87,
+          82,
+          86,
+          79
+        ],
+        "latency_ms": 19,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 0,
+        "hit_at_3": 0,
+        "recall_at_5": 0.0,
+        "mrr_at_10": 0.1111111111111111,
+        "ndcg_at_10": 0.3010299956639812
+      },
+      {
+        "case_id": "stage09-009",
+        "question": "在异步任务主题中，验证标记celery_09对应的机制是什么？",
+        "category": "异步任务",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          87
+        ],
+        "ranked_paragraph_ids": [
+          81,
+          87,
+          80,
+          83,
+          88,
+          84,
+          85,
+          82,
+          79,
+          86
+        ],
+        "latency_ms": 20,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 0,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 0.5,
+        "ndcg_at_10": 0.6309297535714575
+      },
+      {
+        "case_id": "stage09-010",
+        "question": "在异步任务主题中，验证标记celery_10对应的机制是什么？",
+        "category": "异步任务",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          88
+        ],
+        "ranked_paragraph_ids": [
+          88,
+          81,
+          80,
+          83,
+          84,
+          85,
+          87,
+          82,
+          79,
+          86
+        ],
+        "latency_ms": 20,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-011",
+        "question": "在分布式协调主题中，验证标记redis_01对应的机制是什么？",
+        "category": "分布式协调",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          89
+        ],
+        "ranked_paragraph_ids": [
+          89,
+          91,
+          96,
+          97,
+          94,
+          92,
+          93,
+          90,
+          98,
+          95
+        ],
+        "latency_ms": 24,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-012",
+        "question": "在分布式协调主题中，验证标记redis_02对应的机制是什么？",
+        "category": "分布式协调",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          90
+        ],
+        "ranked_paragraph_ids": [
+          91,
+          90,
+          96,
+          97,
+          94,
+          89,
+          92,
+          93,
+          98,
+          95
+        ],
+        "latency_ms": 26,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 0,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 0.5,
+        "ndcg_at_10": 0.6309297535714575
+      },
+      {
+        "case_id": "stage09-013",
+        "question": "在分布式协调主题中，验证标记redis_03对应的机制是什么？",
+        "category": "分布式协调",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          91
+        ],
+        "ranked_paragraph_ids": [
+          91,
+          96,
+          97,
+          94,
+          89,
+          92,
+          93,
+          90,
+          98,
+          95
+        ],
+        "latency_ms": 26,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-014",
+        "question": "在分布式协调主题中，验证标记redis_04对应的机制是什么？",
+        "category": "分布式协调",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          92
+        ],
+        "ranked_paragraph_ids": [
+          91,
+          92,
+          96,
+          97,
+          94,
+          89,
+          93,
+          90,
+          98,
+          95
+        ],
+        "latency_ms": 23,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 0,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 0.5,
+        "ndcg_at_10": 0.6309297535714575
+      },
+      {
+        "case_id": "stage09-015",
+        "question": "在分布式协调主题中，验证标记redis_05对应的机制是什么？",
+        "category": "分布式协调",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          93
+        ],
+        "ranked_paragraph_ids": [
+          91,
+          93,
+          96,
+          97,
+          94,
+          89,
+          92,
+          90,
+          98,
+          95
+        ],
+        "latency_ms": 21,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 0,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 0.5,
+        "ndcg_at_10": 0.6309297535714575
+      },
+      {
+        "case_id": "stage09-016",
+        "question": "在分布式协调主题中，验证标记redis_06对应的机制是什么？",
+        "category": "分布式协调",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          94
+        ],
+        "ranked_paragraph_ids": [
+          94,
+          91,
+          96,
+          97,
+          89,
+          92,
+          93,
+          90,
+          98,
+          95
+        ],
+        "latency_ms": 22,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-017",
+        "question": "在分布式协调主题中，验证标记redis_07对应的机制是什么？",
+        "category": "分布式协调",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          95
+        ],
+        "ranked_paragraph_ids": [
+          91,
+          96,
+          97,
+          94,
+          89,
+          92,
+          93,
+          90,
+          95,
+          98
+        ],
+        "latency_ms": 19,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 0,
+        "hit_at_3": 0,
+        "recall_at_5": 0.0,
+        "mrr_at_10": 0.1111111111111111,
+        "ndcg_at_10": 0.3010299956639812
+      },
+      {
+        "case_id": "stage09-018",
+        "question": "在分布式协调主题中，验证标记redis_08对应的机制是什么？",
+        "category": "分布式协调",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          96
+        ],
+        "ranked_paragraph_ids": [
+          96,
+          91,
+          97,
+          94,
+          89,
+          92,
+          93,
+          90,
+          98,
+          95
+        ],
+        "latency_ms": 20,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-019",
+        "question": "在分布式协调主题中，验证标记redis_09对应的机制是什么？",
+        "category": "分布式协调",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          97
+        ],
+        "ranked_paragraph_ids": [
+          97,
+          91,
+          96,
+          94,
+          89,
+          92,
+          93,
+          90,
+          98,
+          95
+        ],
+        "latency_ms": 19,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-020",
+        "question": "在分布式协调主题中，验证标记redis_10对应的机制是什么？",
+        "category": "分布式协调",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          98
+        ],
+        "ranked_paragraph_ids": [
+          91,
+          96,
+          97,
+          94,
+          89,
+          92,
+          93,
+          90,
+          98,
+          95
+        ],
+        "latency_ms": 19,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 0,
+        "hit_at_3": 0,
+        "recall_at_5": 0.0,
+        "mrr_at_10": 0.1111111111111111,
+        "ndcg_at_10": 0.3010299956639812
+      },
+      {
+        "case_id": "stage09-021",
+        "question": "在后端接口主题中，验证标记django_01对应的机制是什么？",
+        "category": "后端接口",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          99
+        ],
+        "ranked_paragraph_ids": [
+          91,
+          97,
+          101,
+          99,
+          94,
+          89,
+          92,
+          93,
+          90,
+          98
+        ],
+        "latency_ms": 19,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 0,
+        "hit_at_3": 0,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 0.25,
+        "ndcg_at_10": 0.43067655807339306
+      },
+      {
+        "case_id": "stage09-022",
+        "question": "在后端接口主题中，验证标记django_02对应的机制是什么？",
+        "category": "后端接口",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          100
+        ],
+        "ranked_paragraph_ids": [
+          100,
+          101,
+          91,
+          103,
+          97,
+          108,
+          105,
+          138,
+          104,
+          106
+        ],
+        "latency_ms": 20,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-023",
+        "question": "在后端接口主题中，验证标记django_03对应的机制是什么？",
+        "category": "后端接口",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          101
+        ],
+        "ranked_paragraph_ids": [
+          101,
+          91,
+          103,
+          97,
+          108,
+          100,
+          105,
+          138,
+          104,
+          106
+        ],
+        "latency_ms": 21,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-024",
+        "question": "在后端接口主题中，验证标记django_04对应的机制是什么？",
+        "category": "后端接口",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          102
+        ],
+        "ranked_paragraph_ids": [
+          101,
+          91,
+          103,
+          97,
+          102,
+          108,
+          100,
+          105,
+          138,
+          104
+        ],
+        "latency_ms": 26,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 0,
+        "hit_at_3": 0,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 0.2,
+        "ndcg_at_10": 0.38685280723454163
+      },
+      {
+        "case_id": "stage09-025",
+        "question": "在后端接口主题中，验证标记django_05对应的机制是什么？",
+        "category": "后端接口",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          103
+        ],
+        "ranked_paragraph_ids": [
+          103,
+          101,
+          108,
+          100,
+          105,
+          138,
+          104,
+          106,
+          99,
+          137
+        ],
+        "latency_ms": 23,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-026",
+        "question": "在后端接口主题中，验证标记django_06对应的机制是什么？",
+        "category": "后端接口",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          104
+        ],
+        "ranked_paragraph_ids": [
+          101,
+          104,
+          91,
+          103,
+          108,
+          97,
+          100,
+          105,
+          138,
+          106
+        ],
+        "latency_ms": 19,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 0,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 0.5,
+        "ndcg_at_10": 0.6309297535714575
+      },
+      {
+        "case_id": "stage09-027",
+        "question": "在后端接口主题中，验证标记django_07对应的机制是什么？",
+        "category": "后端接口",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          105
+        ],
+        "ranked_paragraph_ids": [
+          91,
+          97,
+          101,
+          105,
+          94,
+          89,
+          92,
+          93,
+          90,
+          98
+        ],
+        "latency_ms": 19,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 0,
+        "hit_at_3": 0,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 0.25,
+        "ndcg_at_10": 0.43067655807339306
+      },
+      {
+        "case_id": "stage09-028",
+        "question": "在后端接口主题中，验证标记django_08对应的机制是什么？",
+        "category": "后端接口",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          106
+        ],
+        "ranked_paragraph_ids": [
+          101,
+          106,
+          91,
+          103,
+          97,
+          108,
+          100,
+          105,
+          138,
+          104
+        ],
+        "latency_ms": 20,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 0,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 0.5,
+        "ndcg_at_10": 0.6309297535714575
+      },
+      {
+        "case_id": "stage09-029",
+        "question": "在后端接口主题中，验证标记django_09对应的机制是什么？",
+        "category": "后端接口",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          107
+        ],
+        "ranked_paragraph_ids": [
+          101,
+          107,
+          103,
+          108,
+          100,
+          105,
+          104,
+          106,
+          99,
+          91
+        ],
+        "latency_ms": 21,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 0,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 0.5,
+        "ndcg_at_10": 0.6309297535714575
+      },
+      {
+        "case_id": "stage09-030",
+        "question": "在后端接口主题中，验证标记django_10对应的机制是什么？",
+        "category": "后端接口",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          108
+        ],
+        "ranked_paragraph_ids": [
+          108,
+          101,
+          91,
+          97,
+          103,
+          100,
+          105,
+          104,
+          106,
+          107
+        ],
+        "latency_ms": 19,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-031",
+        "question": "在前端状态主题中，验证标记vue_01对应的机制是什么？",
+        "category": "前端状态",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          109
+        ],
+        "ranked_paragraph_ids": [
+          109,
+          115,
+          113,
+          114,
+          118,
+          112,
+          117,
+          110,
+          111,
+          116
+        ],
+        "latency_ms": 20,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-032",
+        "question": "在前端状态主题中，验证标记vue_02对应的机制是什么？",
+        "category": "前端状态",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          110
+        ],
+        "ranked_paragraph_ids": [
+          110,
+          115,
+          109,
+          112,
+          113,
+          114,
+          117,
+          118,
+          111,
+          116
+        ],
+        "latency_ms": 25,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-033",
+        "question": "在前端状态主题中，验证标记vue_03对应的机制是什么？",
+        "category": "前端状态",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          111
+        ],
+        "ranked_paragraph_ids": [
+          111,
+          115,
+          109,
+          112,
+          113,
+          114,
+          117,
+          118,
+          110,
+          116
+        ],
+        "latency_ms": 20,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-034",
+        "question": "在前端状态主题中，验证标记vue_04对应的机制是什么？",
+        "category": "前端状态",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          112
+        ],
+        "ranked_paragraph_ids": [
+          112,
+          115,
+          109,
+          113,
+          114,
+          118,
+          117,
+          110,
+          111,
+          116
+        ],
+        "latency_ms": 21,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-035",
+        "question": "在前端状态主题中，验证标记vue_05对应的机制是什么？",
+        "category": "前端状态",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          113
+        ],
+        "ranked_paragraph_ids": [
+          113,
+          115,
+          109,
+          114,
+          118,
+          112,
+          117,
+          110,
+          111,
+          116
+        ],
+        "latency_ms": 20,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-036",
+        "question": "在前端状态主题中，验证标记vue_06对应的机制是什么？",
+        "category": "前端状态",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          114
+        ],
+        "ranked_paragraph_ids": [
+          114,
+          109,
+          112,
+          113,
+          117,
+          118,
+          110,
+          111,
+          116,
+          115
+        ],
+        "latency_ms": 19,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-037",
+        "question": "在前端状态主题中，验证标记vue_07对应的机制是什么？",
+        "category": "前端状态",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          115
+        ],
+        "ranked_paragraph_ids": [
+          115,
+          109,
+          112,
+          113,
+          117,
+          118,
+          110,
+          111,
+          116,
+          114
+        ],
+        "latency_ms": 19,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-038",
+        "question": "在前端状态主题中，验证标记vue_08对应的机制是什么？",
+        "category": "前端状态",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          116
+        ],
+        "ranked_paragraph_ids": [
+          116,
+          115,
+          109,
+          113,
+          114,
+          118,
+          112,
+          117,
+          110,
+          111
+        ],
+        "latency_ms": 19,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-039",
+        "question": "在前端状态主题中，验证标记vue_09对应的机制是什么？",
+        "category": "前端状态",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          117
+        ],
+        "ranked_paragraph_ids": [
+          117,
+          115,
+          109,
+          113,
+          114,
+          118,
+          112,
+          110,
+          111,
+          116
+        ],
+        "latency_ms": 23,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-040",
+        "question": "在前端状态主题中，验证标记vue_10对应的机制是什么？",
+        "category": "前端状态",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          118
+        ],
+        "ranked_paragraph_ids": [
+          118,
+          115,
+          109,
+          113,
+          114,
+          112,
+          117,
+          110,
+          111,
+          116
+        ],
+        "latency_ms": 20,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-041",
+        "question": "在知识检索主题中，验证标记rag_01对应的机制是什么？",
+        "category": "知识检索",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          119
+        ],
+        "ranked_paragraph_ids": [
+          119,
+          124,
+          128,
+          120,
+          121,
+          122,
+          126,
+          127,
+          125,
+          123
+        ],
+        "latency_ms": 19,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-042",
+        "question": "在知识检索主题中，验证标记rag_02对应的机制是什么？",
+        "category": "知识检索",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          120
+        ],
+        "ranked_paragraph_ids": [
+          120,
+          124,
+          128,
+          121,
+          122,
+          126,
+          127,
+          125,
+          119,
+          123
+        ],
+        "latency_ms": 20,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-043",
+        "question": "在知识检索主题中，验证标记rag_03对应的机制是什么？",
+        "category": "知识检索",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          121
+        ],
+        "ranked_paragraph_ids": [
+          121,
+          124,
+          128,
+          120,
+          122,
+          126,
+          127,
+          125,
+          119,
+          123
+        ],
+        "latency_ms": 20,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-044",
+        "question": "在知识检索主题中，验证标记rag_04对应的机制是什么？",
+        "category": "知识检索",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          122
+        ],
+        "ranked_paragraph_ids": [
+          122,
+          124,
+          128,
+          120,
+          121,
+          126,
+          127,
+          125,
+          119,
+          123
+        ],
+        "latency_ms": 19,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-045",
+        "question": "在知识检索主题中，验证标记rag_05对应的机制是什么？",
+        "category": "知识检索",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          123
+        ],
+        "ranked_paragraph_ids": [
+          127,
+          124,
+          123,
+          128,
+          120,
+          121,
+          122,
+          126,
+          125,
+          119
+        ],
+        "latency_ms": 19,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 0,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 0.3333333333333333,
+        "ndcg_at_10": 0.5
+      },
+      {
+        "case_id": "stage09-046",
+        "question": "在知识检索主题中，验证标记rag_06对应的机制是什么？",
+        "category": "知识检索",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          124
+        ],
+        "ranked_paragraph_ids": [
+          124,
+          127,
+          128,
+          120,
+          121,
+          122,
+          126,
+          125,
+          119,
+          123
+        ],
+        "latency_ms": 20,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-047",
+        "question": "在知识检索主题中，验证标记rag_07对应的机制是什么？",
+        "category": "知识检索",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          125
+        ],
+        "ranked_paragraph_ids": [
+          125,
+          124,
+          128,
+          120,
+          121,
+          122,
+          126,
+          127,
+          119,
+          123
+        ],
+        "latency_ms": 19,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-048",
+        "question": "在知识检索主题中，验证标记rag_08对应的机制是什么？",
+        "category": "知识检索",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          126
+        ],
+        "ranked_paragraph_ids": [
+          126,
+          124,
+          128,
+          120,
+          121,
+          122,
+          127,
+          125,
+          119,
+          123
+        ],
+        "latency_ms": 20,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-049",
+        "question": "在知识检索主题中，验证标记rag_09对应的机制是什么？",
+        "category": "知识检索",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          127
+        ],
+        "ranked_paragraph_ids": [
+          127,
+          124,
+          128,
+          120,
+          121,
+          122,
+          126,
+          125,
+          119,
+          123
+        ],
+        "latency_ms": 20,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-050",
+        "question": "在知识检索主题中，验证标记rag_10对应的机制是什么？",
+        "category": "知识检索",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          128
+        ],
+        "ranked_paragraph_ids": [
+          128,
+          124,
+          120,
+          121,
+          122,
+          126,
+          127,
+          125,
+          119,
+          123
+        ],
+        "latency_ms": 19,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-051",
+        "question": "在安全控制主题中，验证标记security_01对应的机制是什么？",
+        "category": "安全控制",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          129
+        ],
+        "ranked_paragraph_ids": [
+          138,
+          129,
+          130,
+          132,
+          133,
+          134,
+          135,
+          137,
+          131,
+          136
+        ],
+        "latency_ms": 21,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 0,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 0.5,
+        "ndcg_at_10": 0.6309297535714575
+      },
+      {
+        "case_id": "stage09-052",
+        "question": "在安全控制主题中，验证标记security_02对应的机制是什么？",
+        "category": "安全控制",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          130
+        ],
+        "ranked_paragraph_ids": [
+          130,
+          138,
+          91,
+          132,
+          133,
+          134,
+          135,
+          137,
+          97,
+          129
+        ],
+        "latency_ms": 20,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-053",
+        "question": "在安全控制主题中，验证标记security_03对应的机制是什么？",
+        "category": "安全控制",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          131
+        ],
+        "ranked_paragraph_ids": [
+          138,
+          130,
+          131,
+          132,
+          133,
+          134,
+          135,
+          137,
+          129,
+          91
+        ],
+        "latency_ms": 19,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 0,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 0.3333333333333333,
+        "ndcg_at_10": 0.5
+      },
+      {
+        "case_id": "stage09-054",
+        "question": "在安全控制主题中，验证标记security_04对应的机制是什么？",
+        "category": "安全控制",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          132
+        ],
+        "ranked_paragraph_ids": [
+          138,
+          132,
+          130,
+          133,
+          134,
+          135,
+          137,
+          129,
+          91,
+          131
+        ],
+        "latency_ms": 20,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 0,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 0.5,
+        "ndcg_at_10": 0.6309297535714575
+      },
+      {
+        "case_id": "stage09-055",
+        "question": "在安全控制主题中，验证标记security_05对应的机制是什么？",
+        "category": "安全控制",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          133
+        ],
+        "ranked_paragraph_ids": [
+          138,
+          133,
+          130,
+          132,
+          134,
+          135,
+          137,
+          129,
+          91,
+          131
+        ],
+        "latency_ms": 20,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 0,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 0.5,
+        "ndcg_at_10": 0.6309297535714575
+      },
+      {
+        "case_id": "stage09-056",
+        "question": "在安全控制主题中，验证标记security_06对应的机制是什么？",
+        "category": "安全控制",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          134
+        ],
+        "ranked_paragraph_ids": [
+          138,
+          134,
+          130,
+          132,
+          133,
+          135,
+          137,
+          129,
+          91,
+          131
+        ],
+        "latency_ms": 20,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 0,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 0.5,
+        "ndcg_at_10": 0.6309297535714575
+      },
+      {
+        "case_id": "stage09-057",
+        "question": "在安全控制主题中，验证标记security_07对应的机制是什么？",
+        "category": "安全控制",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          135
+        ],
+        "ranked_paragraph_ids": [
+          138,
+          135,
+          130,
+          132,
+          133,
+          134,
+          137,
+          129,
+          91,
+          131
+        ],
+        "latency_ms": 21,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 0,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 0.5,
+        "ndcg_at_10": 0.6309297535714575
+      },
+      {
+        "case_id": "stage09-058",
+        "question": "在安全控制主题中，验证标记security_08对应的机制是什么？",
+        "category": "安全控制",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          136
+        ],
+        "ranked_paragraph_ids": [
+          138,
+          130,
+          132,
+          133,
+          134,
+          135,
+          137,
+          129,
+          91,
+          136
+        ],
+        "latency_ms": 20,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 0,
+        "hit_at_3": 0,
+        "recall_at_5": 0.0,
+        "mrr_at_10": 0.1,
+        "ndcg_at_10": 0.2890648263178879
+      },
+      {
+        "case_id": "stage09-059",
+        "question": "在安全控制主题中，验证标记security_09对应的机制是什么？",
+        "category": "安全控制",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          137
+        ],
+        "ranked_paragraph_ids": [
+          138,
+          137,
+          130,
+          132,
+          133,
+          134,
+          135,
+          129,
+          91,
+          131
+        ],
+        "latency_ms": 20,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 0,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 0.5,
+        "ndcg_at_10": 0.6309297535714575
+      },
+      {
+        "case_id": "stage09-060",
+        "question": "在安全控制主题中，验证标记security_10对应的机制是什么？",
+        "category": "安全控制",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          138
+        ],
+        "ranked_paragraph_ids": [
+          138,
+          130,
+          132,
+          133,
+          134,
+          135,
+          137,
+          129,
+          131,
+          91
+        ],
+        "latency_ms": 20,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      }
+    ],
+    "WEIGHTED": [
+      {
+        "case_id": "stage09-001",
+        "question": "在异步任务主题中，验证标记celery_01对应的机制是什么？",
+        "category": "异步任务",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          79
+        ],
+        "ranked_paragraph_ids": [
+          79,
+          81,
+          80,
+          83,
+          88,
+          84,
+          85,
+          87,
+          82,
+          86
+        ],
+        "latency_ms": 21,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-002",
+        "question": "在异步任务主题中，验证标记celery_02对应的机制是什么？",
+        "category": "异步任务",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          80
+        ],
+        "ranked_paragraph_ids": [
+          80,
+          81,
+          83,
+          88,
+          84,
+          85,
+          87,
+          82,
+          79,
+          86
+        ],
+        "latency_ms": 20,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-003",
+        "question": "在异步任务主题中，验证标记celery_03对应的机制是什么？",
+        "category": "异步任务",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          81
+        ],
+        "ranked_paragraph_ids": [
+          81,
+          80,
+          83,
+          88,
+          84,
+          85,
+          87,
+          82,
+          79,
+          86
+        ],
+        "latency_ms": 21,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-004",
+        "question": "在异步任务主题中，验证标记celery_04对应的机制是什么？",
+        "category": "异步任务",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          82
+        ],
+        "ranked_paragraph_ids": [
+          82,
+          81,
+          80,
+          83,
+          88,
+          84,
+          85,
+          87,
+          79,
+          86
+        ],
+        "latency_ms": 19,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-005",
+        "question": "在异步任务主题中，验证标记celery_05对应的机制是什么？",
+        "category": "异步任务",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          83
+        ],
+        "ranked_paragraph_ids": [
+          83,
+          81,
+          87,
+          80,
+          88,
+          84,
+          85,
+          82,
+          79,
+          86
+        ],
+        "latency_ms": 19,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-006",
+        "question": "在异步任务主题中，验证标记celery_06对应的机制是什么？",
+        "category": "异步任务",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          84
+        ],
+        "ranked_paragraph_ids": [
+          84,
+          81,
+          80,
+          83,
+          88,
+          85,
+          87,
+          82,
+          79,
+          86
+        ],
+        "latency_ms": 19,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-007",
+        "question": "在异步任务主题中，验证标记celery_07对应的机制是什么？",
+        "category": "异步任务",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          85
+        ],
+        "ranked_paragraph_ids": [
+          85,
+          81,
+          80,
+          83,
+          88,
+          84,
+          87,
+          82,
+          79,
+          86
+        ],
+        "latency_ms": 19,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-008",
+        "question": "在异步任务主题中，验证标记celery_08对应的机制是什么？",
+        "category": "异步任务",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          86
+        ],
+        "ranked_paragraph_ids": [
+          86,
+          81,
+          80,
+          83,
+          88,
+          84,
+          85,
+          87,
+          82,
+          79
+        ],
+        "latency_ms": 19,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-009",
+        "question": "在异步任务主题中，验证标记celery_09对应的机制是什么？",
+        "category": "异步任务",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          87
+        ],
+        "ranked_paragraph_ids": [
+          87,
+          81,
+          80,
+          83,
+          88,
+          84,
+          85,
+          82,
+          79,
+          86
+        ],
+        "latency_ms": 20,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-010",
+        "question": "在异步任务主题中，验证标记celery_10对应的机制是什么？",
+        "category": "异步任务",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          88
+        ],
+        "ranked_paragraph_ids": [
+          88,
+          81,
+          80,
+          83,
+          84,
+          85,
+          87,
+          82,
+          79,
+          86
+        ],
+        "latency_ms": 20,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-011",
+        "question": "在分布式协调主题中，验证标记redis_01对应的机制是什么？",
+        "category": "分布式协调",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          89
+        ],
+        "ranked_paragraph_ids": [
+          89,
+          91,
+          96,
+          97,
+          94,
+          92,
+          93,
+          90,
+          98,
+          95
+        ],
+        "latency_ms": 24,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-012",
+        "question": "在分布式协调主题中，验证标记redis_02对应的机制是什么？",
+        "category": "分布式协调",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          90
+        ],
+        "ranked_paragraph_ids": [
+          90,
+          91,
+          96,
+          97,
+          94,
+          89,
+          92,
+          93,
+          98,
+          95
+        ],
+        "latency_ms": 26,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-013",
+        "question": "在分布式协调主题中，验证标记redis_03对应的机制是什么？",
+        "category": "分布式协调",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          91
+        ],
+        "ranked_paragraph_ids": [
+          91,
+          96,
+          97,
+          94,
+          89,
+          92,
+          93,
+          90,
+          98,
+          95
+        ],
+        "latency_ms": 26,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-014",
+        "question": "在分布式协调主题中，验证标记redis_04对应的机制是什么？",
+        "category": "分布式协调",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          92
+        ],
+        "ranked_paragraph_ids": [
+          92,
+          91,
+          96,
+          97,
+          94,
+          89,
+          93,
+          90,
+          98,
+          95
+        ],
+        "latency_ms": 23,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-015",
+        "question": "在分布式协调主题中，验证标记redis_05对应的机制是什么？",
+        "category": "分布式协调",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          93
+        ],
+        "ranked_paragraph_ids": [
+          93,
+          91,
+          96,
+          97,
+          94,
+          89,
+          92,
+          90,
+          98,
+          95
+        ],
+        "latency_ms": 21,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-016",
+        "question": "在分布式协调主题中，验证标记redis_06对应的机制是什么？",
+        "category": "分布式协调",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          94
+        ],
+        "ranked_paragraph_ids": [
+          94,
+          91,
+          96,
+          97,
+          89,
+          92,
+          93,
+          90,
+          98,
+          95
+        ],
+        "latency_ms": 22,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-017",
+        "question": "在分布式协调主题中，验证标记redis_07对应的机制是什么？",
+        "category": "分布式协调",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          95
+        ],
+        "ranked_paragraph_ids": [
+          95,
+          91,
+          96,
+          97,
+          94,
+          89,
+          92,
+          93,
+          90,
+          98
+        ],
+        "latency_ms": 19,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-018",
+        "question": "在分布式协调主题中，验证标记redis_08对应的机制是什么？",
+        "category": "分布式协调",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          96
+        ],
+        "ranked_paragraph_ids": [
+          96,
+          91,
+          97,
+          94,
+          89,
+          92,
+          93,
+          90,
+          98,
+          95
+        ],
+        "latency_ms": 20,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-019",
+        "question": "在分布式协调主题中，验证标记redis_09对应的机制是什么？",
+        "category": "分布式协调",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          97
+        ],
+        "ranked_paragraph_ids": [
+          97,
+          91,
+          96,
+          94,
+          89,
+          92,
+          93,
+          90,
+          98,
+          95
+        ],
+        "latency_ms": 19,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-020",
+        "question": "在分布式协调主题中，验证标记redis_10对应的机制是什么？",
+        "category": "分布式协调",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          98
+        ],
+        "ranked_paragraph_ids": [
+          98,
+          91,
+          96,
+          97,
+          94,
+          89,
+          92,
+          93,
+          90,
+          95
+        ],
+        "latency_ms": 19,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-021",
+        "question": "在后端接口主题中，验证标记django_01对应的机制是什么？",
+        "category": "后端接口",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          99
+        ],
+        "ranked_paragraph_ids": [
+          99,
+          101,
+          103,
+          108,
+          100,
+          105,
+          104,
+          106,
+          107,
+          102
+        ],
+        "latency_ms": 19,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-022",
+        "question": "在后端接口主题中，验证标记django_02对应的机制是什么？",
+        "category": "后端接口",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          100
+        ],
+        "ranked_paragraph_ids": [
+          100,
+          101,
+          103,
+          108,
+          105,
+          104,
+          106,
+          99,
+          107,
+          102
+        ],
+        "latency_ms": 20,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-023",
+        "question": "在后端接口主题中，验证标记django_03对应的机制是什么？",
+        "category": "后端接口",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          101
+        ],
+        "ranked_paragraph_ids": [
+          101,
+          103,
+          108,
+          100,
+          105,
+          104,
+          106,
+          99,
+          107,
+          102
+        ],
+        "latency_ms": 21,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-024",
+        "question": "在后端接口主题中，验证标记django_04对应的机制是什么？",
+        "category": "后端接口",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          102
+        ],
+        "ranked_paragraph_ids": [
+          102,
+          101,
+          103,
+          108,
+          100,
+          105,
+          104,
+          106,
+          99,
+          107
+        ],
+        "latency_ms": 26,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-025",
+        "question": "在后端接口主题中，验证标记django_05对应的机制是什么？",
+        "category": "后端接口",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          103
+        ],
+        "ranked_paragraph_ids": [
+          103,
+          101,
+          108,
+          100,
+          105,
+          104,
+          106,
+          99,
+          107,
+          102
+        ],
+        "latency_ms": 23,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-026",
+        "question": "在后端接口主题中，验证标记django_06对应的机制是什么？",
+        "category": "后端接口",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          104
+        ],
+        "ranked_paragraph_ids": [
+          104,
+          101,
+          103,
+          108,
+          100,
+          105,
+          106,
+          99,
+          107,
+          102
+        ],
+        "latency_ms": 19,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-027",
+        "question": "在后端接口主题中，验证标记django_07对应的机制是什么？",
+        "category": "后端接口",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          105
+        ],
+        "ranked_paragraph_ids": [
+          105,
+          101,
+          103,
+          108,
+          100,
+          104,
+          106,
+          99,
+          107,
+          102
+        ],
+        "latency_ms": 19,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-028",
+        "question": "在后端接口主题中，验证标记django_08对应的机制是什么？",
+        "category": "后端接口",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          106
+        ],
+        "ranked_paragraph_ids": [
+          106,
+          101,
+          103,
+          108,
+          100,
+          105,
+          104,
+          99,
+          107,
+          102
+        ],
+        "latency_ms": 20,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-029",
+        "question": "在后端接口主题中，验证标记django_09对应的机制是什么？",
+        "category": "后端接口",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          107
+        ],
+        "ranked_paragraph_ids": [
+          107,
+          101,
+          103,
+          108,
+          100,
+          105,
+          104,
+          106,
+          99,
+          102
+        ],
+        "latency_ms": 21,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-030",
+        "question": "在后端接口主题中，验证标记django_10对应的机制是什么？",
+        "category": "后端接口",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          108
+        ],
+        "ranked_paragraph_ids": [
+          108,
+          101,
+          103,
+          100,
+          105,
+          104,
+          106,
+          107,
+          102,
+          99
+        ],
+        "latency_ms": 19,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-031",
+        "question": "在前端状态主题中，验证标记vue_01对应的机制是什么？",
+        "category": "前端状态",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          109
+        ],
+        "ranked_paragraph_ids": [
+          109,
+          115,
+          113,
+          114,
+          118,
+          112,
+          117,
+          110,
+          111,
+          116
+        ],
+        "latency_ms": 20,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-032",
+        "question": "在前端状态主题中，验证标记vue_02对应的机制是什么？",
+        "category": "前端状态",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          110
+        ],
+        "ranked_paragraph_ids": [
+          110,
+          115,
+          109,
+          112,
+          113,
+          114,
+          117,
+          118,
+          111,
+          116
+        ],
+        "latency_ms": 25,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-033",
+        "question": "在前端状态主题中，验证标记vue_03对应的机制是什么？",
+        "category": "前端状态",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          111
+        ],
+        "ranked_paragraph_ids": [
+          111,
+          115,
+          109,
+          112,
+          113,
+          114,
+          117,
+          118,
+          110,
+          116
+        ],
+        "latency_ms": 20,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-034",
+        "question": "在前端状态主题中，验证标记vue_04对应的机制是什么？",
+        "category": "前端状态",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          112
+        ],
+        "ranked_paragraph_ids": [
+          112,
+          115,
+          109,
+          113,
+          114,
+          118,
+          117,
+          110,
+          111,
+          116
+        ],
+        "latency_ms": 21,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-035",
+        "question": "在前端状态主题中，验证标记vue_05对应的机制是什么？",
+        "category": "前端状态",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          113
+        ],
+        "ranked_paragraph_ids": [
+          113,
+          115,
+          109,
+          114,
+          118,
+          112,
+          117,
+          110,
+          111,
+          116
+        ],
+        "latency_ms": 20,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-036",
+        "question": "在前端状态主题中，验证标记vue_06对应的机制是什么？",
+        "category": "前端状态",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          114
+        ],
+        "ranked_paragraph_ids": [
+          114,
+          109,
+          112,
+          113,
+          117,
+          118,
+          110,
+          111,
+          116,
+          115
+        ],
+        "latency_ms": 19,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-037",
+        "question": "在前端状态主题中，验证标记vue_07对应的机制是什么？",
+        "category": "前端状态",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          115
+        ],
+        "ranked_paragraph_ids": [
+          115,
+          109,
+          112,
+          113,
+          117,
+          118,
+          110,
+          111,
+          116,
+          114
+        ],
+        "latency_ms": 19,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-038",
+        "question": "在前端状态主题中，验证标记vue_08对应的机制是什么？",
+        "category": "前端状态",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          116
+        ],
+        "ranked_paragraph_ids": [
+          116,
+          115,
+          109,
+          113,
+          114,
+          118,
+          112,
+          117,
+          110,
+          111
+        ],
+        "latency_ms": 19,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-039",
+        "question": "在前端状态主题中，验证标记vue_09对应的机制是什么？",
+        "category": "前端状态",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          117
+        ],
+        "ranked_paragraph_ids": [
+          117,
+          115,
+          109,
+          113,
+          114,
+          118,
+          112,
+          110,
+          111,
+          116
+        ],
+        "latency_ms": 23,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-040",
+        "question": "在前端状态主题中，验证标记vue_10对应的机制是什么？",
+        "category": "前端状态",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          118
+        ],
+        "ranked_paragraph_ids": [
+          118,
+          115,
+          109,
+          113,
+          114,
+          112,
+          117,
+          110,
+          111,
+          116
+        ],
+        "latency_ms": 20,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-041",
+        "question": "在知识检索主题中，验证标记rag_01对应的机制是什么？",
+        "category": "知识检索",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          119
+        ],
+        "ranked_paragraph_ids": [
+          119,
+          124,
+          128,
+          120,
+          121,
+          122,
+          126,
+          127,
+          125,
+          123
+        ],
+        "latency_ms": 19,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-042",
+        "question": "在知识检索主题中，验证标记rag_02对应的机制是什么？",
+        "category": "知识检索",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          120
+        ],
+        "ranked_paragraph_ids": [
+          120,
+          124,
+          128,
+          121,
+          122,
+          126,
+          127,
+          125,
+          119,
+          123
+        ],
+        "latency_ms": 20,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-043",
+        "question": "在知识检索主题中，验证标记rag_03对应的机制是什么？",
+        "category": "知识检索",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          121
+        ],
+        "ranked_paragraph_ids": [
+          121,
+          124,
+          128,
+          120,
+          122,
+          126,
+          127,
+          125,
+          119,
+          123
+        ],
+        "latency_ms": 20,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-044",
+        "question": "在知识检索主题中，验证标记rag_04对应的机制是什么？",
+        "category": "知识检索",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          122
+        ],
+        "ranked_paragraph_ids": [
+          122,
+          124,
+          128,
+          120,
+          121,
+          126,
+          127,
+          125,
+          119,
+          123
+        ],
+        "latency_ms": 19,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-045",
+        "question": "在知识检索主题中，验证标记rag_05对应的机制是什么？",
+        "category": "知识检索",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          123
+        ],
+        "ranked_paragraph_ids": [
+          123,
+          127,
+          124,
+          128,
+          120,
+          121,
+          122,
+          126,
+          125,
+          119
+        ],
+        "latency_ms": 19,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-046",
+        "question": "在知识检索主题中，验证标记rag_06对应的机制是什么？",
+        "category": "知识检索",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          124
+        ],
+        "ranked_paragraph_ids": [
+          124,
+          127,
+          128,
+          120,
+          121,
+          122,
+          126,
+          125,
+          119,
+          123
+        ],
+        "latency_ms": 20,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-047",
+        "question": "在知识检索主题中，验证标记rag_07对应的机制是什么？",
+        "category": "知识检索",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          125
+        ],
+        "ranked_paragraph_ids": [
+          125,
+          124,
+          128,
+          120,
+          121,
+          122,
+          126,
+          127,
+          119,
+          123
+        ],
+        "latency_ms": 19,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-048",
+        "question": "在知识检索主题中，验证标记rag_08对应的机制是什么？",
+        "category": "知识检索",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          126
+        ],
+        "ranked_paragraph_ids": [
+          126,
+          124,
+          128,
+          120,
+          121,
+          122,
+          127,
+          125,
+          119,
+          123
+        ],
+        "latency_ms": 20,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-049",
+        "question": "在知识检索主题中，验证标记rag_09对应的机制是什么？",
+        "category": "知识检索",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          127
+        ],
+        "ranked_paragraph_ids": [
+          127,
+          124,
+          128,
+          120,
+          121,
+          122,
+          126,
+          125,
+          119,
+          123
+        ],
+        "latency_ms": 20,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-050",
+        "question": "在知识检索主题中，验证标记rag_10对应的机制是什么？",
+        "category": "知识检索",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          128
+        ],
+        "ranked_paragraph_ids": [
+          128,
+          124,
+          120,
+          121,
+          122,
+          126,
+          127,
+          125,
+          119,
+          123
+        ],
+        "latency_ms": 19,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-051",
+        "question": "在安全控制主题中，验证标记security_01对应的机制是什么？",
+        "category": "安全控制",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          129
+        ],
+        "ranked_paragraph_ids": [
+          129,
+          138,
+          130,
+          132,
+          133,
+          134,
+          135,
+          137,
+          131,
+          136
+        ],
+        "latency_ms": 21,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-052",
+        "question": "在安全控制主题中，验证标记security_02对应的机制是什么？",
+        "category": "安全控制",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          130
+        ],
+        "ranked_paragraph_ids": [
+          130,
+          138,
+          132,
+          133,
+          134,
+          135,
+          137,
+          129,
+          131,
+          136
+        ],
+        "latency_ms": 20,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-053",
+        "question": "在安全控制主题中，验证标记security_03对应的机制是什么？",
+        "category": "安全控制",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          131
+        ],
+        "ranked_paragraph_ids": [
+          131,
+          138,
+          130,
+          132,
+          133,
+          134,
+          135,
+          137,
+          129,
+          136
+        ],
+        "latency_ms": 19,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-054",
+        "question": "在安全控制主题中，验证标记security_04对应的机制是什么？",
+        "category": "安全控制",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          132
+        ],
+        "ranked_paragraph_ids": [
+          132,
+          138,
+          130,
+          133,
+          134,
+          135,
+          137,
+          129,
+          131,
+          136
+        ],
+        "latency_ms": 20,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-055",
+        "question": "在安全控制主题中，验证标记security_05对应的机制是什么？",
+        "category": "安全控制",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          133
+        ],
+        "ranked_paragraph_ids": [
+          133,
+          138,
+          130,
+          132,
+          134,
+          135,
+          137,
+          129,
+          131,
+          136
+        ],
+        "latency_ms": 20,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-056",
+        "question": "在安全控制主题中，验证标记security_06对应的机制是什么？",
+        "category": "安全控制",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          134
+        ],
+        "ranked_paragraph_ids": [
+          134,
+          138,
+          130,
+          132,
+          133,
+          135,
+          137,
+          129,
+          131,
+          136
+        ],
+        "latency_ms": 20,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-057",
+        "question": "在安全控制主题中，验证标记security_07对应的机制是什么？",
+        "category": "安全控制",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          135
+        ],
+        "ranked_paragraph_ids": [
+          135,
+          138,
+          130,
+          132,
+          133,
+          134,
+          137,
+          129,
+          131,
+          136
+        ],
+        "latency_ms": 21,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-058",
+        "question": "在安全控制主题中，验证标记security_08对应的机制是什么？",
+        "category": "安全控制",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          136
+        ],
+        "ranked_paragraph_ids": [
+          136,
+          138,
+          130,
+          132,
+          133,
+          134,
+          135,
+          137,
+          129,
+          131
+        ],
+        "latency_ms": 20,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-059",
+        "question": "在安全控制主题中，验证标记security_09对应的机制是什么？",
+        "category": "安全控制",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          137
+        ],
+        "ranked_paragraph_ids": [
+          137,
+          138,
+          130,
+          132,
+          133,
+          134,
+          135,
+          129,
+          131,
+          136
+        ],
+        "latency_ms": 20,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-060",
+        "question": "在安全控制主题中，验证标记security_10对应的机制是什么？",
+        "category": "安全控制",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          138
+        ],
+        "ranked_paragraph_ids": [
+          138,
+          130,
+          132,
+          133,
+          134,
+          135,
+          137,
+          129,
+          131,
+          136
+        ],
+        "latency_ms": 20,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      }
+    ],
+    "RRF": [
+      {
+        "case_id": "stage09-001",
+        "question": "在异步任务主题中，验证标记celery_01对应的机制是什么？",
+        "category": "异步任务",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          79
+        ],
+        "ranked_paragraph_ids": [
+          81,
+          80,
+          79,
+          83,
+          84,
+          82,
+          88,
+          85,
+          87,
+          86
+        ],
+        "latency_ms": 21,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 0,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 0.3333333333333333,
+        "ndcg_at_10": 0.5
+      },
+      {
+        "case_id": "stage09-002",
+        "question": "在异步任务主题中，验证标记celery_02对应的机制是什么？",
+        "category": "异步任务",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          80
+        ],
+        "ranked_paragraph_ids": [
+          80,
+          81,
+          83,
+          79,
+          84,
+          82,
+          85,
+          88,
+          87,
+          86
+        ],
+        "latency_ms": 20,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-003",
+        "question": "在异步任务主题中，验证标记celery_03对应的机制是什么？",
+        "category": "异步任务",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          81
+        ],
+        "ranked_paragraph_ids": [
+          81,
+          80,
+          83,
+          79,
+          84,
+          82,
+          85,
+          88,
+          87,
+          86
+        ],
+        "latency_ms": 21,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-004",
+        "question": "在异步任务主题中，验证标记celery_04对应的机制是什么？",
+        "category": "异步任务",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          82
+        ],
+        "ranked_paragraph_ids": [
+          82,
+          81,
+          80,
+          83,
+          79,
+          84,
+          85,
+          88,
+          87,
+          86
+        ],
+        "latency_ms": 19,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-005",
+        "question": "在异步任务主题中，验证标记celery_05对应的机制是什么？",
+        "category": "异步任务",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          83
+        ],
+        "ranked_paragraph_ids": [
+          83,
+          81,
+          80,
+          79,
+          87,
+          84,
+          82,
+          85,
+          88,
+          86
+        ],
+        "latency_ms": 19,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-006",
+        "question": "在异步任务主题中，验证标记celery_06对应的机制是什么？",
+        "category": "异步任务",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          84
+        ],
+        "ranked_paragraph_ids": [
+          84,
+          81,
+          80,
+          83,
+          79,
+          82,
+          85,
+          88,
+          87,
+          86
+        ],
+        "latency_ms": 19,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-007",
+        "question": "在异步任务主题中，验证标记celery_07对应的机制是什么？",
+        "category": "异步任务",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          85
+        ],
+        "ranked_paragraph_ids": [
+          85,
+          81,
+          80,
+          83,
+          79,
+          82,
+          84,
+          88,
+          87,
+          86
+        ],
+        "latency_ms": 19,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-008",
+        "question": "在异步任务主题中，验证标记celery_08对应的机制是什么？",
+        "category": "异步任务",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          86
+        ],
+        "ranked_paragraph_ids": [
+          81,
+          80,
+          83,
+          86,
+          79,
+          84,
+          82,
+          88,
+          85,
+          87
+        ],
+        "latency_ms": 19,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 0,
+        "hit_at_3": 0,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 0.25,
+        "ndcg_at_10": 0.43067655807339306
+      },
+      {
+        "case_id": "stage09-009",
+        "question": "在异步任务主题中，验证标记celery_09对应的机制是什么？",
+        "category": "异步任务",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          87
+        ],
+        "ranked_paragraph_ids": [
+          87,
+          81,
+          80,
+          83,
+          79,
+          82,
+          84,
+          88,
+          85,
+          86
+        ],
+        "latency_ms": 20,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-010",
+        "question": "在异步任务主题中，验证标记celery_10对应的机制是什么？",
+        "category": "异步任务",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          88
+        ],
+        "ranked_paragraph_ids": [
+          88,
+          81,
+          80,
+          83,
+          79,
+          84,
+          82,
+          85,
+          87,
+          86
+        ],
+        "latency_ms": 20,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-011",
+        "question": "在分布式协调主题中，验证标记redis_01对应的机制是什么？",
+        "category": "分布式协调",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          89
+        ],
+        "ranked_paragraph_ids": [
+          89,
+          91,
+          90,
+          92,
+          96,
+          94,
+          93,
+          97,
+          95,
+          98
+        ],
+        "latency_ms": 24,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-012",
+        "question": "在分布式协调主题中，验证标记redis_02对应的机制是什么？",
+        "category": "分布式协调",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          90
+        ],
+        "ranked_paragraph_ids": [
+          90,
+          91,
+          89,
+          96,
+          92,
+          94,
+          97,
+          93,
+          95,
+          98
+        ],
+        "latency_ms": 26,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-013",
+        "question": "在分布式协调主题中，验证标记redis_03对应的机制是什么？",
+        "category": "分布式协调",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          91
+        ],
+        "ranked_paragraph_ids": [
+          91,
+          89,
+          96,
+          94,
+          92,
+          90,
+          97,
+          93,
+          95,
+          98
+        ],
+        "latency_ms": 26,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-014",
+        "question": "在分布式协调主题中，验证标记redis_04对应的机制是什么？",
+        "category": "分布式协调",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          92
+        ],
+        "ranked_paragraph_ids": [
+          92,
+          91,
+          89,
+          96,
+          90,
+          94,
+          93,
+          97,
+          95,
+          98
+        ],
+        "latency_ms": 23,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-015",
+        "question": "在分布式协调主题中，验证标记redis_05对应的机制是什么？",
+        "category": "分布式协调",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          93
+        ],
+        "ranked_paragraph_ids": [
+          93,
+          91,
+          89,
+          96,
+          90,
+          94,
+          92,
+          97,
+          95,
+          98
+        ],
+        "latency_ms": 21,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-016",
+        "question": "在分布式协调主题中，验证标记redis_06对应的机制是什么？",
+        "category": "分布式协调",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          94
+        ],
+        "ranked_paragraph_ids": [
+          94,
+          91,
+          89,
+          96,
+          90,
+          92,
+          97,
+          93,
+          95,
+          98
+        ],
+        "latency_ms": 22,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-017",
+        "question": "在分布式协调主题中，验证标记redis_07对应的机制是什么？",
+        "category": "分布式协调",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          95
+        ],
+        "ranked_paragraph_ids": [
+          91,
+          89,
+          95,
+          96,
+          90,
+          94,
+          92,
+          97,
+          93,
+          98
+        ],
+        "latency_ms": 19,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 0,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 0.3333333333333333,
+        "ndcg_at_10": 0.5
+      },
+      {
+        "case_id": "stage09-018",
+        "question": "在分布式协调主题中，验证标记redis_08对应的机制是什么？",
+        "category": "分布式协调",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          96
+        ],
+        "ranked_paragraph_ids": [
+          96,
+          91,
+          89,
+          90,
+          94,
+          92,
+          97,
+          93,
+          95,
+          98
+        ],
+        "latency_ms": 20,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-019",
+        "question": "在分布式协调主题中，验证标记redis_09对应的机制是什么？",
+        "category": "分布式协调",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          97
+        ],
+        "ranked_paragraph_ids": [
+          97,
+          91,
+          89,
+          90,
+          94,
+          92,
+          96,
+          93,
+          95,
+          98
+        ],
+        "latency_ms": 19,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-020",
+        "question": "在分布式协调主题中，验证标记redis_10对应的机制是什么？",
+        "category": "分布式协调",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          98
+        ],
+        "ranked_paragraph_ids": [
+          91,
+          89,
+          98,
+          96,
+          90,
+          94,
+          92,
+          97,
+          93,
+          95
+        ],
+        "latency_ms": 19,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 0,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 0.3333333333333333,
+        "ndcg_at_10": 0.5
+      },
+      {
+        "case_id": "stage09-021",
+        "question": "在后端接口主题中，验证标记django_01对应的机制是什么？",
+        "category": "后端接口",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          99
+        ],
+        "ranked_paragraph_ids": [
+          99,
+          101,
+          103,
+          100,
+          105,
+          104,
+          102,
+          108,
+          106,
+          107
+        ],
+        "latency_ms": 19,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-022",
+        "question": "在后端接口主题中，验证标记django_02对应的机制是什么？",
+        "category": "后端接口",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          100
+        ],
+        "ranked_paragraph_ids": [
+          100,
+          101,
+          103,
+          99,
+          105,
+          104,
+          108,
+          106,
+          107,
+          102
+        ],
+        "latency_ms": 20,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-023",
+        "question": "在后端接口主题中，验证标记django_03对应的机制是什么？",
+        "category": "后端接口",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          101
+        ],
+        "ranked_paragraph_ids": [
+          101,
+          103,
+          100,
+          99,
+          105,
+          108,
+          104,
+          106,
+          107,
+          102
+        ],
+        "latency_ms": 21,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-024",
+        "question": "在后端接口主题中，验证标记django_04对应的机制是什么？",
+        "category": "后端接口",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          102
+        ],
+        "ranked_paragraph_ids": [
+          101,
+          102,
+          103,
+          100,
+          99,
+          105,
+          108,
+          104,
+          106,
+          107
+        ],
+        "latency_ms": 26,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 0,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 0.5,
+        "ndcg_at_10": 0.6309297535714575
+      },
+      {
+        "case_id": "stage09-025",
+        "question": "在后端接口主题中，验证标记django_05对应的机制是什么？",
+        "category": "后端接口",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          103
+        ],
+        "ranked_paragraph_ids": [
+          103,
+          101,
+          100,
+          99,
+          105,
+          108,
+          104,
+          106,
+          102,
+          107
+        ],
+        "latency_ms": 23,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-026",
+        "question": "在后端接口主题中，验证标记django_06对应的机制是什么？",
+        "category": "后端接口",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          104
+        ],
+        "ranked_paragraph_ids": [
+          104,
+          101,
+          100,
+          103,
+          99,
+          108,
+          105,
+          106,
+          107,
+          102
+        ],
+        "latency_ms": 19,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-027",
+        "question": "在后端接口主题中，验证标记django_07对应的机制是什么？",
+        "category": "后端接口",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          105
+        ],
+        "ranked_paragraph_ids": [
+          105,
+          101,
+          100,
+          103,
+          99,
+          104,
+          108,
+          102,
+          106,
+          107
+        ],
+        "latency_ms": 19,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-028",
+        "question": "在后端接口主题中，验证标记django_08对应的机制是什么？",
+        "category": "后端接口",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          106
+        ],
+        "ranked_paragraph_ids": [
+          106,
+          101,
+          100,
+          103,
+          99,
+          108,
+          105,
+          104,
+          107,
+          102
+        ],
+        "latency_ms": 20,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-029",
+        "question": "在后端接口主题中，验证标记django_09对应的机制是什么？",
+        "category": "后端接口",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          107
+        ],
+        "ranked_paragraph_ids": [
+          107,
+          101,
+          100,
+          103,
+          99,
+          108,
+          105,
+          104,
+          102,
+          106
+        ],
+        "latency_ms": 21,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-030",
+        "question": "在后端接口主题中，验证标记django_10对应的机制是什么？",
+        "category": "后端接口",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          108
+        ],
+        "ranked_paragraph_ids": [
+          108,
+          101,
+          100,
+          103,
+          105,
+          104,
+          106,
+          107,
+          99,
+          102
+        ],
+        "latency_ms": 19,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-031",
+        "question": "在前端状态主题中，验证标记vue_01对应的机制是什么？",
+        "category": "前端状态",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          109
+        ],
+        "ranked_paragraph_ids": [
+          109,
+          113,
+          115,
+          110,
+          114,
+          112,
+          111,
+          118,
+          117,
+          116
+        ],
+        "latency_ms": 20,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-032",
+        "question": "在前端状态主题中，验证标记vue_02对应的机制是什么？",
+        "category": "前端状态",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          110
+        ],
+        "ranked_paragraph_ids": [
+          110,
+          109,
+          112,
+          115,
+          113,
+          111,
+          114,
+          117,
+          118,
+          116
+        ],
+        "latency_ms": 25,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-033",
+        "question": "在前端状态主题中，验证标记vue_03对应的机制是什么？",
+        "category": "前端状态",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          111
+        ],
+        "ranked_paragraph_ids": [
+          111,
+          109,
+          112,
+          115,
+          113,
+          110,
+          114,
+          117,
+          118,
+          116
+        ],
+        "latency_ms": 20,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-034",
+        "question": "在前端状态主题中，验证标记vue_04对应的机制是什么？",
+        "category": "前端状态",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          112
+        ],
+        "ranked_paragraph_ids": [
+          112,
+          109,
+          115,
+          113,
+          110,
+          114,
+          111,
+          118,
+          117,
+          116
+        ],
+        "latency_ms": 21,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-035",
+        "question": "在前端状态主题中，验证标记vue_05对应的机制是什么？",
+        "category": "前端状态",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          113
+        ],
+        "ranked_paragraph_ids": [
+          113,
+          109,
+          115,
+          114,
+          110,
+          112,
+          111,
+          118,
+          117,
+          116
+        ],
+        "latency_ms": 20,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-036",
+        "question": "在前端状态主题中，验证标记vue_06对应的机制是什么？",
+        "category": "前端状态",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          114
+        ],
+        "ranked_paragraph_ids": [
+          114,
+          109,
+          112,
+          110,
+          113,
+          111,
+          117,
+          118,
+          115,
+          116
+        ],
+        "latency_ms": 19,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-037",
+        "question": "在前端状态主题中，验证标记vue_07对应的机制是什么？",
+        "category": "前端状态",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          115
+        ],
+        "ranked_paragraph_ids": [
+          115,
+          109,
+          112,
+          110,
+          113,
+          111,
+          117,
+          118,
+          114,
+          116
+        ],
+        "latency_ms": 19,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-038",
+        "question": "在前端状态主题中，验证标记vue_08对应的机制是什么？",
+        "category": "前端状态",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          116
+        ],
+        "ranked_paragraph_ids": [
+          116,
+          109,
+          115,
+          113,
+          110,
+          114,
+          112,
+          111,
+          118,
+          117
+        ],
+        "latency_ms": 19,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-039",
+        "question": "在前端状态主题中，验证标记vue_09对应的机制是什么？",
+        "category": "前端状态",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          117
+        ],
+        "ranked_paragraph_ids": [
+          117,
+          109,
+          115,
+          113,
+          110,
+          114,
+          112,
+          111,
+          118,
+          116
+        ],
+        "latency_ms": 23,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-040",
+        "question": "在前端状态主题中，验证标记vue_10对应的机制是什么？",
+        "category": "前端状态",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          118
+        ],
+        "ranked_paragraph_ids": [
+          118,
+          109,
+          115,
+          113,
+          110,
+          112,
+          114,
+          111,
+          117,
+          116
+        ],
+        "latency_ms": 20,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-041",
+        "question": "在知识检索主题中，验证标记rag_01对应的机制是什么？",
+        "category": "知识检索",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          119
+        ],
+        "ranked_paragraph_ids": [
+          119,
+          120,
+          124,
+          121,
+          122,
+          128,
+          123,
+          126,
+          125,
+          127
+        ],
+        "latency_ms": 19,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-042",
+        "question": "在知识检索主题中，验证标记rag_02对应的机制是什么？",
+        "category": "知识检索",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          120
+        ],
+        "ranked_paragraph_ids": [
+          120,
+          121,
+          124,
+          122,
+          119,
+          128,
+          126,
+          123,
+          125,
+          127
+        ],
+        "latency_ms": 20,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-043",
+        "question": "在知识检索主题中，验证标记rag_03对应的机制是什么？",
+        "category": "知识检索",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          121
+        ],
+        "ranked_paragraph_ids": [
+          121,
+          120,
+          124,
+          122,
+          119,
+          128,
+          126,
+          123,
+          125,
+          127
+        ],
+        "latency_ms": 20,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-044",
+        "question": "在知识检索主题中，验证标记rag_04对应的机制是什么？",
+        "category": "知识检索",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          122
+        ],
+        "ranked_paragraph_ids": [
+          122,
+          120,
+          124,
+          121,
+          119,
+          128,
+          126,
+          123,
+          125,
+          127
+        ],
+        "latency_ms": 19,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-045",
+        "question": "在知识检索主题中，验证标记rag_05对应的机制是什么？",
+        "category": "知识检索",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          123
+        ],
+        "ranked_paragraph_ids": [
+          123,
+          124,
+          120,
+          127,
+          121,
+          119,
+          122,
+          128,
+          125,
+          126
+        ],
+        "latency_ms": 19,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-046",
+        "question": "在知识检索主题中，验证标记rag_06对应的机制是什么？",
+        "category": "知识检索",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          124
+        ],
+        "ranked_paragraph_ids": [
+          124,
+          120,
+          121,
+          127,
+          119,
+          122,
+          128,
+          126,
+          125,
+          123
+        ],
+        "latency_ms": 49,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-047",
+        "question": "在知识检索主题中，验证标记rag_07对应的机制是什么？",
+        "category": "知识检索",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          125
+        ],
+        "ranked_paragraph_ids": [
+          125,
+          120,
+          124,
+          121,
+          119,
+          122,
+          128,
+          126,
+          123,
+          127
+        ],
+        "latency_ms": 19,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-048",
+        "question": "在知识检索主题中，验证标记rag_08对应的机制是什么？",
+        "category": "知识检索",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          126
+        ],
+        "ranked_paragraph_ids": [
+          126,
+          120,
+          124,
+          121,
+          119,
+          122,
+          128,
+          123,
+          127,
+          125
+        ],
+        "latency_ms": 20,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-049",
+        "question": "在知识检索主题中，验证标记rag_09对应的机制是什么？",
+        "category": "知识检索",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          127
+        ],
+        "ranked_paragraph_ids": [
+          127,
+          120,
+          124,
+          121,
+          119,
+          122,
+          128,
+          123,
+          126,
+          125
+        ],
+        "latency_ms": 20,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-050",
+        "question": "在知识检索主题中，验证标记rag_10对应的机制是什么？",
+        "category": "知识检索",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          128
+        ],
+        "ranked_paragraph_ids": [
+          128,
+          120,
+          121,
+          124,
+          122,
+          119,
+          126,
+          123,
+          125,
+          127
+        ],
+        "latency_ms": 19,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-051",
+        "question": "在安全控制主题中，验证标记security_01对应的机制是什么？",
+        "category": "安全控制",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          129
+        ],
+        "ranked_paragraph_ids": [
+          129,
+          130,
+          132,
+          133,
+          138,
+          131,
+          134,
+          135,
+          137,
+          136
+        ],
+        "latency_ms": 21,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-052",
+        "question": "在安全控制主题中，验证标记security_02对应的机制是什么？",
+        "category": "安全控制",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          130
+        ],
+        "ranked_paragraph_ids": [
+          130,
+          132,
+          133,
+          138,
+          129,
+          134,
+          135,
+          137,
+          131,
+          136
+        ],
+        "latency_ms": 20,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-053",
+        "question": "在安全控制主题中，验证标记security_03对应的机制是什么？",
+        "category": "安全控制",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          131
+        ],
+        "ranked_paragraph_ids": [
+          131,
+          130,
+          132,
+          133,
+          138,
+          129,
+          134,
+          135,
+          137,
+          136
+        ],
+        "latency_ms": 19,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-054",
+        "question": "在安全控制主题中，验证标记security_04对应的机制是什么？",
+        "category": "安全控制",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          132
+        ],
+        "ranked_paragraph_ids": [
+          132,
+          130,
+          133,
+          129,
+          138,
+          134,
+          135,
+          131,
+          137,
+          136
+        ],
+        "latency_ms": 20,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-055",
+        "question": "在安全控制主题中，验证标记security_05对应的机制是什么？",
+        "category": "安全控制",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          133
+        ],
+        "ranked_paragraph_ids": [
+          133,
+          130,
+          132,
+          129,
+          138,
+          134,
+          135,
+          131,
+          137,
+          136
+        ],
+        "latency_ms": 20,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-056",
+        "question": "在安全控制主题中，验证标记security_06对应的机制是什么？",
+        "category": "安全控制",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          134
+        ],
+        "ranked_paragraph_ids": [
+          134,
+          130,
+          132,
+          129,
+          138,
+          133,
+          135,
+          131,
+          137,
+          136
+        ],
+        "latency_ms": 20,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-057",
+        "question": "在安全控制主题中，验证标记security_07对应的机制是什么？",
+        "category": "安全控制",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          135
+        ],
+        "ranked_paragraph_ids": [
+          135,
+          130,
+          132,
+          129,
+          138,
+          133,
+          134,
+          131,
+          137,
+          136
+        ],
+        "latency_ms": 21,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-058",
+        "question": "在安全控制主题中，验证标记security_08对应的机制是什么？",
+        "category": "安全控制",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          136
+        ],
+        "ranked_paragraph_ids": [
+          130,
+          132,
+          129,
+          133,
+          138,
+          136,
+          134,
+          135,
+          131,
+          137
+        ],
+        "latency_ms": 20,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 0,
+        "hit_at_3": 0,
+        "recall_at_5": 0.0,
+        "mrr_at_10": 0.16666666666666666,
+        "ndcg_at_10": 0.3562071871080222
+      },
+      {
+        "case_id": "stage09-059",
+        "question": "在安全控制主题中，验证标记security_09对应的机制是什么？",
+        "category": "安全控制",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          137
+        ],
+        "ranked_paragraph_ids": [
+          137,
+          130,
+          132,
+          129,
+          138,
+          133,
+          134,
+          131,
+          135,
+          136
+        ],
+        "latency_ms": 20,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-060",
+        "question": "在安全控制主题中，验证标记security_10对应的机制是什么？",
+        "category": "安全控制",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          138
+        ],
+        "ranked_paragraph_ids": [
+          138,
+          130,
+          132,
+          129,
+          133,
+          134,
+          131,
+          135,
+          137,
+          136
+        ],
+        "latency_ms": 20,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      }
+    ],
+    "RRF_RERANK": [
+      {
+        "case_id": "stage09-001",
+        "question": "在异步任务主题中，验证标记celery_01对应的机制是什么？",
+        "category": "异步任务",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          79
+        ],
+        "ranked_paragraph_ids": [
+          81,
+          80,
+          79,
+          83,
+          84,
+          82,
+          88,
+          85,
+          87,
+          86
+        ],
+        "latency_ms": 21,
+        "rerank_applied": false,
+        "rerank_fallback_code": "NOT_CONFIGURED",
+        "hit_at_1": 0,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 0.3333333333333333,
+        "ndcg_at_10": 0.5
+      },
+      {
+        "case_id": "stage09-002",
+        "question": "在异步任务主题中，验证标记celery_02对应的机制是什么？",
+        "category": "异步任务",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          80
+        ],
+        "ranked_paragraph_ids": [
+          80,
+          81,
+          83,
+          79,
+          84,
+          82,
+          85,
+          88,
+          87,
+          86
+        ],
+        "latency_ms": 20,
+        "rerank_applied": false,
+        "rerank_fallback_code": "NOT_CONFIGURED",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-003",
+        "question": "在异步任务主题中，验证标记celery_03对应的机制是什么？",
+        "category": "异步任务",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          81
+        ],
+        "ranked_paragraph_ids": [
+          81,
+          80,
+          83,
+          79,
+          84,
+          82,
+          85,
+          88,
+          87,
+          86
+        ],
+        "latency_ms": 21,
+        "rerank_applied": false,
+        "rerank_fallback_code": "NOT_CONFIGURED",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-004",
+        "question": "在异步任务主题中，验证标记celery_04对应的机制是什么？",
+        "category": "异步任务",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          82
+        ],
+        "ranked_paragraph_ids": [
+          82,
+          81,
+          80,
+          83,
+          79,
+          84,
+          85,
+          88,
+          87,
+          86
+        ],
+        "latency_ms": 19,
+        "rerank_applied": false,
+        "rerank_fallback_code": "NOT_CONFIGURED",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-005",
+        "question": "在异步任务主题中，验证标记celery_05对应的机制是什么？",
+        "category": "异步任务",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          83
+        ],
+        "ranked_paragraph_ids": [
+          83,
+          81,
+          80,
+          79,
+          87,
+          84,
+          82,
+          85,
+          88,
+          86
+        ],
+        "latency_ms": 19,
+        "rerank_applied": false,
+        "rerank_fallback_code": "NOT_CONFIGURED",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-006",
+        "question": "在异步任务主题中，验证标记celery_06对应的机制是什么？",
+        "category": "异步任务",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          84
+        ],
+        "ranked_paragraph_ids": [
+          84,
+          81,
+          80,
+          83,
+          79,
+          82,
+          85,
+          88,
+          87,
+          86
+        ],
+        "latency_ms": 19,
+        "rerank_applied": false,
+        "rerank_fallback_code": "NOT_CONFIGURED",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-007",
+        "question": "在异步任务主题中，验证标记celery_07对应的机制是什么？",
+        "category": "异步任务",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          85
+        ],
+        "ranked_paragraph_ids": [
+          85,
+          81,
+          80,
+          83,
+          79,
+          82,
+          84,
+          88,
+          87,
+          86
+        ],
+        "latency_ms": 19,
+        "rerank_applied": false,
+        "rerank_fallback_code": "NOT_CONFIGURED",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-008",
+        "question": "在异步任务主题中，验证标记celery_08对应的机制是什么？",
+        "category": "异步任务",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          86
+        ],
+        "ranked_paragraph_ids": [
+          81,
+          80,
+          83,
+          86,
+          79,
+          84,
+          82,
+          88,
+          85,
+          87
+        ],
+        "latency_ms": 19,
+        "rerank_applied": false,
+        "rerank_fallback_code": "NOT_CONFIGURED",
+        "hit_at_1": 0,
+        "hit_at_3": 0,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 0.25,
+        "ndcg_at_10": 0.43067655807339306
+      },
+      {
+        "case_id": "stage09-009",
+        "question": "在异步任务主题中，验证标记celery_09对应的机制是什么？",
+        "category": "异步任务",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          87
+        ],
+        "ranked_paragraph_ids": [
+          87,
+          81,
+          80,
+          83,
+          79,
+          82,
+          84,
+          88,
+          85,
+          86
+        ],
+        "latency_ms": 20,
+        "rerank_applied": false,
+        "rerank_fallback_code": "NOT_CONFIGURED",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-010",
+        "question": "在异步任务主题中，验证标记celery_10对应的机制是什么？",
+        "category": "异步任务",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          88
+        ],
+        "ranked_paragraph_ids": [
+          88,
+          81,
+          80,
+          83,
+          79,
+          84,
+          82,
+          85,
+          87,
+          86
+        ],
+        "latency_ms": 20,
+        "rerank_applied": false,
+        "rerank_fallback_code": "NOT_CONFIGURED",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-011",
+        "question": "在分布式协调主题中，验证标记redis_01对应的机制是什么？",
+        "category": "分布式协调",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          89
+        ],
+        "ranked_paragraph_ids": [
+          89,
+          91,
+          90,
+          92,
+          96,
+          94,
+          93,
+          97,
+          95,
+          98
+        ],
+        "latency_ms": 24,
+        "rerank_applied": false,
+        "rerank_fallback_code": "NOT_CONFIGURED",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-012",
+        "question": "在分布式协调主题中，验证标记redis_02对应的机制是什么？",
+        "category": "分布式协调",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          90
+        ],
+        "ranked_paragraph_ids": [
+          90,
+          91,
+          89,
+          96,
+          92,
+          94,
+          97,
+          93,
+          95,
+          98
+        ],
+        "latency_ms": 27,
+        "rerank_applied": false,
+        "rerank_fallback_code": "NOT_CONFIGURED",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-013",
+        "question": "在分布式协调主题中，验证标记redis_03对应的机制是什么？",
+        "category": "分布式协调",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          91
+        ],
+        "ranked_paragraph_ids": [
+          91,
+          89,
+          96,
+          94,
+          92,
+          90,
+          97,
+          93,
+          95,
+          98
+        ],
+        "latency_ms": 26,
+        "rerank_applied": false,
+        "rerank_fallback_code": "NOT_CONFIGURED",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-014",
+        "question": "在分布式协调主题中，验证标记redis_04对应的机制是什么？",
+        "category": "分布式协调",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          92
+        ],
+        "ranked_paragraph_ids": [
+          92,
+          91,
+          89,
+          96,
+          90,
+          94,
+          93,
+          97,
+          95,
+          98
+        ],
+        "latency_ms": 23,
+        "rerank_applied": false,
+        "rerank_fallback_code": "NOT_CONFIGURED",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-015",
+        "question": "在分布式协调主题中，验证标记redis_05对应的机制是什么？",
+        "category": "分布式协调",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          93
+        ],
+        "ranked_paragraph_ids": [
+          93,
+          91,
+          89,
+          96,
+          90,
+          94,
+          92,
+          97,
+          95,
+          98
+        ],
+        "latency_ms": 21,
+        "rerank_applied": false,
+        "rerank_fallback_code": "NOT_CONFIGURED",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-016",
+        "question": "在分布式协调主题中，验证标记redis_06对应的机制是什么？",
+        "category": "分布式协调",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          94
+        ],
+        "ranked_paragraph_ids": [
+          94,
+          91,
+          89,
+          96,
+          90,
+          92,
+          97,
+          93,
+          95,
+          98
+        ],
+        "latency_ms": 22,
+        "rerank_applied": false,
+        "rerank_fallback_code": "NOT_CONFIGURED",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-017",
+        "question": "在分布式协调主题中，验证标记redis_07对应的机制是什么？",
+        "category": "分布式协调",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          95
+        ],
+        "ranked_paragraph_ids": [
+          91,
+          89,
+          95,
+          96,
+          90,
+          94,
+          92,
+          97,
+          93,
+          98
+        ],
+        "latency_ms": 19,
+        "rerank_applied": false,
+        "rerank_fallback_code": "NOT_CONFIGURED",
+        "hit_at_1": 0,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 0.3333333333333333,
+        "ndcg_at_10": 0.5
+      },
+      {
+        "case_id": "stage09-018",
+        "question": "在分布式协调主题中，验证标记redis_08对应的机制是什么？",
+        "category": "分布式协调",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          96
+        ],
+        "ranked_paragraph_ids": [
+          96,
+          91,
+          89,
+          90,
+          94,
+          92,
+          97,
+          93,
+          95,
+          98
+        ],
+        "latency_ms": 20,
+        "rerank_applied": false,
+        "rerank_fallback_code": "NOT_CONFIGURED",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-019",
+        "question": "在分布式协调主题中，验证标记redis_09对应的机制是什么？",
+        "category": "分布式协调",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          97
+        ],
+        "ranked_paragraph_ids": [
+          97,
+          91,
+          89,
+          90,
+          94,
+          92,
+          96,
+          93,
+          95,
+          98
+        ],
+        "latency_ms": 19,
+        "rerank_applied": false,
+        "rerank_fallback_code": "NOT_CONFIGURED",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-020",
+        "question": "在分布式协调主题中，验证标记redis_10对应的机制是什么？",
+        "category": "分布式协调",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          98
+        ],
+        "ranked_paragraph_ids": [
+          91,
+          89,
+          98,
+          96,
+          90,
+          94,
+          92,
+          97,
+          93,
+          95
+        ],
+        "latency_ms": 19,
+        "rerank_applied": false,
+        "rerank_fallback_code": "NOT_CONFIGURED",
+        "hit_at_1": 0,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 0.3333333333333333,
+        "ndcg_at_10": 0.5
+      },
+      {
+        "case_id": "stage09-021",
+        "question": "在后端接口主题中，验证标记django_01对应的机制是什么？",
+        "category": "后端接口",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          99
+        ],
+        "ranked_paragraph_ids": [
+          99,
+          101,
+          103,
+          100,
+          105,
+          104,
+          102,
+          108,
+          106,
+          107
+        ],
+        "latency_ms": 19,
+        "rerank_applied": false,
+        "rerank_fallback_code": "NOT_CONFIGURED",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-022",
+        "question": "在后端接口主题中，验证标记django_02对应的机制是什么？",
+        "category": "后端接口",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          100
+        ],
+        "ranked_paragraph_ids": [
+          100,
+          101,
+          103,
+          99,
+          105,
+          104,
+          108,
+          106,
+          107,
+          102
+        ],
+        "latency_ms": 20,
+        "rerank_applied": false,
+        "rerank_fallback_code": "NOT_CONFIGURED",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-023",
+        "question": "在后端接口主题中，验证标记django_03对应的机制是什么？",
+        "category": "后端接口",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          101
+        ],
+        "ranked_paragraph_ids": [
+          101,
+          103,
+          100,
+          99,
+          105,
+          108,
+          104,
+          106,
+          107,
+          102
+        ],
+        "latency_ms": 21,
+        "rerank_applied": false,
+        "rerank_fallback_code": "NOT_CONFIGURED",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-024",
+        "question": "在后端接口主题中，验证标记django_04对应的机制是什么？",
+        "category": "后端接口",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          102
+        ],
+        "ranked_paragraph_ids": [
+          101,
+          102,
+          103,
+          100,
+          99,
+          105,
+          108,
+          104,
+          106,
+          107
+        ],
+        "latency_ms": 28,
+        "rerank_applied": false,
+        "rerank_fallback_code": "NOT_CONFIGURED",
+        "hit_at_1": 0,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 0.5,
+        "ndcg_at_10": 0.6309297535714575
+      },
+      {
+        "case_id": "stage09-025",
+        "question": "在后端接口主题中，验证标记django_05对应的机制是什么？",
+        "category": "后端接口",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          103
+        ],
+        "ranked_paragraph_ids": [
+          103,
+          101,
+          100,
+          99,
+          105,
+          108,
+          104,
+          106,
+          102,
+          107
+        ],
+        "latency_ms": 23,
+        "rerank_applied": false,
+        "rerank_fallback_code": "NOT_CONFIGURED",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-026",
+        "question": "在后端接口主题中，验证标记django_06对应的机制是什么？",
+        "category": "后端接口",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          104
+        ],
+        "ranked_paragraph_ids": [
+          104,
+          101,
+          100,
+          103,
+          99,
+          108,
+          105,
+          106,
+          107,
+          102
+        ],
+        "latency_ms": 19,
+        "rerank_applied": false,
+        "rerank_fallback_code": "NOT_CONFIGURED",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-027",
+        "question": "在后端接口主题中，验证标记django_07对应的机制是什么？",
+        "category": "后端接口",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          105
+        ],
+        "ranked_paragraph_ids": [
+          105,
+          101,
+          100,
+          103,
+          99,
+          104,
+          108,
+          102,
+          106,
+          107
+        ],
+        "latency_ms": 19,
+        "rerank_applied": false,
+        "rerank_fallback_code": "NOT_CONFIGURED",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-028",
+        "question": "在后端接口主题中，验证标记django_08对应的机制是什么？",
+        "category": "后端接口",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          106
+        ],
+        "ranked_paragraph_ids": [
+          106,
+          101,
+          100,
+          103,
+          99,
+          108,
+          105,
+          104,
+          107,
+          102
+        ],
+        "latency_ms": 20,
+        "rerank_applied": false,
+        "rerank_fallback_code": "NOT_CONFIGURED",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-029",
+        "question": "在后端接口主题中，验证标记django_09对应的机制是什么？",
+        "category": "后端接口",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          107
+        ],
+        "ranked_paragraph_ids": [
+          107,
+          101,
+          100,
+          103,
+          99,
+          108,
+          105,
+          104,
+          102,
+          106
+        ],
+        "latency_ms": 21,
+        "rerank_applied": false,
+        "rerank_fallback_code": "NOT_CONFIGURED",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-030",
+        "question": "在后端接口主题中，验证标记django_10对应的机制是什么？",
+        "category": "后端接口",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          108
+        ],
+        "ranked_paragraph_ids": [
+          108,
+          101,
+          100,
+          103,
+          105,
+          104,
+          106,
+          107,
+          99,
+          102
+        ],
+        "latency_ms": 19,
+        "rerank_applied": false,
+        "rerank_fallback_code": "NOT_CONFIGURED",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-031",
+        "question": "在前端状态主题中，验证标记vue_01对应的机制是什么？",
+        "category": "前端状态",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          109
+        ],
+        "ranked_paragraph_ids": [
+          109,
+          113,
+          115,
+          110,
+          114,
+          112,
+          111,
+          118,
+          117,
+          116
+        ],
+        "latency_ms": 20,
+        "rerank_applied": false,
+        "rerank_fallback_code": "NOT_CONFIGURED",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-032",
+        "question": "在前端状态主题中，验证标记vue_02对应的机制是什么？",
+        "category": "前端状态",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          110
+        ],
+        "ranked_paragraph_ids": [
+          110,
+          109,
+          112,
+          115,
+          113,
+          111,
+          114,
+          117,
+          118,
+          116
+        ],
+        "latency_ms": 25,
+        "rerank_applied": false,
+        "rerank_fallback_code": "NOT_CONFIGURED",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-033",
+        "question": "在前端状态主题中，验证标记vue_03对应的机制是什么？",
+        "category": "前端状态",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          111
+        ],
+        "ranked_paragraph_ids": [
+          111,
+          109,
+          112,
+          115,
+          113,
+          110,
+          114,
+          117,
+          118,
+          116
+        ],
+        "latency_ms": 20,
+        "rerank_applied": false,
+        "rerank_fallback_code": "NOT_CONFIGURED",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-034",
+        "question": "在前端状态主题中，验证标记vue_04对应的机制是什么？",
+        "category": "前端状态",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          112
+        ],
+        "ranked_paragraph_ids": [
+          112,
+          109,
+          115,
+          113,
+          110,
+          114,
+          111,
+          118,
+          117,
+          116
+        ],
+        "latency_ms": 21,
+        "rerank_applied": false,
+        "rerank_fallback_code": "NOT_CONFIGURED",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-035",
+        "question": "在前端状态主题中，验证标记vue_05对应的机制是什么？",
+        "category": "前端状态",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          113
+        ],
+        "ranked_paragraph_ids": [
+          113,
+          109,
+          115,
+          114,
+          110,
+          112,
+          111,
+          118,
+          117,
+          116
+        ],
+        "latency_ms": 20,
+        "rerank_applied": false,
+        "rerank_fallback_code": "NOT_CONFIGURED",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-036",
+        "question": "在前端状态主题中，验证标记vue_06对应的机制是什么？",
+        "category": "前端状态",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          114
+        ],
+        "ranked_paragraph_ids": [
+          114,
+          109,
+          112,
+          110,
+          113,
+          111,
+          117,
+          118,
+          115,
+          116
+        ],
+        "latency_ms": 19,
+        "rerank_applied": false,
+        "rerank_fallback_code": "NOT_CONFIGURED",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-037",
+        "question": "在前端状态主题中，验证标记vue_07对应的机制是什么？",
+        "category": "前端状态",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          115
+        ],
+        "ranked_paragraph_ids": [
+          115,
+          109,
+          112,
+          110,
+          113,
+          111,
+          117,
+          118,
+          114,
+          116
+        ],
+        "latency_ms": 19,
+        "rerank_applied": false,
+        "rerank_fallback_code": "NOT_CONFIGURED",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-038",
+        "question": "在前端状态主题中，验证标记vue_08对应的机制是什么？",
+        "category": "前端状态",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          116
+        ],
+        "ranked_paragraph_ids": [
+          116,
+          109,
+          115,
+          113,
+          110,
+          114,
+          112,
+          111,
+          118,
+          117
+        ],
+        "latency_ms": 19,
+        "rerank_applied": false,
+        "rerank_fallback_code": "NOT_CONFIGURED",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-039",
+        "question": "在前端状态主题中，验证标记vue_09对应的机制是什么？",
+        "category": "前端状态",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          117
+        ],
+        "ranked_paragraph_ids": [
+          117,
+          109,
+          115,
+          113,
+          110,
+          114,
+          112,
+          111,
+          118,
+          116
+        ],
+        "latency_ms": 23,
+        "rerank_applied": false,
+        "rerank_fallback_code": "NOT_CONFIGURED",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-040",
+        "question": "在前端状态主题中，验证标记vue_10对应的机制是什么？",
+        "category": "前端状态",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          118
+        ],
+        "ranked_paragraph_ids": [
+          118,
+          109,
+          115,
+          113,
+          110,
+          112,
+          114,
+          111,
+          117,
+          116
+        ],
+        "latency_ms": 20,
+        "rerank_applied": false,
+        "rerank_fallback_code": "NOT_CONFIGURED",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-041",
+        "question": "在知识检索主题中，验证标记rag_01对应的机制是什么？",
+        "category": "知识检索",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          119
+        ],
+        "ranked_paragraph_ids": [
+          119,
+          120,
+          124,
+          121,
+          122,
+          128,
+          123,
+          126,
+          125,
+          127
+        ],
+        "latency_ms": 19,
+        "rerank_applied": false,
+        "rerank_fallback_code": "NOT_CONFIGURED",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-042",
+        "question": "在知识检索主题中，验证标记rag_02对应的机制是什么？",
+        "category": "知识检索",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          120
+        ],
+        "ranked_paragraph_ids": [
+          120,
+          121,
+          124,
+          122,
+          119,
+          128,
+          126,
+          123,
+          125,
+          127
+        ],
+        "latency_ms": 20,
+        "rerank_applied": false,
+        "rerank_fallback_code": "NOT_CONFIGURED",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-043",
+        "question": "在知识检索主题中，验证标记rag_03对应的机制是什么？",
+        "category": "知识检索",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          121
+        ],
+        "ranked_paragraph_ids": [
+          121,
+          120,
+          124,
+          122,
+          119,
+          128,
+          126,
+          123,
+          125,
+          127
+        ],
+        "latency_ms": 20,
+        "rerank_applied": false,
+        "rerank_fallback_code": "NOT_CONFIGURED",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-044",
+        "question": "在知识检索主题中，验证标记rag_04对应的机制是什么？",
+        "category": "知识检索",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          122
+        ],
+        "ranked_paragraph_ids": [
+          122,
+          120,
+          124,
+          121,
+          119,
+          128,
+          126,
+          123,
+          125,
+          127
+        ],
+        "latency_ms": 19,
+        "rerank_applied": false,
+        "rerank_fallback_code": "NOT_CONFIGURED",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-045",
+        "question": "在知识检索主题中，验证标记rag_05对应的机制是什么？",
+        "category": "知识检索",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          123
+        ],
+        "ranked_paragraph_ids": [
+          123,
+          124,
+          120,
+          127,
+          121,
+          119,
+          122,
+          128,
+          125,
+          126
+        ],
+        "latency_ms": 19,
+        "rerank_applied": false,
+        "rerank_fallback_code": "NOT_CONFIGURED",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-046",
+        "question": "在知识检索主题中，验证标记rag_06对应的机制是什么？",
+        "category": "知识检索",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          124
+        ],
+        "ranked_paragraph_ids": [
+          124,
+          120,
+          121,
+          127,
+          119,
+          122,
+          128,
+          126,
+          125,
+          123
+        ],
+        "latency_ms": 20,
+        "rerank_applied": false,
+        "rerank_fallback_code": "NOT_CONFIGURED",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-047",
+        "question": "在知识检索主题中，验证标记rag_07对应的机制是什么？",
+        "category": "知识检索",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          125
+        ],
+        "ranked_paragraph_ids": [
+          125,
+          120,
+          124,
+          121,
+          119,
+          122,
+          128,
+          126,
+          123,
+          127
+        ],
+        "latency_ms": 19,
+        "rerank_applied": false,
+        "rerank_fallback_code": "NOT_CONFIGURED",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-048",
+        "question": "在知识检索主题中，验证标记rag_08对应的机制是什么？",
+        "category": "知识检索",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          126
+        ],
+        "ranked_paragraph_ids": [
+          126,
+          120,
+          124,
+          121,
+          119,
+          122,
+          128,
+          123,
+          127,
+          125
+        ],
+        "latency_ms": 20,
+        "rerank_applied": false,
+        "rerank_fallback_code": "NOT_CONFIGURED",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-049",
+        "question": "在知识检索主题中，验证标记rag_09对应的机制是什么？",
+        "category": "知识检索",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          127
+        ],
+        "ranked_paragraph_ids": [
+          127,
+          120,
+          124,
+          121,
+          119,
+          122,
+          128,
+          123,
+          126,
+          125
+        ],
+        "latency_ms": 20,
+        "rerank_applied": false,
+        "rerank_fallback_code": "NOT_CONFIGURED",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-050",
+        "question": "在知识检索主题中，验证标记rag_10对应的机制是什么？",
+        "category": "知识检索",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          128
+        ],
+        "ranked_paragraph_ids": [
+          128,
+          120,
+          121,
+          124,
+          122,
+          119,
+          126,
+          123,
+          125,
+          127
+        ],
+        "latency_ms": 19,
+        "rerank_applied": false,
+        "rerank_fallback_code": "NOT_CONFIGURED",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-051",
+        "question": "在安全控制主题中，验证标记security_01对应的机制是什么？",
+        "category": "安全控制",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          129
+        ],
+        "ranked_paragraph_ids": [
+          129,
+          130,
+          132,
+          133,
+          138,
+          131,
+          134,
+          135,
+          137,
+          136
+        ],
+        "latency_ms": 21,
+        "rerank_applied": false,
+        "rerank_fallback_code": "NOT_CONFIGURED",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-052",
+        "question": "在安全控制主题中，验证标记security_02对应的机制是什么？",
+        "category": "安全控制",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          130
+        ],
+        "ranked_paragraph_ids": [
+          130,
+          132,
+          133,
+          138,
+          129,
+          134,
+          135,
+          137,
+          131,
+          136
+        ],
+        "latency_ms": 20,
+        "rerank_applied": false,
+        "rerank_fallback_code": "NOT_CONFIGURED",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-053",
+        "question": "在安全控制主题中，验证标记security_03对应的机制是什么？",
+        "category": "安全控制",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          131
+        ],
+        "ranked_paragraph_ids": [
+          131,
+          130,
+          132,
+          133,
+          138,
+          129,
+          134,
+          135,
+          137,
+          136
+        ],
+        "latency_ms": 19,
+        "rerank_applied": false,
+        "rerank_fallback_code": "NOT_CONFIGURED",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-054",
+        "question": "在安全控制主题中，验证标记security_04对应的机制是什么？",
+        "category": "安全控制",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          132
+        ],
+        "ranked_paragraph_ids": [
+          132,
+          130,
+          133,
+          129,
+          138,
+          134,
+          135,
+          131,
+          137,
+          136
+        ],
+        "latency_ms": 20,
+        "rerank_applied": false,
+        "rerank_fallback_code": "NOT_CONFIGURED",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-055",
+        "question": "在安全控制主题中，验证标记security_05对应的机制是什么？",
+        "category": "安全控制",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          133
+        ],
+        "ranked_paragraph_ids": [
+          133,
+          130,
+          132,
+          129,
+          138,
+          134,
+          135,
+          131,
+          137,
+          136
+        ],
+        "latency_ms": 20,
+        "rerank_applied": false,
+        "rerank_fallback_code": "NOT_CONFIGURED",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-056",
+        "question": "在安全控制主题中，验证标记security_06对应的机制是什么？",
+        "category": "安全控制",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          134
+        ],
+        "ranked_paragraph_ids": [
+          134,
+          130,
+          132,
+          129,
+          138,
+          133,
+          135,
+          131,
+          137,
+          136
+        ],
+        "latency_ms": 20,
+        "rerank_applied": false,
+        "rerank_fallback_code": "NOT_CONFIGURED",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-057",
+        "question": "在安全控制主题中，验证标记security_07对应的机制是什么？",
+        "category": "安全控制",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          135
+        ],
+        "ranked_paragraph_ids": [
+          135,
+          130,
+          132,
+          129,
+          138,
+          133,
+          134,
+          131,
+          137,
+          136
+        ],
+        "latency_ms": 21,
+        "rerank_applied": false,
+        "rerank_fallback_code": "NOT_CONFIGURED",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-058",
+        "question": "在安全控制主题中，验证标记security_08对应的机制是什么？",
+        "category": "安全控制",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          136
+        ],
+        "ranked_paragraph_ids": [
+          130,
+          132,
+          129,
+          133,
+          138,
+          136,
+          134,
+          135,
+          131,
+          137
+        ],
+        "latency_ms": 20,
+        "rerank_applied": false,
+        "rerank_fallback_code": "NOT_CONFIGURED",
+        "hit_at_1": 0,
+        "hit_at_3": 0,
+        "recall_at_5": 0.0,
+        "mrr_at_10": 0.16666666666666666,
+        "ndcg_at_10": 0.3562071871080222
+      },
+      {
+        "case_id": "stage09-059",
+        "question": "在安全控制主题中，验证标记security_09对应的机制是什么？",
+        "category": "安全控制",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          137
+        ],
+        "ranked_paragraph_ids": [
+          137,
+          130,
+          132,
+          129,
+          138,
+          133,
+          134,
+          131,
+          135,
+          136
+        ],
+        "latency_ms": 20,
+        "rerank_applied": false,
+        "rerank_fallback_code": "NOT_CONFIGURED",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-060",
+        "question": "在安全控制主题中，验证标记security_10对应的机制是什么？",
+        "category": "安全控制",
+        "difficulty": "medium",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          138
+        ],
+        "ranked_paragraph_ids": [
+          138,
+          130,
+          132,
+          129,
+          133,
+          134,
+          131,
+          135,
+          137,
+          136
+        ],
+        "latency_ms": 20,
+        "rerank_applied": false,
+        "rerank_fallback_code": "NOT_CONFIGURED",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      }
+    ]
+  },
+  "reranker": {
+    "rrf_available": true,
+    "reranker_configured": false,
+    "reranker_ready": false,
+    "reranker_model": "",
+    "device": "cpu"
+  }
+}

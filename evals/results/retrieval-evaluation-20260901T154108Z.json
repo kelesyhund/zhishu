@@ -1,0 +1,4983 @@
+{
+  "run_id": "20260901T154108Z",
+  "created_at": "2026-09-01T15:41:08.650090+00:00",
+  "dataset": "stage09-test.jsonl",
+  "dataset_sha256": "354b741b2e37f9eabb3b56c44a0a2956ea2ec3bc50bbc02843e0ff0edfe781a0",
+  "case_count": 40,
+  "synthetic": true,
+  "knowledge_base_id": 2,
+  "paragraph_count": 100,
+  "source": {
+    "commit": null,
+    "workspace": "dirty"
+  },
+  "embedding": {
+    "source": "environment_or_local_fallback",
+    "config_id": null,
+    "model_name": null,
+    "signature": "legacy"
+  },
+  "strategies": [
+    "VECTOR",
+    "WEIGHTED",
+    "RRF",
+    "RRF_RERANK"
+  ],
+  "summary": {
+    "VECTOR": {
+      "cases": 40,
+      "hit_at_1": {
+        "hits": 9,
+        "total": 40
+      },
+      "hit_at_3": {
+        "hits": 16,
+        "total": 40
+      },
+      "recall_at_5": 0.45,
+      "mrr_at_10": 0.3125,
+      "ndcg_at_10": 0.3471268032608154,
+      "latency_p50_ms": 27,
+      "latency_p95_ms": 31,
+      "reranker_fallback": {
+        "count": 0,
+        "total": 40
+      }
+    },
+    "WEIGHTED": {
+      "cases": 40,
+      "hit_at_1": {
+        "hits": 10,
+        "total": 40
+      },
+      "hit_at_3": {
+        "hits": 10,
+        "total": 40
+      },
+      "recall_at_5": 0.25,
+      "mrr_at_10": 0.25,
+      "ndcg_at_10": 0.25,
+      "latency_p50_ms": 27,
+      "latency_p95_ms": 31,
+      "reranker_fallback": {
+        "count": 0,
+        "total": 40
+      }
+    },
+    "RRF": {
+      "cases": 40,
+      "hit_at_1": {
+        "hits": 9,
+        "total": 40
+      },
+      "hit_at_3": {
+        "hits": 11,
+        "total": 40
+      },
+      "recall_at_5": 0.275,
+      "mrr_at_10": 0.2738095238095238,
+      "ndcg_at_10": 0.31446580889445586,
+      "latency_p50_ms": 27,
+      "latency_p95_ms": 31,
+      "reranker_fallback": {
+        "count": 0,
+        "total": 40
+      }
+    },
+    "RRF_RERANK": {
+      "cases": 40,
+      "hit_at_1": {
+        "hits": 9,
+        "total": 40
+      },
+      "hit_at_3": {
+        "hits": 11,
+        "total": 40
+      },
+      "recall_at_5": 0.275,
+      "mrr_at_10": 0.2738095238095238,
+      "ndcg_at_10": 0.31446580889445586,
+      "latency_p50_ms": 27,
+      "latency_p95_ms": 31,
+      "reranker_fallback": {
+        "count": 40,
+        "total": 40
+      }
+    }
+  },
+  "rows": {
+    "VECTOR": [
+      {
+        "case_id": "stage09-061",
+        "question": "请找出S09061这条资料说明的主要工程作用。",
+        "category": "离线评测",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          139
+        ],
+        "ranked_paragraph_ids": [
+          157,
+          148,
+          155,
+          149,
+          150,
+          152,
+          156,
+          158,
+          151,
+          154
+        ],
+        "latency_ms": 21,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 0,
+        "hit_at_3": 0,
+        "recall_at_5": 0.0,
+        "mrr_at_10": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      {
+        "case_id": "stage09-062",
+        "question": "请找出S09062这条资料说明的主要工程作用。",
+        "category": "离线评测",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          140
+        ],
+        "ranked_paragraph_ids": [
+          157,
+          148,
+          155,
+          140,
+          149,
+          150,
+          151,
+          152,
+          156,
+          158
+        ],
+        "latency_ms": 19,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 0,
+        "hit_at_3": 0,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 0.25,
+        "ndcg_at_10": 0.43067655807339306
+      },
+      {
+        "case_id": "stage09-063",
+        "question": "请找出S09063这条资料说明的主要工程作用。",
+        "category": "离线评测",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          141
+        ],
+        "ranked_paragraph_ids": [
+          157,
+          148,
+          141,
+          155,
+          149,
+          150,
+          151,
+          152,
+          156,
+          158
+        ],
+        "latency_ms": 19,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 0,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 0.3333333333333333,
+        "ndcg_at_10": 0.5
+      },
+      {
+        "case_id": "stage09-064",
+        "question": "请找出S09064这条资料说明的主要工程作用。",
+        "category": "离线评测",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          142
+        ],
+        "ranked_paragraph_ids": [
+          157,
+          148,
+          155,
+          149,
+          150,
+          151,
+          152,
+          156,
+          158,
+          154
+        ],
+        "latency_ms": 18,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 0,
+        "hit_at_3": 0,
+        "recall_at_5": 0.0,
+        "mrr_at_10": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      {
+        "case_id": "stage09-065",
+        "question": "请找出S09065这条资料说明的主要工程作用。",
+        "category": "离线评测",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          143
+        ],
+        "ranked_paragraph_ids": [
+          148,
+          143,
+          157,
+          147,
+          141,
+          145,
+          146,
+          155,
+          140,
+          144
+        ],
+        "latency_ms": 20,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 0,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 0.5,
+        "ndcg_at_10": 0.6309297535714575
+      },
+      {
+        "case_id": "stage09-066",
+        "question": "请找出S09066这条资料说明的主要工程作用。",
+        "category": "离线评测",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          144
+        ],
+        "ranked_paragraph_ids": [
+          157,
+          148,
+          155,
+          144,
+          149,
+          150,
+          151,
+          152,
+          156,
+          158
+        ],
+        "latency_ms": 20,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 0,
+        "hit_at_3": 0,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 0.25,
+        "ndcg_at_10": 0.43067655807339306
+      },
+      {
+        "case_id": "stage09-067",
+        "question": "请找出S09067这条资料说明的主要工程作用。",
+        "category": "离线评测",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          145
+        ],
+        "ranked_paragraph_ids": [
+          157,
+          148,
+          145,
+          155,
+          144,
+          149,
+          150,
+          151,
+          152,
+          156
+        ],
+        "latency_ms": 19,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 0,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 0.3333333333333333,
+        "ndcg_at_10": 0.5
+      },
+      {
+        "case_id": "stage09-068",
+        "question": "请找出S09068这条资料说明的主要工程作用。",
+        "category": "离线评测",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          146
+        ],
+        "ranked_paragraph_ids": [
+          157,
+          148,
+          146,
+          155,
+          149,
+          150,
+          151,
+          152,
+          156,
+          158
+        ],
+        "latency_ms": 22,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 0,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 0.3333333333333333,
+        "ndcg_at_10": 0.5
+      },
+      {
+        "case_id": "stage09-069",
+        "question": "请找出S09069这条资料说明的主要工程作用。",
+        "category": "离线评测",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          147
+        ],
+        "ranked_paragraph_ids": [
+          157,
+          147,
+          148,
+          155,
+          149,
+          150,
+          151,
+          152,
+          156,
+          158
+        ],
+        "latency_ms": 25,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 0,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 0.5,
+        "ndcg_at_10": 0.6309297535714575
+      },
+      {
+        "case_id": "stage09-070",
+        "question": "请找出S09070这条资料说明的主要工程作用。",
+        "category": "离线评测",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          148
+        ],
+        "ranked_paragraph_ids": [
+          148,
+          157,
+          155,
+          149,
+          150,
+          151,
+          152,
+          156,
+          158,
+          154
+        ],
+        "latency_ms": 28,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-071",
+        "question": "请找出S09071这条资料说明的主要工程作用。",
+        "category": "工具调用",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          149
+        ],
+        "ranked_paragraph_ids": [
+          149,
+          157,
+          148,
+          155,
+          150,
+          151,
+          152,
+          156,
+          158,
+          154
+        ],
+        "latency_ms": 26,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-072",
+        "question": "请找出S09072这条资料说明的主要工程作用。",
+        "category": "工具调用",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          150
+        ],
+        "ranked_paragraph_ids": [
+          150,
+          157,
+          148,
+          155,
+          149,
+          151,
+          152,
+          156,
+          158,
+          154
+        ],
+        "latency_ms": 25,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-073",
+        "question": "请找出S09073这条资料说明的主要工程作用。",
+        "category": "工具调用",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          151
+        ],
+        "ranked_paragraph_ids": [
+          151,
+          157,
+          148,
+          155,
+          149,
+          150,
+          152,
+          156,
+          158,
+          154
+        ],
+        "latency_ms": 27,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-074",
+        "question": "请找出S09074这条资料说明的主要工程作用。",
+        "category": "工具调用",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          152
+        ],
+        "ranked_paragraph_ids": [
+          148,
+          152,
+          157,
+          147,
+          141,
+          145,
+          146,
+          155,
+          140,
+          144
+        ],
+        "latency_ms": 22,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 0,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 0.5,
+        "ndcg_at_10": 0.6309297535714575
+      },
+      {
+        "case_id": "stage09-075",
+        "question": "请找出S09075这条资料说明的主要工程作用。",
+        "category": "工具调用",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          153
+        ],
+        "ranked_paragraph_ids": [
+          158,
+          153,
+          157,
+          148,
+          155,
+          149,
+          150,
+          152,
+          156,
+          154
+        ],
+        "latency_ms": 28,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 0,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 0.5,
+        "ndcg_at_10": 0.6309297535714575
+      },
+      {
+        "case_id": "stage09-076",
+        "question": "请找出S09076这条资料说明的主要工程作用。",
+        "category": "工具调用",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          154
+        ],
+        "ranked_paragraph_ids": [
+          154,
+          157,
+          148,
+          155,
+          149,
+          150,
+          151,
+          152,
+          156,
+          158
+        ],
+        "latency_ms": 27,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-077",
+        "question": "请找出S09077这条资料说明的主要工程作用。",
+        "category": "工具调用",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          155
+        ],
+        "ranked_paragraph_ids": [
+          155,
+          157,
+          148,
+          149,
+          150,
+          151,
+          152,
+          156,
+          158,
+          154
+        ],
+        "latency_ms": 21,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-078",
+        "question": "请找出S09078这条资料说明的主要工程作用。",
+        "category": "工具调用",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          156
+        ],
+        "ranked_paragraph_ids": [
+          156,
+          157,
+          148,
+          155,
+          149,
+          150,
+          151,
+          152,
+          158,
+          154
+        ],
+        "latency_ms": 25,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-079",
+        "question": "请找出S09079这条资料说明的主要工程作用。",
+        "category": "工具调用",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          157
+        ],
+        "ranked_paragraph_ids": [
+          157,
+          148,
+          155,
+          149,
+          150,
+          151,
+          152,
+          156,
+          158,
+          154
+        ],
+        "latency_ms": 27,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-080",
+        "question": "请找出S09080这条资料说明的主要工程作用。",
+        "category": "工具调用",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          158
+        ],
+        "ranked_paragraph_ids": [
+          158,
+          157,
+          148,
+          155,
+          149,
+          150,
+          151,
+          152,
+          156,
+          154
+        ],
+        "latency_ms": 25,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-081",
+        "question": "请找出S09081这条资料说明的主要工程作用。",
+        "category": "数据一致性",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          159
+        ],
+        "ranked_paragraph_ids": [
+          157,
+          148,
+          155,
+          149,
+          150,
+          151,
+          152,
+          156,
+          158,
+          154
+        ],
+        "latency_ms": 26,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 0,
+        "hit_at_3": 0,
+        "recall_at_5": 0.0,
+        "mrr_at_10": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      {
+        "case_id": "stage09-082",
+        "question": "请找出S09082这条资料说明的主要工程作用。",
+        "category": "数据一致性",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          160
+        ],
+        "ranked_paragraph_ids": [
+          148,
+          157,
+          147,
+          141,
+          145,
+          146,
+          155,
+          140,
+          144,
+          143
+        ],
+        "latency_ms": 27,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 0,
+        "hit_at_3": 0,
+        "recall_at_5": 0.0,
+        "mrr_at_10": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      {
+        "case_id": "stage09-083",
+        "question": "请找出S09083这条资料说明的主要工程作用。",
+        "category": "数据一致性",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          161
+        ],
+        "ranked_paragraph_ids": [
+          157,
+          148,
+          155,
+          149,
+          150,
+          152,
+          156,
+          158,
+          151,
+          154
+        ],
+        "latency_ms": 30,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 0,
+        "hit_at_3": 0,
+        "recall_at_5": 0.0,
+        "mrr_at_10": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      {
+        "case_id": "stage09-084",
+        "question": "请找出S09084这条资料说明的主要工程作用。",
+        "category": "数据一致性",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          162
+        ],
+        "ranked_paragraph_ids": [
+          157,
+          148,
+          155,
+          149,
+          150,
+          151,
+          152,
+          156,
+          158,
+          154
+        ],
+        "latency_ms": 28,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 0,
+        "hit_at_3": 0,
+        "recall_at_5": 0.0,
+        "mrr_at_10": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      {
+        "case_id": "stage09-085",
+        "question": "请找出S09085这条资料说明的主要工程作用。",
+        "category": "数据一致性",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          163
+        ],
+        "ranked_paragraph_ids": [
+          157,
+          148,
+          155,
+          149,
+          150,
+          151,
+          152,
+          156,
+          158,
+          154
+        ],
+        "latency_ms": 27,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 0,
+        "hit_at_3": 0,
+        "recall_at_5": 0.0,
+        "mrr_at_10": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      {
+        "case_id": "stage09-086",
+        "question": "请找出S09086这条资料说明的主要工程作用。",
+        "category": "数据一致性",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          164
+        ],
+        "ranked_paragraph_ids": [
+          157,
+          148,
+          155,
+          149,
+          150,
+          151,
+          152,
+          156,
+          158,
+          154
+        ],
+        "latency_ms": 27,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 0,
+        "hit_at_3": 0,
+        "recall_at_5": 0.0,
+        "mrr_at_10": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      {
+        "case_id": "stage09-087",
+        "question": "请找出S09087这条资料说明的主要工程作用。",
+        "category": "数据一致性",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          165
+        ],
+        "ranked_paragraph_ids": [
+          157,
+          148,
+          155,
+          149,
+          150,
+          151,
+          152,
+          156,
+          158,
+          154
+        ],
+        "latency_ms": 30,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 0,
+        "hit_at_3": 0,
+        "recall_at_5": 0.0,
+        "mrr_at_10": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      {
+        "case_id": "stage09-088",
+        "question": "请找出S09088这条资料说明的主要工程作用。",
+        "category": "数据一致性",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          166
+        ],
+        "ranked_paragraph_ids": [
+          157,
+          148,
+          155,
+          149,
+          150,
+          151,
+          152,
+          156,
+          158,
+          154
+        ],
+        "latency_ms": 34,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 0,
+        "hit_at_3": 0,
+        "recall_at_5": 0.0,
+        "mrr_at_10": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      {
+        "case_id": "stage09-089",
+        "question": "请找出S09089这条资料说明的主要工程作用。",
+        "category": "数据一致性",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          167
+        ],
+        "ranked_paragraph_ids": [
+          157,
+          155,
+          149,
+          150,
+          151,
+          152,
+          156,
+          158,
+          154,
+          153
+        ],
+        "latency_ms": 31,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 0,
+        "hit_at_3": 0,
+        "recall_at_5": 0.0,
+        "mrr_at_10": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      {
+        "case_id": "stage09-090",
+        "question": "请找出S09090这条资料说明的主要工程作用。",
+        "category": "数据一致性",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          168
+        ],
+        "ranked_paragraph_ids": [
+          157,
+          148,
+          155,
+          149,
+          150,
+          151,
+          152,
+          156,
+          158,
+          154
+        ],
+        "latency_ms": 32,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 0,
+        "hit_at_3": 0,
+        "recall_at_5": 0.0,
+        "mrr_at_10": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      {
+        "case_id": "stage09-091",
+        "question": "请找出S09091这条资料说明的主要工程作用。",
+        "category": "生产部署",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          169
+        ],
+        "ranked_paragraph_ids": [
+          148,
+          157,
+          147,
+          141,
+          145,
+          146,
+          155,
+          140,
+          144,
+          143
+        ],
+        "latency_ms": 29,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 0,
+        "hit_at_3": 0,
+        "recall_at_5": 0.0,
+        "mrr_at_10": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      {
+        "case_id": "stage09-092",
+        "question": "请找出S09092这条资料说明的主要工程作用。",
+        "category": "生产部署",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          170
+        ],
+        "ranked_paragraph_ids": [
+          148,
+          157,
+          147,
+          141,
+          145,
+          146,
+          155,
+          140,
+          144,
+          143
+        ],
+        "latency_ms": 25,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 0,
+        "hit_at_3": 0,
+        "recall_at_5": 0.0,
+        "mrr_at_10": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      {
+        "case_id": "stage09-093",
+        "question": "请找出S09093这条资料说明的主要工程作用。",
+        "category": "生产部署",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          171
+        ],
+        "ranked_paragraph_ids": [
+          157,
+          155,
+          149,
+          150,
+          151,
+          152,
+          156,
+          158,
+          154,
+          153
+        ],
+        "latency_ms": 27,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 0,
+        "hit_at_3": 0,
+        "recall_at_5": 0.0,
+        "mrr_at_10": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      {
+        "case_id": "stage09-094",
+        "question": "请找出S09094这条资料说明的主要工程作用。",
+        "category": "生产部署",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          172
+        ],
+        "ranked_paragraph_ids": [
+          157,
+          147,
+          148,
+          155,
+          149,
+          150,
+          151,
+          152,
+          156,
+          158
+        ],
+        "latency_ms": 27,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 0,
+        "hit_at_3": 0,
+        "recall_at_5": 0.0,
+        "mrr_at_10": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      {
+        "case_id": "stage09-095",
+        "question": "请找出S09095这条资料说明的主要工程作用。",
+        "category": "生产部署",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          173
+        ],
+        "ranked_paragraph_ids": [
+          157,
+          148,
+          155,
+          149,
+          150,
+          151,
+          152,
+          156,
+          158,
+          154
+        ],
+        "latency_ms": 28,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 0,
+        "hit_at_3": 0,
+        "recall_at_5": 0.0,
+        "mrr_at_10": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      {
+        "case_id": "stage09-096",
+        "question": "请找出S09096这条资料说明的主要工程作用。",
+        "category": "生产部署",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          174
+        ],
+        "ranked_paragraph_ids": [
+          157,
+          148,
+          155,
+          149,
+          150,
+          151,
+          152,
+          156,
+          158,
+          154
+        ],
+        "latency_ms": 29,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 0,
+        "hit_at_3": 0,
+        "recall_at_5": 0.0,
+        "mrr_at_10": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      {
+        "case_id": "stage09-097",
+        "question": "请找出S09097这条资料说明的主要工程作用。",
+        "category": "生产部署",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          175
+        ],
+        "ranked_paragraph_ids": [
+          157,
+          148,
+          155,
+          149,
+          150,
+          151,
+          152,
+          156,
+          158,
+          154
+        ],
+        "latency_ms": 27,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 0,
+        "hit_at_3": 0,
+        "recall_at_5": 0.0,
+        "mrr_at_10": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      {
+        "case_id": "stage09-098",
+        "question": "请找出S09098这条资料说明的主要工程作用。",
+        "category": "生产部署",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          176
+        ],
+        "ranked_paragraph_ids": [
+          157,
+          148,
+          155,
+          149,
+          150,
+          151,
+          152,
+          156,
+          158,
+          154
+        ],
+        "latency_ms": 27,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 0,
+        "hit_at_3": 0,
+        "recall_at_5": 0.0,
+        "mrr_at_10": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      {
+        "case_id": "stage09-099",
+        "question": "请找出S09099这条资料说明的主要工程作用。",
+        "category": "生产部署",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          177
+        ],
+        "ranked_paragraph_ids": [
+          157,
+          148,
+          155,
+          149,
+          150,
+          151,
+          152,
+          156,
+          158,
+          154
+        ],
+        "latency_ms": 28,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 0,
+        "hit_at_3": 0,
+        "recall_at_5": 0.0,
+        "mrr_at_10": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      {
+        "case_id": "stage09-100",
+        "question": "请找出S09100这条资料说明的主要工程作用。",
+        "category": "生产部署",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          178
+        ],
+        "ranked_paragraph_ids": [
+          157,
+          148,
+          155,
+          149,
+          150,
+          151,
+          152,
+          156,
+          158,
+          153
+        ],
+        "latency_ms": 30,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 0,
+        "hit_at_3": 0,
+        "recall_at_5": 0.0,
+        "mrr_at_10": 0.0,
+        "ndcg_at_10": 0.0
+      }
+    ],
+    "WEIGHTED": [
+      {
+        "case_id": "stage09-061",
+        "question": "请找出S09061这条资料说明的主要工程作用。",
+        "category": "离线评测",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          139
+        ],
+        "ranked_paragraph_ids": [
+          157,
+          155,
+          149,
+          150,
+          152,
+          156,
+          158,
+          151,
+          154,
+          153
+        ],
+        "latency_ms": 21,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 0,
+        "hit_at_3": 0,
+        "recall_at_5": 0.0,
+        "mrr_at_10": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      {
+        "case_id": "stage09-062",
+        "question": "请找出S09062这条资料说明的主要工程作用。",
+        "category": "离线评测",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          140
+        ],
+        "ranked_paragraph_ids": [
+          157,
+          155,
+          149,
+          150,
+          151,
+          152,
+          156,
+          158,
+          154,
+          153
+        ],
+        "latency_ms": 19,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 0,
+        "hit_at_3": 0,
+        "recall_at_5": 0.0,
+        "mrr_at_10": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      {
+        "case_id": "stage09-063",
+        "question": "请找出S09063这条资料说明的主要工程作用。",
+        "category": "离线评测",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          141
+        ],
+        "ranked_paragraph_ids": [
+          157,
+          155,
+          149,
+          150,
+          151,
+          152,
+          156,
+          158,
+          154,
+          153
+        ],
+        "latency_ms": 19,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 0,
+        "hit_at_3": 0,
+        "recall_at_5": 0.0,
+        "mrr_at_10": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      {
+        "case_id": "stage09-064",
+        "question": "请找出S09064这条资料说明的主要工程作用。",
+        "category": "离线评测",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          142
+        ],
+        "ranked_paragraph_ids": [
+          157,
+          155,
+          149,
+          150,
+          151,
+          152,
+          156,
+          158,
+          154,
+          153
+        ],
+        "latency_ms": 18,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 0,
+        "hit_at_3": 0,
+        "recall_at_5": 0.0,
+        "mrr_at_10": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      {
+        "case_id": "stage09-065",
+        "question": "请找出S09065这条资料说明的主要工程作用。",
+        "category": "离线评测",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          143
+        ],
+        "ranked_paragraph_ids": [
+          157,
+          155,
+          149,
+          150,
+          151,
+          152,
+          156,
+          158,
+          154,
+          153
+        ],
+        "latency_ms": 20,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 0,
+        "hit_at_3": 0,
+        "recall_at_5": 0.0,
+        "mrr_at_10": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      {
+        "case_id": "stage09-066",
+        "question": "请找出S09066这条资料说明的主要工程作用。",
+        "category": "离线评测",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          144
+        ],
+        "ranked_paragraph_ids": [
+          157,
+          155,
+          149,
+          150,
+          151,
+          152,
+          156,
+          158,
+          154,
+          153
+        ],
+        "latency_ms": 20,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 0,
+        "hit_at_3": 0,
+        "recall_at_5": 0.0,
+        "mrr_at_10": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      {
+        "case_id": "stage09-067",
+        "question": "请找出S09067这条资料说明的主要工程作用。",
+        "category": "离线评测",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          145
+        ],
+        "ranked_paragraph_ids": [
+          157,
+          155,
+          149,
+          150,
+          151,
+          152,
+          156,
+          158,
+          154,
+          153
+        ],
+        "latency_ms": 19,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 0,
+        "hit_at_3": 0,
+        "recall_at_5": 0.0,
+        "mrr_at_10": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      {
+        "case_id": "stage09-068",
+        "question": "请找出S09068这条资料说明的主要工程作用。",
+        "category": "离线评测",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          146
+        ],
+        "ranked_paragraph_ids": [
+          157,
+          155,
+          149,
+          150,
+          151,
+          152,
+          156,
+          158,
+          154,
+          153
+        ],
+        "latency_ms": 22,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 0,
+        "hit_at_3": 0,
+        "recall_at_5": 0.0,
+        "mrr_at_10": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      {
+        "case_id": "stage09-069",
+        "question": "请找出S09069这条资料说明的主要工程作用。",
+        "category": "离线评测",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          147
+        ],
+        "ranked_paragraph_ids": [
+          157,
+          155,
+          149,
+          150,
+          151,
+          152,
+          156,
+          158,
+          154,
+          153
+        ],
+        "latency_ms": 25,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 0,
+        "hit_at_3": 0,
+        "recall_at_5": 0.0,
+        "mrr_at_10": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      {
+        "case_id": "stage09-070",
+        "question": "请找出S09070这条资料说明的主要工程作用。",
+        "category": "离线评测",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          148
+        ],
+        "ranked_paragraph_ids": [
+          157,
+          155,
+          149,
+          150,
+          151,
+          152,
+          156,
+          158,
+          154,
+          153
+        ],
+        "latency_ms": 28,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 0,
+        "hit_at_3": 0,
+        "recall_at_5": 0.0,
+        "mrr_at_10": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      {
+        "case_id": "stage09-071",
+        "question": "请找出S09071这条资料说明的主要工程作用。",
+        "category": "工具调用",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          149
+        ],
+        "ranked_paragraph_ids": [
+          149,
+          157,
+          155,
+          150,
+          151,
+          152,
+          156,
+          158,
+          154,
+          153
+        ],
+        "latency_ms": 26,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-072",
+        "question": "请找出S09072这条资料说明的主要工程作用。",
+        "category": "工具调用",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          150
+        ],
+        "ranked_paragraph_ids": [
+          150,
+          157,
+          155,
+          149,
+          151,
+          152,
+          156,
+          158,
+          154,
+          153
+        ],
+        "latency_ms": 25,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-073",
+        "question": "请找出S09073这条资料说明的主要工程作用。",
+        "category": "工具调用",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          151
+        ],
+        "ranked_paragraph_ids": [
+          151,
+          157,
+          155,
+          149,
+          150,
+          152,
+          156,
+          158,
+          154,
+          153
+        ],
+        "latency_ms": 27,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-074",
+        "question": "请找出S09074这条资料说明的主要工程作用。",
+        "category": "工具调用",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          152
+        ],
+        "ranked_paragraph_ids": [
+          152,
+          157,
+          155,
+          149,
+          150,
+          151,
+          156,
+          158,
+          154,
+          153
+        ],
+        "latency_ms": 22,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-075",
+        "question": "请找出S09075这条资料说明的主要工程作用。",
+        "category": "工具调用",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          153
+        ],
+        "ranked_paragraph_ids": [
+          153,
+          158,
+          157,
+          155,
+          149,
+          150,
+          152,
+          156,
+          154,
+          151
+        ],
+        "latency_ms": 28,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-076",
+        "question": "请找出S09076这条资料说明的主要工程作用。",
+        "category": "工具调用",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          154
+        ],
+        "ranked_paragraph_ids": [
+          154,
+          157,
+          155,
+          149,
+          150,
+          151,
+          152,
+          156,
+          158,
+          153
+        ],
+        "latency_ms": 27,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-077",
+        "question": "请找出S09077这条资料说明的主要工程作用。",
+        "category": "工具调用",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          155
+        ],
+        "ranked_paragraph_ids": [
+          155,
+          157,
+          149,
+          150,
+          151,
+          152,
+          156,
+          158,
+          154,
+          153
+        ],
+        "latency_ms": 21,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-078",
+        "question": "请找出S09078这条资料说明的主要工程作用。",
+        "category": "工具调用",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          156
+        ],
+        "ranked_paragraph_ids": [
+          156,
+          157,
+          155,
+          149,
+          150,
+          151,
+          152,
+          158,
+          154,
+          153
+        ],
+        "latency_ms": 25,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-079",
+        "question": "请找出S09079这条资料说明的主要工程作用。",
+        "category": "工具调用",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          157
+        ],
+        "ranked_paragraph_ids": [
+          157,
+          155,
+          149,
+          150,
+          151,
+          152,
+          156,
+          158,
+          154,
+          153
+        ],
+        "latency_ms": 26,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-080",
+        "question": "请找出S09080这条资料说明的主要工程作用。",
+        "category": "工具调用",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          158
+        ],
+        "ranked_paragraph_ids": [
+          158,
+          157,
+          155,
+          149,
+          150,
+          151,
+          152,
+          156,
+          154,
+          153
+        ],
+        "latency_ms": 25,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-081",
+        "question": "请找出S09081这条资料说明的主要工程作用。",
+        "category": "数据一致性",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          159
+        ],
+        "ranked_paragraph_ids": [
+          157,
+          155,
+          149,
+          150,
+          151,
+          152,
+          156,
+          158,
+          154,
+          153
+        ],
+        "latency_ms": 26,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 0,
+        "hit_at_3": 0,
+        "recall_at_5": 0.0,
+        "mrr_at_10": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      {
+        "case_id": "stage09-082",
+        "question": "请找出S09082这条资料说明的主要工程作用。",
+        "category": "数据一致性",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          160
+        ],
+        "ranked_paragraph_ids": [
+          157,
+          155,
+          149,
+          150,
+          151,
+          152,
+          156,
+          158,
+          154,
+          153
+        ],
+        "latency_ms": 27,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 0,
+        "hit_at_3": 0,
+        "recall_at_5": 0.0,
+        "mrr_at_10": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      {
+        "case_id": "stage09-083",
+        "question": "请找出S09083这条资料说明的主要工程作用。",
+        "category": "数据一致性",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          161
+        ],
+        "ranked_paragraph_ids": [
+          157,
+          155,
+          149,
+          150,
+          152,
+          156,
+          158,
+          151,
+          154,
+          153
+        ],
+        "latency_ms": 29,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 0,
+        "hit_at_3": 0,
+        "recall_at_5": 0.0,
+        "mrr_at_10": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      {
+        "case_id": "stage09-084",
+        "question": "请找出S09084这条资料说明的主要工程作用。",
+        "category": "数据一致性",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          162
+        ],
+        "ranked_paragraph_ids": [
+          157,
+          155,
+          149,
+          150,
+          151,
+          152,
+          156,
+          158,
+          154,
+          153
+        ],
+        "latency_ms": 28,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 0,
+        "hit_at_3": 0,
+        "recall_at_5": 0.0,
+        "mrr_at_10": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      {
+        "case_id": "stage09-085",
+        "question": "请找出S09085这条资料说明的主要工程作用。",
+        "category": "数据一致性",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          163
+        ],
+        "ranked_paragraph_ids": [
+          157,
+          155,
+          149,
+          150,
+          151,
+          152,
+          156,
+          158,
+          154,
+          153
+        ],
+        "latency_ms": 26,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 0,
+        "hit_at_3": 0,
+        "recall_at_5": 0.0,
+        "mrr_at_10": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      {
+        "case_id": "stage09-086",
+        "question": "请找出S09086这条资料说明的主要工程作用。",
+        "category": "数据一致性",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          164
+        ],
+        "ranked_paragraph_ids": [
+          157,
+          155,
+          149,
+          150,
+          151,
+          152,
+          156,
+          158,
+          154,
+          153
+        ],
+        "latency_ms": 27,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 0,
+        "hit_at_3": 0,
+        "recall_at_5": 0.0,
+        "mrr_at_10": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      {
+        "case_id": "stage09-087",
+        "question": "请找出S09087这条资料说明的主要工程作用。",
+        "category": "数据一致性",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          165
+        ],
+        "ranked_paragraph_ids": [
+          157,
+          155,
+          149,
+          150,
+          151,
+          152,
+          156,
+          158,
+          154,
+          153
+        ],
+        "latency_ms": 29,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 0,
+        "hit_at_3": 0,
+        "recall_at_5": 0.0,
+        "mrr_at_10": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      {
+        "case_id": "stage09-088",
+        "question": "请找出S09088这条资料说明的主要工程作用。",
+        "category": "数据一致性",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          166
+        ],
+        "ranked_paragraph_ids": [
+          157,
+          155,
+          149,
+          150,
+          151,
+          152,
+          156,
+          158,
+          154,
+          153
+        ],
+        "latency_ms": 33,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 0,
+        "hit_at_3": 0,
+        "recall_at_5": 0.0,
+        "mrr_at_10": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      {
+        "case_id": "stage09-089",
+        "question": "请找出S09089这条资料说明的主要工程作用。",
+        "category": "数据一致性",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          167
+        ],
+        "ranked_paragraph_ids": [
+          157,
+          155,
+          149,
+          150,
+          151,
+          152,
+          156,
+          158,
+          154,
+          153
+        ],
+        "latency_ms": 31,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 0,
+        "hit_at_3": 0,
+        "recall_at_5": 0.0,
+        "mrr_at_10": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      {
+        "case_id": "stage09-090",
+        "question": "请找出S09090这条资料说明的主要工程作用。",
+        "category": "数据一致性",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          168
+        ],
+        "ranked_paragraph_ids": [
+          157,
+          155,
+          149,
+          150,
+          151,
+          152,
+          156,
+          158,
+          154,
+          153
+        ],
+        "latency_ms": 32,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 0,
+        "hit_at_3": 0,
+        "recall_at_5": 0.0,
+        "mrr_at_10": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      {
+        "case_id": "stage09-091",
+        "question": "请找出S09091这条资料说明的主要工程作用。",
+        "category": "生产部署",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          169
+        ],
+        "ranked_paragraph_ids": [
+          157,
+          155,
+          149,
+          150,
+          151,
+          152,
+          156,
+          158,
+          154,
+          153
+        ],
+        "latency_ms": 29,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 0,
+        "hit_at_3": 0,
+        "recall_at_5": 0.0,
+        "mrr_at_10": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      {
+        "case_id": "stage09-092",
+        "question": "请找出S09092这条资料说明的主要工程作用。",
+        "category": "生产部署",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          170
+        ],
+        "ranked_paragraph_ids": [
+          157,
+          155,
+          149,
+          150,
+          151,
+          152,
+          156,
+          158,
+          154,
+          153
+        ],
+        "latency_ms": 25,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 0,
+        "hit_at_3": 0,
+        "recall_at_5": 0.0,
+        "mrr_at_10": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      {
+        "case_id": "stage09-093",
+        "question": "请找出S09093这条资料说明的主要工程作用。",
+        "category": "生产部署",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          171
+        ],
+        "ranked_paragraph_ids": [
+          157,
+          155,
+          149,
+          150,
+          151,
+          152,
+          156,
+          158,
+          154,
+          153
+        ],
+        "latency_ms": 27,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 0,
+        "hit_at_3": 0,
+        "recall_at_5": 0.0,
+        "mrr_at_10": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      {
+        "case_id": "stage09-094",
+        "question": "请找出S09094这条资料说明的主要工程作用。",
+        "category": "生产部署",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          172
+        ],
+        "ranked_paragraph_ids": [
+          157,
+          155,
+          149,
+          150,
+          151,
+          152,
+          156,
+          158,
+          154,
+          153
+        ],
+        "latency_ms": 27,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 0,
+        "hit_at_3": 0,
+        "recall_at_5": 0.0,
+        "mrr_at_10": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      {
+        "case_id": "stage09-095",
+        "question": "请找出S09095这条资料说明的主要工程作用。",
+        "category": "生产部署",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          173
+        ],
+        "ranked_paragraph_ids": [
+          157,
+          155,
+          149,
+          150,
+          151,
+          152,
+          156,
+          158,
+          154,
+          153
+        ],
+        "latency_ms": 28,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 0,
+        "hit_at_3": 0,
+        "recall_at_5": 0.0,
+        "mrr_at_10": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      {
+        "case_id": "stage09-096",
+        "question": "请找出S09096这条资料说明的主要工程作用。",
+        "category": "生产部署",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          174
+        ],
+        "ranked_paragraph_ids": [
+          157,
+          155,
+          149,
+          150,
+          151,
+          152,
+          156,
+          158,
+          154,
+          153
+        ],
+        "latency_ms": 29,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 0,
+        "hit_at_3": 0,
+        "recall_at_5": 0.0,
+        "mrr_at_10": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      {
+        "case_id": "stage09-097",
+        "question": "请找出S09097这条资料说明的主要工程作用。",
+        "category": "生产部署",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          175
+        ],
+        "ranked_paragraph_ids": [
+          157,
+          155,
+          149,
+          150,
+          151,
+          152,
+          156,
+          158,
+          154,
+          153
+        ],
+        "latency_ms": 27,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 0,
+        "hit_at_3": 0,
+        "recall_at_5": 0.0,
+        "mrr_at_10": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      {
+        "case_id": "stage09-098",
+        "question": "请找出S09098这条资料说明的主要工程作用。",
+        "category": "生产部署",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          176
+        ],
+        "ranked_paragraph_ids": [
+          157,
+          155,
+          149,
+          150,
+          151,
+          152,
+          156,
+          158,
+          154,
+          153
+        ],
+        "latency_ms": 27,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 0,
+        "hit_at_3": 0,
+        "recall_at_5": 0.0,
+        "mrr_at_10": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      {
+        "case_id": "stage09-099",
+        "question": "请找出S09099这条资料说明的主要工程作用。",
+        "category": "生产部署",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          177
+        ],
+        "ranked_paragraph_ids": [
+          157,
+          155,
+          149,
+          150,
+          151,
+          152,
+          156,
+          158,
+          154,
+          153
+        ],
+        "latency_ms": 28,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 0,
+        "hit_at_3": 0,
+        "recall_at_5": 0.0,
+        "mrr_at_10": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      {
+        "case_id": "stage09-100",
+        "question": "请找出S09100这条资料说明的主要工程作用。",
+        "category": "生产部署",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          178
+        ],
+        "ranked_paragraph_ids": [
+          157,
+          155,
+          149,
+          150,
+          151,
+          152,
+          156,
+          158,
+          153,
+          154
+        ],
+        "latency_ms": 30,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 0,
+        "hit_at_3": 0,
+        "recall_at_5": 0.0,
+        "mrr_at_10": 0.0,
+        "ndcg_at_10": 0.0
+      }
+    ],
+    "RRF": [
+      {
+        "case_id": "stage09-061",
+        "question": "请找出S09061这条资料说明的主要工程作用。",
+        "category": "离线评测",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          139
+        ],
+        "ranked_paragraph_ids": [
+          157,
+          155,
+          149,
+          150,
+          152,
+          156,
+          158,
+          151,
+          154,
+          153
+        ],
+        "latency_ms": 21,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 0,
+        "hit_at_3": 0,
+        "recall_at_5": 0.0,
+        "mrr_at_10": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      {
+        "case_id": "stage09-062",
+        "question": "请找出S09062这条资料说明的主要工程作用。",
+        "category": "离线评测",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          140
+        ],
+        "ranked_paragraph_ids": [
+          157,
+          155,
+          149,
+          150,
+          151,
+          152,
+          140,
+          156,
+          158,
+          154
+        ],
+        "latency_ms": 20,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 0,
+        "hit_at_3": 0,
+        "recall_at_5": 0.0,
+        "mrr_at_10": 0.14285714285714285,
+        "ndcg_at_10": 0.3333333333333333
+      },
+      {
+        "case_id": "stage09-063",
+        "question": "请找出S09063这条资料说明的主要工程作用。",
+        "category": "离线评测",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          141
+        ],
+        "ranked_paragraph_ids": [
+          157,
+          155,
+          149,
+          150,
+          151,
+          141,
+          152,
+          156,
+          158,
+          154
+        ],
+        "latency_ms": 19,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 0,
+        "hit_at_3": 0,
+        "recall_at_5": 0.0,
+        "mrr_at_10": 0.16666666666666666,
+        "ndcg_at_10": 0.3562071871080222
+      },
+      {
+        "case_id": "stage09-064",
+        "question": "请找出S09064这条资料说明的主要工程作用。",
+        "category": "离线评测",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          142
+        ],
+        "ranked_paragraph_ids": [
+          157,
+          155,
+          149,
+          150,
+          151,
+          152,
+          156,
+          158,
+          154,
+          153
+        ],
+        "latency_ms": 18,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 0,
+        "hit_at_3": 0,
+        "recall_at_5": 0.0,
+        "mrr_at_10": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      {
+        "case_id": "stage09-065",
+        "question": "请找出S09065这条资料说明的主要工程作用。",
+        "category": "离线评测",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          143
+        ],
+        "ranked_paragraph_ids": [
+          157,
+          155,
+          143,
+          149,
+          150,
+          151,
+          152,
+          156,
+          158,
+          154
+        ],
+        "latency_ms": 20,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 0,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 0.3333333333333333,
+        "ndcg_at_10": 0.5
+      },
+      {
+        "case_id": "stage09-066",
+        "question": "请找出S09066这条资料说明的主要工程作用。",
+        "category": "离线评测",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          144
+        ],
+        "ranked_paragraph_ids": [
+          157,
+          155,
+          149,
+          150,
+          151,
+          152,
+          144,
+          156,
+          158,
+          154
+        ],
+        "latency_ms": 20,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 0,
+        "hit_at_3": 0,
+        "recall_at_5": 0.0,
+        "mrr_at_10": 0.14285714285714285,
+        "ndcg_at_10": 0.3333333333333333
+      },
+      {
+        "case_id": "stage09-067",
+        "question": "请找出S09067这条资料说明的主要工程作用。",
+        "category": "离线评测",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          145
+        ],
+        "ranked_paragraph_ids": [
+          157,
+          155,
+          149,
+          150,
+          151,
+          145,
+          152,
+          156,
+          158,
+          154
+        ],
+        "latency_ms": 19,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 0,
+        "hit_at_3": 0,
+        "recall_at_5": 0.0,
+        "mrr_at_10": 0.16666666666666666,
+        "ndcg_at_10": 0.3562071871080222
+      },
+      {
+        "case_id": "stage09-068",
+        "question": "请找出S09068这条资料说明的主要工程作用。",
+        "category": "离线评测",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          146
+        ],
+        "ranked_paragraph_ids": [
+          157,
+          155,
+          149,
+          150,
+          151,
+          146,
+          152,
+          156,
+          158,
+          154
+        ],
+        "latency_ms": 22,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 0,
+        "hit_at_3": 0,
+        "recall_at_5": 0.0,
+        "mrr_at_10": 0.16666666666666666,
+        "ndcg_at_10": 0.3562071871080222
+      },
+      {
+        "case_id": "stage09-069",
+        "question": "请找出S09069这条资料说明的主要工程作用。",
+        "category": "离线评测",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          147
+        ],
+        "ranked_paragraph_ids": [
+          157,
+          155,
+          149,
+          150,
+          151,
+          147,
+          152,
+          156,
+          158,
+          154
+        ],
+        "latency_ms": 25,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 0,
+        "hit_at_3": 0,
+        "recall_at_5": 0.0,
+        "mrr_at_10": 0.16666666666666666,
+        "ndcg_at_10": 0.3562071871080222
+      },
+      {
+        "case_id": "stage09-070",
+        "question": "请找出S09070这条资料说明的主要工程作用。",
+        "category": "离线评测",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          148
+        ],
+        "ranked_paragraph_ids": [
+          157,
+          155,
+          149,
+          150,
+          151,
+          148,
+          152,
+          156,
+          158,
+          154
+        ],
+        "latency_ms": 29,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 0,
+        "hit_at_3": 0,
+        "recall_at_5": 0.0,
+        "mrr_at_10": 0.16666666666666666,
+        "ndcg_at_10": 0.3562071871080222
+      },
+      {
+        "case_id": "stage09-071",
+        "question": "请找出S09071这条资料说明的主要工程作用。",
+        "category": "工具调用",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          149
+        ],
+        "ranked_paragraph_ids": [
+          149,
+          157,
+          155,
+          150,
+          151,
+          152,
+          156,
+          158,
+          154,
+          153
+        ],
+        "latency_ms": 26,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-072",
+        "question": "请找出S09072这条资料说明的主要工程作用。",
+        "category": "工具调用",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          150
+        ],
+        "ranked_paragraph_ids": [
+          150,
+          157,
+          155,
+          149,
+          151,
+          152,
+          156,
+          158,
+          154,
+          153
+        ],
+        "latency_ms": 24,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-073",
+        "question": "请找出S09073这条资料说明的主要工程作用。",
+        "category": "工具调用",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          151
+        ],
+        "ranked_paragraph_ids": [
+          151,
+          157,
+          155,
+          149,
+          150,
+          152,
+          156,
+          158,
+          154,
+          153
+        ],
+        "latency_ms": 27,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-074",
+        "question": "请找出S09074这条资料说明的主要工程作用。",
+        "category": "工具调用",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          152
+        ],
+        "ranked_paragraph_ids": [
+          152,
+          157,
+          155,
+          149,
+          150,
+          151,
+          156,
+          158,
+          154,
+          153
+        ],
+        "latency_ms": 22,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-075",
+        "question": "请找出S09075这条资料说明的主要工程作用。",
+        "category": "工具调用",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          153
+        ],
+        "ranked_paragraph_ids": [
+          158,
+          153,
+          157,
+          155,
+          149,
+          150,
+          152,
+          156,
+          154,
+          151
+        ],
+        "latency_ms": 28,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 0,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 0.5,
+        "ndcg_at_10": 0.6309297535714575
+      },
+      {
+        "case_id": "stage09-076",
+        "question": "请找出S09076这条资料说明的主要工程作用。",
+        "category": "工具调用",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          154
+        ],
+        "ranked_paragraph_ids": [
+          154,
+          157,
+          155,
+          149,
+          150,
+          151,
+          152,
+          156,
+          158,
+          153
+        ],
+        "latency_ms": 27,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-077",
+        "question": "请找出S09077这条资料说明的主要工程作用。",
+        "category": "工具调用",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          155
+        ],
+        "ranked_paragraph_ids": [
+          155,
+          157,
+          149,
+          150,
+          151,
+          152,
+          156,
+          158,
+          154,
+          153
+        ],
+        "latency_ms": 21,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-078",
+        "question": "请找出S09078这条资料说明的主要工程作用。",
+        "category": "工具调用",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          156
+        ],
+        "ranked_paragraph_ids": [
+          156,
+          157,
+          155,
+          149,
+          150,
+          151,
+          152,
+          158,
+          154,
+          153
+        ],
+        "latency_ms": 25,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-079",
+        "question": "请找出S09079这条资料说明的主要工程作用。",
+        "category": "工具调用",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          157
+        ],
+        "ranked_paragraph_ids": [
+          157,
+          155,
+          149,
+          150,
+          151,
+          152,
+          156,
+          158,
+          154,
+          153
+        ],
+        "latency_ms": 26,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-080",
+        "question": "请找出S09080这条资料说明的主要工程作用。",
+        "category": "工具调用",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          158
+        ],
+        "ranked_paragraph_ids": [
+          158,
+          157,
+          155,
+          149,
+          150,
+          151,
+          152,
+          156,
+          154,
+          153
+        ],
+        "latency_ms": 25,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-081",
+        "question": "请找出S09081这条资料说明的主要工程作用。",
+        "category": "数据一致性",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          159
+        ],
+        "ranked_paragraph_ids": [
+          157,
+          155,
+          149,
+          150,
+          151,
+          152,
+          156,
+          158,
+          154,
+          153
+        ],
+        "latency_ms": 26,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 0,
+        "hit_at_3": 0,
+        "recall_at_5": 0.0,
+        "mrr_at_10": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      {
+        "case_id": "stage09-082",
+        "question": "请找出S09082这条资料说明的主要工程作用。",
+        "category": "数据一致性",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          160
+        ],
+        "ranked_paragraph_ids": [
+          157,
+          155,
+          149,
+          150,
+          151,
+          152,
+          156,
+          158,
+          154,
+          153
+        ],
+        "latency_ms": 28,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 0,
+        "hit_at_3": 0,
+        "recall_at_5": 0.0,
+        "mrr_at_10": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      {
+        "case_id": "stage09-083",
+        "question": "请找出S09083这条资料说明的主要工程作用。",
+        "category": "数据一致性",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          161
+        ],
+        "ranked_paragraph_ids": [
+          157,
+          155,
+          149,
+          150,
+          152,
+          156,
+          158,
+          151,
+          154,
+          153
+        ],
+        "latency_ms": 29,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 0,
+        "hit_at_3": 0,
+        "recall_at_5": 0.0,
+        "mrr_at_10": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      {
+        "case_id": "stage09-084",
+        "question": "请找出S09084这条资料说明的主要工程作用。",
+        "category": "数据一致性",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          162
+        ],
+        "ranked_paragraph_ids": [
+          157,
+          155,
+          149,
+          150,
+          151,
+          152,
+          156,
+          158,
+          154,
+          153
+        ],
+        "latency_ms": 28,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 0,
+        "hit_at_3": 0,
+        "recall_at_5": 0.0,
+        "mrr_at_10": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      {
+        "case_id": "stage09-085",
+        "question": "请找出S09085这条资料说明的主要工程作用。",
+        "category": "数据一致性",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          163
+        ],
+        "ranked_paragraph_ids": [
+          157,
+          155,
+          149,
+          150,
+          151,
+          152,
+          156,
+          158,
+          154,
+          153
+        ],
+        "latency_ms": 26,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 0,
+        "hit_at_3": 0,
+        "recall_at_5": 0.0,
+        "mrr_at_10": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      {
+        "case_id": "stage09-086",
+        "question": "请找出S09086这条资料说明的主要工程作用。",
+        "category": "数据一致性",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          164
+        ],
+        "ranked_paragraph_ids": [
+          157,
+          155,
+          149,
+          150,
+          151,
+          152,
+          156,
+          158,
+          154,
+          153
+        ],
+        "latency_ms": 28,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 0,
+        "hit_at_3": 0,
+        "recall_at_5": 0.0,
+        "mrr_at_10": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      {
+        "case_id": "stage09-087",
+        "question": "请找出S09087这条资料说明的主要工程作用。",
+        "category": "数据一致性",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          165
+        ],
+        "ranked_paragraph_ids": [
+          157,
+          155,
+          149,
+          150,
+          151,
+          152,
+          156,
+          158,
+          154,
+          153
+        ],
+        "latency_ms": 30,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 0,
+        "hit_at_3": 0,
+        "recall_at_5": 0.0,
+        "mrr_at_10": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      {
+        "case_id": "stage09-088",
+        "question": "请找出S09088这条资料说明的主要工程作用。",
+        "category": "数据一致性",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          166
+        ],
+        "ranked_paragraph_ids": [
+          157,
+          155,
+          149,
+          150,
+          151,
+          152,
+          156,
+          158,
+          154,
+          153
+        ],
+        "latency_ms": 34,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 0,
+        "hit_at_3": 0,
+        "recall_at_5": 0.0,
+        "mrr_at_10": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      {
+        "case_id": "stage09-089",
+        "question": "请找出S09089这条资料说明的主要工程作用。",
+        "category": "数据一致性",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          167
+        ],
+        "ranked_paragraph_ids": [
+          157,
+          155,
+          149,
+          150,
+          151,
+          152,
+          156,
+          158,
+          154,
+          153
+        ],
+        "latency_ms": 31,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 0,
+        "hit_at_3": 0,
+        "recall_at_5": 0.0,
+        "mrr_at_10": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      {
+        "case_id": "stage09-090",
+        "question": "请找出S09090这条资料说明的主要工程作用。",
+        "category": "数据一致性",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          168
+        ],
+        "ranked_paragraph_ids": [
+          157,
+          155,
+          149,
+          150,
+          151,
+          152,
+          156,
+          158,
+          154,
+          153
+        ],
+        "latency_ms": 33,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 0,
+        "hit_at_3": 0,
+        "recall_at_5": 0.0,
+        "mrr_at_10": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      {
+        "case_id": "stage09-091",
+        "question": "请找出S09091这条资料说明的主要工程作用。",
+        "category": "生产部署",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          169
+        ],
+        "ranked_paragraph_ids": [
+          157,
+          155,
+          149,
+          150,
+          151,
+          152,
+          156,
+          158,
+          154,
+          153
+        ],
+        "latency_ms": 29,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 0,
+        "hit_at_3": 0,
+        "recall_at_5": 0.0,
+        "mrr_at_10": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      {
+        "case_id": "stage09-092",
+        "question": "请找出S09092这条资料说明的主要工程作用。",
+        "category": "生产部署",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          170
+        ],
+        "ranked_paragraph_ids": [
+          157,
+          155,
+          149,
+          150,
+          151,
+          152,
+          156,
+          158,
+          154,
+          153
+        ],
+        "latency_ms": 26,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 0,
+        "hit_at_3": 0,
+        "recall_at_5": 0.0,
+        "mrr_at_10": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      {
+        "case_id": "stage09-093",
+        "question": "请找出S09093这条资料说明的主要工程作用。",
+        "category": "生产部署",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          171
+        ],
+        "ranked_paragraph_ids": [
+          157,
+          155,
+          149,
+          150,
+          151,
+          152,
+          156,
+          158,
+          154,
+          153
+        ],
+        "latency_ms": 27,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 0,
+        "hit_at_3": 0,
+        "recall_at_5": 0.0,
+        "mrr_at_10": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      {
+        "case_id": "stage09-094",
+        "question": "请找出S09094这条资料说明的主要工程作用。",
+        "category": "生产部署",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          172
+        ],
+        "ranked_paragraph_ids": [
+          157,
+          155,
+          149,
+          150,
+          151,
+          152,
+          156,
+          158,
+          154,
+          153
+        ],
+        "latency_ms": 27,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 0,
+        "hit_at_3": 0,
+        "recall_at_5": 0.0,
+        "mrr_at_10": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      {
+        "case_id": "stage09-095",
+        "question": "请找出S09095这条资料说明的主要工程作用。",
+        "category": "生产部署",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          173
+        ],
+        "ranked_paragraph_ids": [
+          157,
+          155,
+          149,
+          150,
+          151,
+          152,
+          156,
+          158,
+          154,
+          153
+        ],
+        "latency_ms": 28,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 0,
+        "hit_at_3": 0,
+        "recall_at_5": 0.0,
+        "mrr_at_10": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      {
+        "case_id": "stage09-096",
+        "question": "请找出S09096这条资料说明的主要工程作用。",
+        "category": "生产部署",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          174
+        ],
+        "ranked_paragraph_ids": [
+          157,
+          155,
+          149,
+          150,
+          151,
+          152,
+          156,
+          158,
+          154,
+          153
+        ],
+        "latency_ms": 29,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 0,
+        "hit_at_3": 0,
+        "recall_at_5": 0.0,
+        "mrr_at_10": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      {
+        "case_id": "stage09-097",
+        "question": "请找出S09097这条资料说明的主要工程作用。",
+        "category": "生产部署",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          175
+        ],
+        "ranked_paragraph_ids": [
+          157,
+          155,
+          149,
+          150,
+          151,
+          152,
+          156,
+          158,
+          154,
+          153
+        ],
+        "latency_ms": 27,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 0,
+        "hit_at_3": 0,
+        "recall_at_5": 0.0,
+        "mrr_at_10": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      {
+        "case_id": "stage09-098",
+        "question": "请找出S09098这条资料说明的主要工程作用。",
+        "category": "生产部署",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          176
+        ],
+        "ranked_paragraph_ids": [
+          157,
+          155,
+          149,
+          150,
+          151,
+          152,
+          156,
+          158,
+          154,
+          153
+        ],
+        "latency_ms": 27,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 0,
+        "hit_at_3": 0,
+        "recall_at_5": 0.0,
+        "mrr_at_10": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      {
+        "case_id": "stage09-099",
+        "question": "请找出S09099这条资料说明的主要工程作用。",
+        "category": "生产部署",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          177
+        ],
+        "ranked_paragraph_ids": [
+          157,
+          155,
+          149,
+          150,
+          151,
+          152,
+          156,
+          158,
+          154,
+          153
+        ],
+        "latency_ms": 28,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 0,
+        "hit_at_3": 0,
+        "recall_at_5": 0.0,
+        "mrr_at_10": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      {
+        "case_id": "stage09-100",
+        "question": "请找出S09100这条资料说明的主要工程作用。",
+        "category": "生产部署",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          178
+        ],
+        "ranked_paragraph_ids": [
+          157,
+          155,
+          149,
+          150,
+          151,
+          152,
+          156,
+          158,
+          153,
+          154
+        ],
+        "latency_ms": 31,
+        "rerank_applied": false,
+        "rerank_fallback_code": "",
+        "hit_at_1": 0,
+        "hit_at_3": 0,
+        "recall_at_5": 0.0,
+        "mrr_at_10": 0.0,
+        "ndcg_at_10": 0.0
+      }
+    ],
+    "RRF_RERANK": [
+      {
+        "case_id": "stage09-061",
+        "question": "请找出S09061这条资料说明的主要工程作用。",
+        "category": "离线评测",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          139
+        ],
+        "ranked_paragraph_ids": [
+          157,
+          155,
+          149,
+          150,
+          152,
+          156,
+          158,
+          151,
+          154,
+          153
+        ],
+        "latency_ms": 21,
+        "rerank_applied": false,
+        "rerank_fallback_code": "NOT_CONFIGURED",
+        "hit_at_1": 0,
+        "hit_at_3": 0,
+        "recall_at_5": 0.0,
+        "mrr_at_10": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      {
+        "case_id": "stage09-062",
+        "question": "请找出S09062这条资料说明的主要工程作用。",
+        "category": "离线评测",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          140
+        ],
+        "ranked_paragraph_ids": [
+          157,
+          155,
+          149,
+          150,
+          151,
+          152,
+          140,
+          156,
+          158,
+          154
+        ],
+        "latency_ms": 19,
+        "rerank_applied": false,
+        "rerank_fallback_code": "NOT_CONFIGURED",
+        "hit_at_1": 0,
+        "hit_at_3": 0,
+        "recall_at_5": 0.0,
+        "mrr_at_10": 0.14285714285714285,
+        "ndcg_at_10": 0.3333333333333333
+      },
+      {
+        "case_id": "stage09-063",
+        "question": "请找出S09063这条资料说明的主要工程作用。",
+        "category": "离线评测",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          141
+        ],
+        "ranked_paragraph_ids": [
+          157,
+          155,
+          149,
+          150,
+          151,
+          141,
+          152,
+          156,
+          158,
+          154
+        ],
+        "latency_ms": 19,
+        "rerank_applied": false,
+        "rerank_fallback_code": "NOT_CONFIGURED",
+        "hit_at_1": 0,
+        "hit_at_3": 0,
+        "recall_at_5": 0.0,
+        "mrr_at_10": 0.16666666666666666,
+        "ndcg_at_10": 0.3562071871080222
+      },
+      {
+        "case_id": "stage09-064",
+        "question": "请找出S09064这条资料说明的主要工程作用。",
+        "category": "离线评测",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          142
+        ],
+        "ranked_paragraph_ids": [
+          157,
+          155,
+          149,
+          150,
+          151,
+          152,
+          156,
+          158,
+          154,
+          153
+        ],
+        "latency_ms": 18,
+        "rerank_applied": false,
+        "rerank_fallback_code": "NOT_CONFIGURED",
+        "hit_at_1": 0,
+        "hit_at_3": 0,
+        "recall_at_5": 0.0,
+        "mrr_at_10": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      {
+        "case_id": "stage09-065",
+        "question": "请找出S09065这条资料说明的主要工程作用。",
+        "category": "离线评测",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          143
+        ],
+        "ranked_paragraph_ids": [
+          157,
+          155,
+          143,
+          149,
+          150,
+          151,
+          152,
+          156,
+          158,
+          154
+        ],
+        "latency_ms": 20,
+        "rerank_applied": false,
+        "rerank_fallback_code": "NOT_CONFIGURED",
+        "hit_at_1": 0,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 0.3333333333333333,
+        "ndcg_at_10": 0.5
+      },
+      {
+        "case_id": "stage09-066",
+        "question": "请找出S09066这条资料说明的主要工程作用。",
+        "category": "离线评测",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          144
+        ],
+        "ranked_paragraph_ids": [
+          157,
+          155,
+          149,
+          150,
+          151,
+          152,
+          144,
+          156,
+          158,
+          154
+        ],
+        "latency_ms": 20,
+        "rerank_applied": false,
+        "rerank_fallback_code": "NOT_CONFIGURED",
+        "hit_at_1": 0,
+        "hit_at_3": 0,
+        "recall_at_5": 0.0,
+        "mrr_at_10": 0.14285714285714285,
+        "ndcg_at_10": 0.3333333333333333
+      },
+      {
+        "case_id": "stage09-067",
+        "question": "请找出S09067这条资料说明的主要工程作用。",
+        "category": "离线评测",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          145
+        ],
+        "ranked_paragraph_ids": [
+          157,
+          155,
+          149,
+          150,
+          151,
+          145,
+          152,
+          156,
+          158,
+          154
+        ],
+        "latency_ms": 19,
+        "rerank_applied": false,
+        "rerank_fallback_code": "NOT_CONFIGURED",
+        "hit_at_1": 0,
+        "hit_at_3": 0,
+        "recall_at_5": 0.0,
+        "mrr_at_10": 0.16666666666666666,
+        "ndcg_at_10": 0.3562071871080222
+      },
+      {
+        "case_id": "stage09-068",
+        "question": "请找出S09068这条资料说明的主要工程作用。",
+        "category": "离线评测",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          146
+        ],
+        "ranked_paragraph_ids": [
+          157,
+          155,
+          149,
+          150,
+          151,
+          146,
+          152,
+          156,
+          158,
+          154
+        ],
+        "latency_ms": 22,
+        "rerank_applied": false,
+        "rerank_fallback_code": "NOT_CONFIGURED",
+        "hit_at_1": 0,
+        "hit_at_3": 0,
+        "recall_at_5": 0.0,
+        "mrr_at_10": 0.16666666666666666,
+        "ndcg_at_10": 0.3562071871080222
+      },
+      {
+        "case_id": "stage09-069",
+        "question": "请找出S09069这条资料说明的主要工程作用。",
+        "category": "离线评测",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          147
+        ],
+        "ranked_paragraph_ids": [
+          157,
+          155,
+          149,
+          150,
+          151,
+          147,
+          152,
+          156,
+          158,
+          154
+        ],
+        "latency_ms": 25,
+        "rerank_applied": false,
+        "rerank_fallback_code": "NOT_CONFIGURED",
+        "hit_at_1": 0,
+        "hit_at_3": 0,
+        "recall_at_5": 0.0,
+        "mrr_at_10": 0.16666666666666666,
+        "ndcg_at_10": 0.3562071871080222
+      },
+      {
+        "case_id": "stage09-070",
+        "question": "请找出S09070这条资料说明的主要工程作用。",
+        "category": "离线评测",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          148
+        ],
+        "ranked_paragraph_ids": [
+          157,
+          155,
+          149,
+          150,
+          151,
+          148,
+          152,
+          156,
+          158,
+          154
+        ],
+        "latency_ms": 29,
+        "rerank_applied": false,
+        "rerank_fallback_code": "NOT_CONFIGURED",
+        "hit_at_1": 0,
+        "hit_at_3": 0,
+        "recall_at_5": 0.0,
+        "mrr_at_10": 0.16666666666666666,
+        "ndcg_at_10": 0.3562071871080222
+      },
+      {
+        "case_id": "stage09-071",
+        "question": "请找出S09071这条资料说明的主要工程作用。",
+        "category": "工具调用",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          149
+        ],
+        "ranked_paragraph_ids": [
+          149,
+          157,
+          155,
+          150,
+          151,
+          152,
+          156,
+          158,
+          154,
+          153
+        ],
+        "latency_ms": 26,
+        "rerank_applied": false,
+        "rerank_fallback_code": "NOT_CONFIGURED",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-072",
+        "question": "请找出S09072这条资料说明的主要工程作用。",
+        "category": "工具调用",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          150
+        ],
+        "ranked_paragraph_ids": [
+          150,
+          157,
+          155,
+          149,
+          151,
+          152,
+          156,
+          158,
+          154,
+          153
+        ],
+        "latency_ms": 24,
+        "rerank_applied": false,
+        "rerank_fallback_code": "NOT_CONFIGURED",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-073",
+        "question": "请找出S09073这条资料说明的主要工程作用。",
+        "category": "工具调用",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          151
+        ],
+        "ranked_paragraph_ids": [
+          151,
+          157,
+          155,
+          149,
+          150,
+          152,
+          156,
+          158,
+          154,
+          153
+        ],
+        "latency_ms": 27,
+        "rerank_applied": false,
+        "rerank_fallback_code": "NOT_CONFIGURED",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-074",
+        "question": "请找出S09074这条资料说明的主要工程作用。",
+        "category": "工具调用",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          152
+        ],
+        "ranked_paragraph_ids": [
+          152,
+          157,
+          155,
+          149,
+          150,
+          151,
+          156,
+          158,
+          154,
+          153
+        ],
+        "latency_ms": 22,
+        "rerank_applied": false,
+        "rerank_fallback_code": "NOT_CONFIGURED",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-075",
+        "question": "请找出S09075这条资料说明的主要工程作用。",
+        "category": "工具调用",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          153
+        ],
+        "ranked_paragraph_ids": [
+          158,
+          153,
+          157,
+          155,
+          149,
+          150,
+          152,
+          156,
+          154,
+          151
+        ],
+        "latency_ms": 28,
+        "rerank_applied": false,
+        "rerank_fallback_code": "NOT_CONFIGURED",
+        "hit_at_1": 0,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 0.5,
+        "ndcg_at_10": 0.6309297535714575
+      },
+      {
+        "case_id": "stage09-076",
+        "question": "请找出S09076这条资料说明的主要工程作用。",
+        "category": "工具调用",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          154
+        ],
+        "ranked_paragraph_ids": [
+          154,
+          157,
+          155,
+          149,
+          150,
+          151,
+          152,
+          156,
+          158,
+          153
+        ],
+        "latency_ms": 28,
+        "rerank_applied": false,
+        "rerank_fallback_code": "NOT_CONFIGURED",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-077",
+        "question": "请找出S09077这条资料说明的主要工程作用。",
+        "category": "工具调用",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          155
+        ],
+        "ranked_paragraph_ids": [
+          155,
+          157,
+          149,
+          150,
+          151,
+          152,
+          156,
+          158,
+          154,
+          153
+        ],
+        "latency_ms": 21,
+        "rerank_applied": false,
+        "rerank_fallback_code": "NOT_CONFIGURED",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-078",
+        "question": "请找出S09078这条资料说明的主要工程作用。",
+        "category": "工具调用",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          156
+        ],
+        "ranked_paragraph_ids": [
+          156,
+          157,
+          155,
+          149,
+          150,
+          151,
+          152,
+          158,
+          154,
+          153
+        ],
+        "latency_ms": 25,
+        "rerank_applied": false,
+        "rerank_fallback_code": "NOT_CONFIGURED",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-079",
+        "question": "请找出S09079这条资料说明的主要工程作用。",
+        "category": "工具调用",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          157
+        ],
+        "ranked_paragraph_ids": [
+          157,
+          155,
+          149,
+          150,
+          151,
+          152,
+          156,
+          158,
+          154,
+          153
+        ],
+        "latency_ms": 26,
+        "rerank_applied": false,
+        "rerank_fallback_code": "NOT_CONFIGURED",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-080",
+        "question": "请找出S09080这条资料说明的主要工程作用。",
+        "category": "工具调用",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          158
+        ],
+        "ranked_paragraph_ids": [
+          158,
+          157,
+          155,
+          149,
+          150,
+          151,
+          152,
+          156,
+          154,
+          153
+        ],
+        "latency_ms": 25,
+        "rerank_applied": false,
+        "rerank_fallback_code": "NOT_CONFIGURED",
+        "hit_at_1": 1,
+        "hit_at_3": 1,
+        "recall_at_5": 1.0,
+        "mrr_at_10": 1.0,
+        "ndcg_at_10": 1.0
+      },
+      {
+        "case_id": "stage09-081",
+        "question": "请找出S09081这条资料说明的主要工程作用。",
+        "category": "数据一致性",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          159
+        ],
+        "ranked_paragraph_ids": [
+          157,
+          155,
+          149,
+          150,
+          151,
+          152,
+          156,
+          158,
+          154,
+          153
+        ],
+        "latency_ms": 27,
+        "rerank_applied": false,
+        "rerank_fallback_code": "NOT_CONFIGURED",
+        "hit_at_1": 0,
+        "hit_at_3": 0,
+        "recall_at_5": 0.0,
+        "mrr_at_10": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      {
+        "case_id": "stage09-082",
+        "question": "请找出S09082这条资料说明的主要工程作用。",
+        "category": "数据一致性",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          160
+        ],
+        "ranked_paragraph_ids": [
+          157,
+          155,
+          149,
+          150,
+          151,
+          152,
+          156,
+          158,
+          154,
+          153
+        ],
+        "latency_ms": 27,
+        "rerank_applied": false,
+        "rerank_fallback_code": "NOT_CONFIGURED",
+        "hit_at_1": 0,
+        "hit_at_3": 0,
+        "recall_at_5": 0.0,
+        "mrr_at_10": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      {
+        "case_id": "stage09-083",
+        "question": "请找出S09083这条资料说明的主要工程作用。",
+        "category": "数据一致性",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          161
+        ],
+        "ranked_paragraph_ids": [
+          157,
+          155,
+          149,
+          150,
+          152,
+          156,
+          158,
+          151,
+          154,
+          153
+        ],
+        "latency_ms": 29,
+        "rerank_applied": false,
+        "rerank_fallback_code": "NOT_CONFIGURED",
+        "hit_at_1": 0,
+        "hit_at_3": 0,
+        "recall_at_5": 0.0,
+        "mrr_at_10": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      {
+        "case_id": "stage09-084",
+        "question": "请找出S09084这条资料说明的主要工程作用。",
+        "category": "数据一致性",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          162
+        ],
+        "ranked_paragraph_ids": [
+          157,
+          155,
+          149,
+          150,
+          151,
+          152,
+          156,
+          158,
+          154,
+          153
+        ],
+        "latency_ms": 28,
+        "rerank_applied": false,
+        "rerank_fallback_code": "NOT_CONFIGURED",
+        "hit_at_1": 0,
+        "hit_at_3": 0,
+        "recall_at_5": 0.0,
+        "mrr_at_10": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      {
+        "case_id": "stage09-085",
+        "question": "请找出S09085这条资料说明的主要工程作用。",
+        "category": "数据一致性",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          163
+        ],
+        "ranked_paragraph_ids": [
+          157,
+          155,
+          149,
+          150,
+          151,
+          152,
+          156,
+          158,
+          154,
+          153
+        ],
+        "latency_ms": 26,
+        "rerank_applied": false,
+        "rerank_fallback_code": "NOT_CONFIGURED",
+        "hit_at_1": 0,
+        "hit_at_3": 0,
+        "recall_at_5": 0.0,
+        "mrr_at_10": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      {
+        "case_id": "stage09-086",
+        "question": "请找出S09086这条资料说明的主要工程作用。",
+        "category": "数据一致性",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          164
+        ],
+        "ranked_paragraph_ids": [
+          157,
+          155,
+          149,
+          150,
+          151,
+          152,
+          156,
+          158,
+          154,
+          153
+        ],
+        "latency_ms": 27,
+        "rerank_applied": false,
+        "rerank_fallback_code": "NOT_CONFIGURED",
+        "hit_at_1": 0,
+        "hit_at_3": 0,
+        "recall_at_5": 0.0,
+        "mrr_at_10": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      {
+        "case_id": "stage09-087",
+        "question": "请找出S09087这条资料说明的主要工程作用。",
+        "category": "数据一致性",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          165
+        ],
+        "ranked_paragraph_ids": [
+          157,
+          155,
+          149,
+          150,
+          151,
+          152,
+          156,
+          158,
+          154,
+          153
+        ],
+        "latency_ms": 31,
+        "rerank_applied": false,
+        "rerank_fallback_code": "NOT_CONFIGURED",
+        "hit_at_1": 0,
+        "hit_at_3": 0,
+        "recall_at_5": 0.0,
+        "mrr_at_10": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      {
+        "case_id": "stage09-088",
+        "question": "请找出S09088这条资料说明的主要工程作用。",
+        "category": "数据一致性",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          166
+        ],
+        "ranked_paragraph_ids": [
+          157,
+          155,
+          149,
+          150,
+          151,
+          152,
+          156,
+          158,
+          154,
+          153
+        ],
+        "latency_ms": 34,
+        "rerank_applied": false,
+        "rerank_fallback_code": "NOT_CONFIGURED",
+        "hit_at_1": 0,
+        "hit_at_3": 0,
+        "recall_at_5": 0.0,
+        "mrr_at_10": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      {
+        "case_id": "stage09-089",
+        "question": "请找出S09089这条资料说明的主要工程作用。",
+        "category": "数据一致性",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          167
+        ],
+        "ranked_paragraph_ids": [
+          157,
+          155,
+          149,
+          150,
+          151,
+          152,
+          156,
+          158,
+          154,
+          153
+        ],
+        "latency_ms": 31,
+        "rerank_applied": false,
+        "rerank_fallback_code": "NOT_CONFIGURED",
+        "hit_at_1": 0,
+        "hit_at_3": 0,
+        "recall_at_5": 0.0,
+        "mrr_at_10": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      {
+        "case_id": "stage09-090",
+        "question": "请找出S09090这条资料说明的主要工程作用。",
+        "category": "数据一致性",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          168
+        ],
+        "ranked_paragraph_ids": [
+          157,
+          155,
+          149,
+          150,
+          151,
+          152,
+          156,
+          158,
+          154,
+          153
+        ],
+        "latency_ms": 33,
+        "rerank_applied": false,
+        "rerank_fallback_code": "NOT_CONFIGURED",
+        "hit_at_1": 0,
+        "hit_at_3": 0,
+        "recall_at_5": 0.0,
+        "mrr_at_10": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      {
+        "case_id": "stage09-091",
+        "question": "请找出S09091这条资料说明的主要工程作用。",
+        "category": "生产部署",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          169
+        ],
+        "ranked_paragraph_ids": [
+          157,
+          155,
+          149,
+          150,
+          151,
+          152,
+          156,
+          158,
+          154,
+          153
+        ],
+        "latency_ms": 29,
+        "rerank_applied": false,
+        "rerank_fallback_code": "NOT_CONFIGURED",
+        "hit_at_1": 0,
+        "hit_at_3": 0,
+        "recall_at_5": 0.0,
+        "mrr_at_10": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      {
+        "case_id": "stage09-092",
+        "question": "请找出S09092这条资料说明的主要工程作用。",
+        "category": "生产部署",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          170
+        ],
+        "ranked_paragraph_ids": [
+          157,
+          155,
+          149,
+          150,
+          151,
+          152,
+          156,
+          158,
+          154,
+          153
+        ],
+        "latency_ms": 26,
+        "rerank_applied": false,
+        "rerank_fallback_code": "NOT_CONFIGURED",
+        "hit_at_1": 0,
+        "hit_at_3": 0,
+        "recall_at_5": 0.0,
+        "mrr_at_10": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      {
+        "case_id": "stage09-093",
+        "question": "请找出S09093这条资料说明的主要工程作用。",
+        "category": "生产部署",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          171
+        ],
+        "ranked_paragraph_ids": [
+          157,
+          155,
+          149,
+          150,
+          151,
+          152,
+          156,
+          158,
+          154,
+          153
+        ],
+        "latency_ms": 27,
+        "rerank_applied": false,
+        "rerank_fallback_code": "NOT_CONFIGURED",
+        "hit_at_1": 0,
+        "hit_at_3": 0,
+        "recall_at_5": 0.0,
+        "mrr_at_10": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      {
+        "case_id": "stage09-094",
+        "question": "请找出S09094这条资料说明的主要工程作用。",
+        "category": "生产部署",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          172
+        ],
+        "ranked_paragraph_ids": [
+          157,
+          155,
+          149,
+          150,
+          151,
+          152,
+          156,
+          158,
+          154,
+          153
+        ],
+        "latency_ms": 27,
+        "rerank_applied": false,
+        "rerank_fallback_code": "NOT_CONFIGURED",
+        "hit_at_1": 0,
+        "hit_at_3": 0,
+        "recall_at_5": 0.0,
+        "mrr_at_10": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      {
+        "case_id": "stage09-095",
+        "question": "请找出S09095这条资料说明的主要工程作用。",
+        "category": "生产部署",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          173
+        ],
+        "ranked_paragraph_ids": [
+          157,
+          155,
+          149,
+          150,
+          151,
+          152,
+          156,
+          158,
+          154,
+          153
+        ],
+        "latency_ms": 28,
+        "rerank_applied": false,
+        "rerank_fallback_code": "NOT_CONFIGURED",
+        "hit_at_1": 0,
+        "hit_at_3": 0,
+        "recall_at_5": 0.0,
+        "mrr_at_10": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      {
+        "case_id": "stage09-096",
+        "question": "请找出S09096这条资料说明的主要工程作用。",
+        "category": "生产部署",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          174
+        ],
+        "ranked_paragraph_ids": [
+          157,
+          155,
+          149,
+          150,
+          151,
+          152,
+          156,
+          158,
+          154,
+          153
+        ],
+        "latency_ms": 29,
+        "rerank_applied": false,
+        "rerank_fallback_code": "NOT_CONFIGURED",
+        "hit_at_1": 0,
+        "hit_at_3": 0,
+        "recall_at_5": 0.0,
+        "mrr_at_10": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      {
+        "case_id": "stage09-097",
+        "question": "请找出S09097这条资料说明的主要工程作用。",
+        "category": "生产部署",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          175
+        ],
+        "ranked_paragraph_ids": [
+          157,
+          155,
+          149,
+          150,
+          151,
+          152,
+          156,
+          158,
+          154,
+          153
+        ],
+        "latency_ms": 27,
+        "rerank_applied": false,
+        "rerank_fallback_code": "NOT_CONFIGURED",
+        "hit_at_1": 0,
+        "hit_at_3": 0,
+        "recall_at_5": 0.0,
+        "mrr_at_10": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      {
+        "case_id": "stage09-098",
+        "question": "请找出S09098这条资料说明的主要工程作用。",
+        "category": "生产部署",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          176
+        ],
+        "ranked_paragraph_ids": [
+          157,
+          155,
+          149,
+          150,
+          151,
+          152,
+          156,
+          158,
+          154,
+          153
+        ],
+        "latency_ms": 27,
+        "rerank_applied": false,
+        "rerank_fallback_code": "NOT_CONFIGURED",
+        "hit_at_1": 0,
+        "hit_at_3": 0,
+        "recall_at_5": 0.0,
+        "mrr_at_10": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      {
+        "case_id": "stage09-099",
+        "question": "请找出S09099这条资料说明的主要工程作用。",
+        "category": "生产部署",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          177
+        ],
+        "ranked_paragraph_ids": [
+          157,
+          155,
+          149,
+          150,
+          151,
+          152,
+          156,
+          158,
+          154,
+          153
+        ],
+        "latency_ms": 28,
+        "rerank_applied": false,
+        "rerank_fallback_code": "NOT_CONFIGURED",
+        "hit_at_1": 0,
+        "hit_at_3": 0,
+        "recall_at_5": 0.0,
+        "mrr_at_10": 0.0,
+        "ndcg_at_10": 0.0
+      },
+      {
+        "case_id": "stage09-100",
+        "question": "请找出S09100这条资料说明的主要工程作用。",
+        "category": "生产部署",
+        "difficulty": "hard",
+        "synthetic": true,
+        "relevant_paragraph_ids": [
+          178
+        ],
+        "ranked_paragraph_ids": [
+          157,
+          155,
+          149,
+          150,
+          151,
+          152,
+          156,
+          158,
+          153,
+          154
+        ],
+        "latency_ms": 31,
+        "rerank_applied": false,
+        "rerank_fallback_code": "NOT_CONFIGURED",
+        "hit_at_1": 0,
+        "hit_at_3": 0,
+        "recall_at_5": 0.0,
+        "mrr_at_10": 0.0,
+        "ndcg_at_10": 0.0
+      }
+    ]
+  },
+  "strategy_configs": {
+    "VECTOR": {
+      "mode": "VECTOR",
+      "fusion_method": "WEIGHTED",
+      "top_k": 5,
+      "threshold": 0.0,
+      "vector_weight": 0.7,
+      "keyword_weight": 0.30000000000000004,
+      "vector_candidate_k": 30,
+      "keyword_candidate_k": 30,
+      "rrf_k": 60,
+      "rerank_enabled": false,
+      "rerank_candidate_k": 20,
+      "max_context_chars": 6000
+    },
+    "WEIGHTED": {
+      "mode": "HYBRID",
+      "fusion_method": "WEIGHTED",
+      "top_k": 5,
+      "threshold": 0.0,
+      "vector_weight": 0.7,
+      "keyword_weight": 0.30000000000000004,
+      "vector_candidate_k": 30,
+      "keyword_candidate_k": 30,
+      "rrf_k": 60,
+      "rerank_enabled": false,
+      "rerank_candidate_k": 20,
+      "max_context_chars": 6000
+    },
+    "RRF": {
+      "mode": "HYBRID",
+      "fusion_method": "RRF",
+      "top_k": 5,
+      "threshold": 0.0,
+      "vector_weight": 0.7,
+      "keyword_weight": 0.30000000000000004,
+      "vector_candidate_k": 30,
+      "keyword_candidate_k": 30,
+      "rrf_k": 60,
+      "rerank_enabled": false,
+      "rerank_candidate_k": 20,
+      "max_context_chars": 6000
+    },
+    "RRF_RERANK": {
+      "mode": "HYBRID",
+      "fusion_method": "RRF",
+      "top_k": 5,
+      "threshold": 0.0,
+      "vector_weight": 0.7,
+      "keyword_weight": 0.30000000000000004,
+      "vector_candidate_k": 30,
+      "keyword_candidate_k": 30,
+      "rrf_k": 60,
+      "rerank_enabled": true,
+      "rerank_candidate_k": 20,
+      "max_context_chars": 6000
+    }
+  },
+  "reranker": {
+    "rrf_available": true,
+    "reranker_configured": false,
+    "reranker_ready": false,
+    "reranker_model": "",
+    "device": "cpu"
+  }
+}
