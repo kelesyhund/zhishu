@@ -76,6 +76,7 @@ from .services.retrieval import (
 )
 from .services.workspace_permissions import resolve_workspace_access
 from .workspace_api import WorkspaceAPIView
+from .observability import traced
 
 
 def ok(data=None, message="success"):
@@ -1214,8 +1215,9 @@ class ChatStreamView(WorkspaceAPIView):
 
             def agent_event_stream():
                 yield sse("meta", {"conversation_id": conversation.id})
-                for event in stream_agent_run(agent_run):
-                    yield sse(event["event"], event["data"])
+                with traced("agent.run", agent_run_id=agent_run.id, knowledge_base_id=knowledge_base.id):
+                    for event in stream_agent_run(agent_run):
+                        yield sse(event["event"], event["data"])
 
             response = StreamingHttpResponse(agent_event_stream(), content_type="text/event-stream")
             response["Cache-Control"] = "no-cache"
@@ -1244,7 +1246,8 @@ class ChatStreamView(WorkspaceAPIView):
                     yield sse("content", {"content": content})
                 answer = "".join(parts)
                 visible_references = public_references(references)
-                save_assistant_message(conversation, answer, visible_references)
+                with traced("conversation.persist", knowledge_base_id=knowledge_base.id):
+                    save_assistant_message(conversation, answer, visible_references)
                 yield sse("references", visible_references)
                 yield sse("done", {})
             except Exception as exc:

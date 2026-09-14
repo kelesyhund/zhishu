@@ -93,7 +93,7 @@ def model_status(knowledge_base: KnowledgeBase) -> dict:
         chat_status = {
             "source": "LOCAL",
             "config_id": None,
-            "label": "本地演示模式",
+            "label": "内置检索回答",
             "model_name": "",
         }
 

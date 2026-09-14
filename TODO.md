@@ -1,16 +1,16 @@
 # 后续迭代清单
 
-当前版本以三天内可运行和可学习为目标，以下内容有意延期：
+以下内容作为后续产品演进方向：
 
 - 使用 PostgreSQL + pgvector 替换 SQLite JSON 向量和 Python 全量扫描。
-- 增加Celery任务心跳与定时收敛器，识别极端情况下长期停留在PROCESSING的僵尸任务。
+- 第十五阶段已增加Celery任务心跳与Beat定时收敛器；后续用真实长文档校准僵尸阈值并评估跨Beat租约。
 - 为超长文档增加Redis锁续租，并评估按Embedding批次动态调整Worker并发。
-- 增加密码重置、邮箱验证、企业 SSO/SCIM、自定义角色与资源级 ACL；基础账号注册及组织、工作空间、固定角色 RBAC 和管理审计已完成。
+- 完成真实SMTP邮箱验证投递与企业 SSO/SCIM/MFA；Session登录、密码重置、组织邀请、固定角色 RBAC 和管理审计已完成。
 - 增加会话关键词搜索、会话导出和更长历史的游标分页。
 - 已接入固定revision的真实多语言Cross-Encoder并建立40份公开技术文档、170条待审候选；下一步由用户逐题审核、冻结不少于100题的Test并生成正式检索/答案报告。查询改写和数据库级向量检索继续延期。
 - 对 Markdown HTML 做严格白名单过滤。
 - 对前端进行路由懒加载和 Element Plus 按需导入，缩小构建产物。
-- 完善限流、日志、监控、备份和部署配置。
+- 第十五阶段已补齐单机生产Compose、JSON日志、OpenTelemetry、Prometheus/Grafana、告警规则和PostgreSQL恢复脚本；后续接入企业Alertmanager通知、集中日志与异地备份。
 - 增加模型加密主密钥的受控轮换工具与运维审计日志。
 - 文档长任务已使用Redis + Celery；如未来Agent工具变成长任务，再复用任务状态、跨进程锁、取消和崩溃恢复，当前短时只读工具继续保持同步。
 - 增加 MCP Adapter：把受信 MCP Server 的工具描述转换为现有 ToolDefinition，把调用结果转换为 ToolResult，并继续复用 ToolContext、参数校验、限额和 AgentRun 审计。

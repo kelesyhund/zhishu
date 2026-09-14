@@ -23,7 +23,7 @@ h1, h2, h3, p { margin-top: 0; }
 .brand-mark, .mini-logo { display: inline-grid; place-items: center; color: #fff; background: linear-gradient(135deg, #1677ff, #2554d8); font-weight: 800; }
 .brand-mark { width: 52px; height: 52px; border-radius: 15px; font-size: 24px; }
 .login-card h1 { margin: 18px 0 6px; }
-.demo-tip { margin: 18px 0 0; color: #8a93a4; font-size: 13px; text-align: center; }
+.login-hint { margin: 18px 0 0; color: #8a93a4; font-size: 13px; text-align: center; }
 
 .topbar { height: 64px; padding: 0 7vw; display: flex; align-items: center; justify-content: space-between; background: #fff; border-bottom: 1px solid #e8ebf1; }
 .topbar-brand { display: flex; align-items: center; gap: 10px; font-weight: 750; }

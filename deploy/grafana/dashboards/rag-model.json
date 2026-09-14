@@ -1,0 +1,11 @@
+{
+  "uid":"zhishu-rag","title":"知枢｜RAG 与模型","schemaVersion":40,"version":1,"refresh":"15s","tags":["zhishu","rag"],
+  "time":{"from":"now-6h","to":"now"},"panels":[
+    {"id":1,"type":"timeseries","title":"检索 P95","gridPos":{"x":0,"y":0,"w":8,"h":8},"targets":[{"expr":"histogram_quantile(0.95, sum by (le,retrieval_strategy) (rate(rag_retrieval_duration_seconds_bucket[5m])))","legendFormat":"{{retrieval_strategy}}"}]},
+    {"id":2,"type":"timeseries","title":"向量 / BM25 / Reranker P95","gridPos":{"x":8,"y":0,"w":8,"h":8},"targets":[{"expr":"histogram_quantile(0.95, sum by (le) (rate(rag_vector_duration_seconds_bucket[5m])))","legendFormat":"vector"},{"expr":"histogram_quantile(0.95, sum by (le) (rate(rag_bm25_duration_seconds_bucket[5m])))","legendFormat":"bm25"},{"expr":"histogram_quantile(0.95, sum by (le) (rate(rag_rerank_duration_seconds_bucket[5m])))","legendFormat":"rerank"}]},
+    {"id":3,"type":"timeseries","title":"模型结果","gridPos":{"x":16,"y":0,"w":8,"h":8},"targets":[{"expr":"sum by (model_type,result,error_code) (rate(model_requests_total[5m]))","legendFormat":"{{model_type}} {{result}}"}]},
+    {"id":4,"type":"timeseries","title":"模型首 Token P95","gridPos":{"x":0,"y":8,"w":8,"h":8},"targets":[{"expr":"histogram_quantile(0.95, sum by (le,provider) (rate(model_first_token_duration_seconds_bucket[5m])))","legendFormat":"{{provider}}"}]},
+    {"id":5,"type":"stat","title":"Reranker 降级 / 无答案","gridPos":{"x":8,"y":8,"w":8,"h":8},"targets":[{"expr":"sum(increase(rag_rerank_fallbacks_total[1h]))","legendFormat":"fallback"},{"expr":"sum(increase(rag_no_answer_total[1h]))","legendFormat":"no answer"}]},
+    {"id":6,"type":"timeseries","title":"超时与限流","gridPos":{"x":16,"y":8,"w":8,"h":8},"targets":[{"expr":"sum(rate(model_timeouts_total[5m]))","legendFormat":"timeout"},{"expr":"sum(rate(model_rate_limits_total[5m]))","legendFormat":"429"}]}
+  ]
+}

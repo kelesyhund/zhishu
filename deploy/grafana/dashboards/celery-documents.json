@@ -1,0 +1,12 @@
+{
+  "uid":"zhishu-celery","title":"知枢｜Celery 与文档任务","schemaVersion":40,"version":1,"refresh":"15s","tags":["zhishu","celery"],
+  "time":{"from":"now-6h","to":"now"},"panels":[
+    {"id":1,"type":"stat","title":"Worker 在线","gridPos":{"x":0,"y":0,"w":6,"h":5},"targets":[{"expr":"up{job=\"celery-worker\"}"}]},
+    {"id":2,"type":"stat","title":"队列深度","gridPos":{"x":6,"y":0,"w":6,"h":5},"targets":[{"expr":"celery_queue_depth{queue=\"celery\"}"}]},
+    {"id":3,"type":"stat","title":"最老任务年龄","gridPos":{"x":12,"y":0,"w":6,"h":5},"targets":[{"expr":"celery_oldest_task_age_seconds"}]},
+    {"id":4,"type":"stat","title":"活跃任务","gridPos":{"x":18,"y":0,"w":6,"h":5},"targets":[{"expr":"sum(document_tasks_in_progress)"}]},
+    {"id":5,"type":"timeseries","title":"成功 / 失败 / 重试","gridPos":{"x":0,"y":5,"w":12,"h":8},"targets":[{"expr":"sum by (result) (rate(document_tasks_total[5m]))","legendFormat":"{{result}}"},{"expr":"sum(rate(document_task_retries_total[5m]))","legendFormat":"retry"}]},
+    {"id":6,"type":"timeseries","title":"文档处理 P95","gridPos":{"x":12,"y":5,"w":12,"h":8},"targets":[{"expr":"histogram_quantile(0.95, sum by (le,task_type) (rate(document_task_duration_seconds_bucket[5m])))","legendFormat":"{{task_type}}"}]},
+    {"id":7,"type":"stat","title":"僵尸任务收敛","gridPos":{"x":0,"y":13,"w":8,"h":5},"targets":[{"expr":"sum(increase(document_task_stale_total[1h]))"}]}
+  ]
+}

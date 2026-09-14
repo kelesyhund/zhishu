@@ -1,0 +1,176 @@
+name: zhishu-production
+
+x-backend-environment: &backend-environment
+  APP_ENV: production
+  DEBUG: "false"
+  DATABASE_ENGINE: postgresql
+  POSTGRES_HOST: postgres
+  POSTGRES_PORT: "5432"
+  MEDIA_ROOT: /var/lib/zhishu/media
+  CELERY_TASK_ALWAYS_EAGER: "false"
+  DOCUMENT_TASK_LOCK_BACKEND: redis
+  OTEL_ENABLED: "true"
+  OTEL_EXPORTER_OTLP_ENDPOINT: http://otel-collector:4317
+  CACHE_REDIS_URL: redis://redis:6379/4
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    env_file: ["${ZHISHU_ENV_FILE:-.env.production}"]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $$POSTGRES_USER -d $$POSTGRES_DB"]
+      interval: 5s
+      timeout: 3s
+      retries: 12
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./backups:/backups
+      - ./deploy/scripts:/opt/zhishu/scripts:ro
+    networks: [private]
+
+  redis:
+    image: redis:7.4-alpine
+    command: ["redis-server", "--appendonly", "yes", "--save", "60", "1000"]
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 2s
+      retries: 12
+    volumes: [redis_data:/data]
+    networks: [private]
+
+  media-init:
+    image: alpine:3.20
+    command: ["sh", "-c", "chown -R 10001:10001 /var/lib/zhishu/media && chmod 0755 /var/lib/zhishu/media"]
+    restart: "no"
+    volumes: [media_data:/var/lib/zhishu/media]
+    networks: [private]
+
+  migrate:
+    build: {context: ./backend, dockerfile: Dockerfile}
+    command: ["python", "manage.py", "migrate", "--noinput"]
+    profiles: [ops]
+    env_file: ["${ZHISHU_ENV_FILE:-.env.production}"]
+    environment: *backend-environment
+    depends_on:
+      postgres: {condition: service_healthy}
+      redis: {condition: service_healthy}
+    networks: [private]
+
+  backend:
+    build: {context: ./backend, dockerfile: Dockerfile}
+    command: ["gunicorn", "config.wsgi:application", "--bind", "0.0.0.0:8000", "--worker-class", "gthread", "--workers", "1", "--threads", "8", "--timeout", "180", "--graceful-timeout", "30"]
+    restart: unless-stopped
+    env_file: ["${ZHISHU_ENV_FILE:-.env.production}"]
+    environment:
+      <<: *backend-environment
+      OTEL_SERVICE_NAME: zhishu-backend
+    volumes: [media_data:/var/lib/zhishu/media]
+    depends_on:
+      postgres: {condition: service_healthy}
+      redis: {condition: service_healthy}
+      otel-collector: {condition: service_started}
+      media-init: {condition: service_completed_successfully}
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health/live/', timeout=2)"]
+      interval: 10s
+      timeout: 3s
+      retries: 12
+    networks: [private]
+
+  worker:
+    build: {context: ./backend, dockerfile: Dockerfile}
+    command: ["celery", "-A", "config", "worker", "--loglevel=INFO", "--pool=threads", "--concurrency=4", "--hostname=worker@%h"]
+    restart: unless-stopped
+    env_file: ["${ZHISHU_ENV_FILE:-.env.production}"]
+    environment:
+      <<: *backend-environment
+      OTEL_SERVICE_NAME: zhishu-worker
+      METRICS_PORT: "9101"
+    volumes: [media_data:/var/lib/zhishu/media]
+    depends_on:
+      postgres: {condition: service_healthy}
+      redis: {condition: service_healthy}
+      otel-collector: {condition: service_started}
+      media-init: {condition: service_completed_successfully}
+    stop_grace_period: 30s
+    networks: [private]
+
+  beat:
+    build: {context: ./backend, dockerfile: Dockerfile}
+    command: ["celery", "-A", "config", "beat", "--loglevel=INFO", "--schedule=/tmp/celerybeat-schedule"]
+    restart: unless-stopped
+    env_file: ["${ZHISHU_ENV_FILE:-.env.production}"]
+    environment:
+      <<: *backend-environment
+      OTEL_SERVICE_NAME: zhishu-beat
+    depends_on:
+      postgres: {condition: service_healthy}
+      redis: {condition: service_healthy}
+    networks: [private]
+
+  nginx:
+    build:
+      context: .
+      dockerfile: frontend/Dockerfile
+    restart: unless-stopped
+    ports: ["127.0.0.1:18080:8080"]
+    volumes: [media_data:/var/lib/zhishu/media:ro]
+    depends_on:
+      backend: {condition: service_healthy}
+    networks: [private]
+
+  otel-collector:
+    image: otel/opentelemetry-collector-contrib:0.135.0
+    command: ["--config=/etc/otelcol-contrib/config.yml"]
+    restart: unless-stopped
+    volumes: [./deploy/otel-collector/config.yml:/etc/otelcol-contrib/config.yml:ro]
+    depends_on: [jaeger]
+    networks: [private]
+
+  jaeger:
+    image: jaegertracing/all-in-one:1.62.0
+    restart: unless-stopped
+    environment: {COLLECTOR_OTLP_ENABLED: "true"}
+    ports: ["127.0.0.1:16686:16686"]
+    networks: [private]
+
+  prometheus:
+    image: prom/prometheus:v3.5.0
+    restart: unless-stopped
+    command: ["--config.file=/etc/prometheus/prometheus.yml", "--storage.tsdb.path=/prometheus", "--web.enable-lifecycle"]
+    ports: ["127.0.0.1:19090:9090"]
+    volumes:
+      - ./deploy/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - ./deploy/prometheus/alerts.yml:/etc/prometheus/alerts.yml:ro
+      - prometheus_data:/prometheus
+    depends_on: [backend, worker]
+    networks: [private]
+
+  grafana:
+    image: grafana/grafana:12.1.0
+    restart: unless-stopped
+    ports: ["127.0.0.1:13000:3000"]
+    env_file: ["${ZHISHU_ENV_FILE:-.env.production}"]
+    environment:
+      GF_SECURITY_ADMIN_USER: admin
+      GF_USERS_ALLOW_SIGN_UP: "false"
+    volumes:
+      - ./deploy/grafana/provisioning:/etc/grafana/provisioning:ro
+      - ./deploy/grafana/dashboards:/var/lib/grafana/dashboards:ro
+      - grafana_data:/var/lib/grafana
+    depends_on: [prometheus]
+    networks: [private]
+
+volumes:
+  postgres_data:
+  redis_data:
+  media_data:
+  prometheus_data:
+  grafana_data:
+
+networks:
+  private:
+    internal: false

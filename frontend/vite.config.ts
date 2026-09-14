@@ -14,5 +14,20 @@ export default defineConfig(({ mode }) => {
         '/media': backendTarget,
       },
     },
+    build: {
+      rollupOptions: {
+        output: {
+          manualChunks(id) {
+            if (!id.includes('node_modules')) return undefined
+            if (id.includes('element-plus') || id.includes('@element-plus')) return 'element-plus'
+            if (id.includes('/vue/') || id.includes('vue-router') || id.includes('pinia') || id.includes('@vueuse')) {
+              return 'vue-vendor'
+            }
+            if (id.includes('/marked/')) return 'markdown'
+            return 'vendor'
+          },
+        },
+      },
+    },
   }
 })

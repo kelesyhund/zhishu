@@ -1694,13 +1694,13 @@ onBeforeUnmount(() => {
         <el-form label-position="top">
           <el-form-item label="Chat 模型">
             <el-select v-model="selectedChatConfigId" class="full-button" placeholder="系统默认">
-              <el-option label="系统默认（环境变量或本地演示）" :value="null" />
+              <el-option label="系统默认（环境配置或检索降级）" :value="null" />
               <el-option v-for="item in chatConfigs" :key="item.id" :label="`${item.name} / ${item.model_name}`" :value="item.id" />
             </el-select>
           </el-form-item>
           <el-form-item label="Embedding 模型">
             <el-select v-model="selectedEmbeddingConfigId" class="full-button" placeholder="系统默认">
-              <el-option label="系统默认（环境变量或本地哈希）" :value="null" />
+              <el-option label="系统默认（环境配置或内置向量）" :value="null" />
               <el-option v-for="item in embeddingConfigs" :key="item.id" :label="`${item.name} / ${item.model_name}`" :value="item.id" />
             </el-select>
           </el-form-item>

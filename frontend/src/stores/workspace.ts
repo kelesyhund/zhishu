@@ -13,29 +13,34 @@ export const useWorkspaceStore = defineStore('workspace', () => {
   const activeWorkspaceId = ref<number | null>(null)
   const loading = ref(false)
   const loaded = ref(false)
+  let pendingInitialization: Promise<void> | null = null
   const activeWorkspace = computed(
     () => workspaces.value.find((item) => item.id === activeWorkspaceId.value) || null,
   )
   const capabilities = computed(() => new Set(activeWorkspace.value?.capabilities || []))
 
   async function initialize(force = false) {
-    if ((loaded.value && !force) || loading.value) return
-    loading.value = true
-    try {
-      const context = await getMeContext()
-      organizations.value = context.organizations
-      workspaces.value = context.workspaces
-      const stored = Number(localStorage.getItem('active_workspace_id'))
-      const selected = workspaces.value.some((item) => item.id === stored)
-        ? stored
-        : context.active_workspace_id || workspaces.value[0]?.id || null
-      activeWorkspaceId.value = selected
-      if (selected) localStorage.setItem('active_workspace_id', String(selected))
-      else localStorage.removeItem('active_workspace_id')
-      loaded.value = true
-    } finally {
-      loading.value = false
-    }
+    if (loaded.value && !force) return
+    if (pendingInitialization) return pendingInitialization
+    pendingInitialization = (async () => {
+      loading.value = true
+      try {
+        const context = await getMeContext()
+        organizations.value = context.organizations
+        workspaces.value = context.workspaces
+        const stored = Number(localStorage.getItem('active_workspace_id'))
+        const selected = workspaces.value.some((item) => item.id === stored)
+          ? stored
+          : context.active_workspace_id || workspaces.value[0]?.id || null
+        activeWorkspaceId.value = selected
+        if (selected) localStorage.setItem('active_workspace_id', String(selected))
+        else localStorage.removeItem('active_workspace_id')
+        loaded.value = true
+      } finally {
+        loading.value = false
+      }
+    })()
+    try { await pendingInitialization } finally { pendingInitialization = null }
   }
 
   function can(capability: string) {

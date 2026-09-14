@@ -17,6 +17,7 @@ from .agent_tools.registry import get_tool, get_tool_schemas
 from .conversations import public_references, save_assistant_message
 from .model_clients import create_openai_client, map_model_exception
 from .model_resolution import resolve_chat_config
+from ..observability import traced
 
 
 MAX_TOOL_CALLS_PER_STEP = 3
@@ -275,7 +276,12 @@ def _execute_tool(
 ) -> tuple[Any, int]:
     started = monotonic()
     try:
-        result = definition.handler(context, arguments)
+        with traced(
+            "tool.execute",
+            tool_name=definition.name,
+            agent_run_id=context.agent_run.id,
+        ):
+            result = definition.handler(context, arguments)
         model_json = json.dumps(result.model_payload, ensure_ascii=False, separators=(",", ":"))
         if len(model_json) > MAX_TOOL_RESULT_CHARS:
             raise ToolError("工具结果超过安全长度限制", "TOOL_RESULT_TOO_LARGE")

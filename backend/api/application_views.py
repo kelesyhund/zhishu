@@ -686,6 +686,7 @@ class ApplicationPreviewChatView(WorkspaceAPIView):
 
 
 class PublicApplicationProfileView(APIView):
+    authentication_classes = []
     permission_classes = [AllowAny]
 
     def get(self, request, public_token):
@@ -710,6 +711,7 @@ class PublicApplicationProfileView(APIView):
 
 
 class PublicApplicationVisitorView(APIView):
+    authentication_classes = []
     permission_classes = [AllowAny]
 
     def post(self, request, public_token):
@@ -722,6 +724,7 @@ class PublicApplicationVisitorView(APIView):
 
 
 class PublicApplicationEmbedView(APIView):
+    authentication_classes = []
     permission_classes = [AllowAny]
 
     def get(self, request, public_token):
@@ -752,6 +755,7 @@ class PublicApplicationEmbedView(APIView):
 
 
 class PublicApplicationChatView(APIView):
+    authentication_classes = []
     permission_classes = [AllowAny]
 
     def post(self, request, public_token):
@@ -801,6 +805,7 @@ class PublicApplicationChatView(APIView):
 
 
 class PublicApplicationMessageListView(APIView):
+    authentication_classes = []
     permission_classes = [AllowAny]
 
     def get(self, request, public_token, conversation_id):
@@ -824,6 +829,7 @@ class PublicApplicationMessageListView(APIView):
 
 
 class ApplicationChatCompletionsView(APIView):
+    authentication_classes = []
     permission_classes = [AllowAny]
 
     def post(self, request, application_id):
@@ -950,7 +956,7 @@ class ApplicationChatCompletionsView(APIView):
                 "id": f"chatcmpl-{log.request_id}",
                 "object": "chat.completion",
                 "created": int(timezone.now().timestamp()),
-                "model": runtime.chat_target.chat_model_config.model_name if runtime.chat_target.chat_model_config else "local-demo",
+                "model": runtime.chat_target.chat_model_config.model_name if runtime.chat_target.chat_model_config else "retrieval-fallback",
                 "choices": [{"index": 0, "message": {"role": "assistant", "content": answer}, "finish_reason": "stop"}],
                 "knowledge_chat": {"conversation_id": conversation.id, "references": visible},
             }

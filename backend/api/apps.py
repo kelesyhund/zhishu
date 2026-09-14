@@ -7,3 +7,7 @@ class ApiConfig(AppConfig):
 
     def ready(self):
         from . import signals  # noqa: F401
+        from . import worker_observability  # noqa: F401
+        from .observability import initialize_tracing
+
+        initialize_tracing()

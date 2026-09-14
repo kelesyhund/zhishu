@@ -1,0 +1,10 @@
+{
+  "uid":"zhishu-system","title":"知枢｜系统总览","schemaVersion":40,"version":1,"refresh":"15s","tags":["zhishu","production"],
+  "time":{"from":"now-6h","to":"now"},"panels":[
+    {"id":1,"type":"timeseries","title":"请求速率","gridPos":{"x":0,"y":0,"w":12,"h":8},"targets":[{"expr":"sum by (status_class) (rate(http_requests_total[5m]))","legendFormat":"{{status_class}}"}]},
+    {"id":2,"type":"timeseries","title":"HTTP P50 / P95 / P99","gridPos":{"x":12,"y":0,"w":12,"h":8},"targets":[{"expr":"histogram_quantile(0.50, sum by (le) (rate(http_request_duration_seconds_bucket[5m])))","legendFormat":"P50"},{"expr":"histogram_quantile(0.95, sum by (le) (rate(http_request_duration_seconds_bucket[5m])))","legendFormat":"P95"},{"expr":"histogram_quantile(0.99, sum by (le) (rate(http_request_duration_seconds_bucket[5m])))","legendFormat":"P99"}]},
+    {"id":3,"type":"stat","title":"当前 SSE 连接","gridPos":{"x":0,"y":8,"w":6,"h":5},"targets":[{"expr":"sum(sse_connections_active)"}]},
+    {"id":4,"type":"stat","title":"Backend / Worker Up","gridPos":{"x":6,"y":8,"w":8,"h":5},"targets":[{"expr":"up{job=~\"django|celery-worker\"}","legendFormat":"{{job}}"}]},
+    {"id":5,"type":"stat","title":"PostgreSQL / Redis","gridPos":{"x":14,"y":8,"w":10,"h":5},"targets":[{"expr":"dependency_up","legendFormat":"{{dependency}}"}]}
+  ]
+}

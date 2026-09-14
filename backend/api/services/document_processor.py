@@ -9,6 +9,7 @@ from .document_parser import CHUNKER_VERSION, PARSER_VERSION
 from .embeddings import embed_texts
 from .model_clients import ModelServiceError
 from .model_resolution import active_embedding_signature
+from ..observability import traced
 
 
 class DocumentProcessingCancelled(Exception):
@@ -55,11 +56,13 @@ def process_document(
     try:
         check_cancelled()
         report("READING", 10)
-        parsed, plan = prepare_document_chunks(document)
+        with traced("document.parse", document_id=document.id):
+            parsed, plan = prepare_document_chunks(document)
         check_cancelled()
 
         report("SPLITTING", 30)
-        children = list(plan.children)
+        with traced("document.chunk", document_id=document.id, selected_count=len(plan.children)):
+            children = list(plan.children)
         check_cancelled()
 
         report("EMBEDDING", 50)
@@ -68,9 +71,10 @@ def process_document(
         for start in range(0, len(children), batch_size):
             check_cancelled()
             batch = children[start : start + batch_size]
-            vectors.extend(
-                embed_texts([chunk.embedding_content for chunk in batch], document.knowledge_base)
-            )
+            with traced("embedding.batch", document_id=document.id, selected_count=len(batch)):
+                vectors.extend(
+                    embed_texts([chunk.embedding_content for chunk in batch], document.knowledge_base)
+                )
             completed = min(len(children), start + len(batch))
             report("EMBEDDING", 50 + int((completed / len(children)) * 30))
         target_signature = active_embedding_signature(document.knowledge_base)
@@ -78,7 +82,9 @@ def process_document(
         check_cancelled()
 
         report("SAVING", 85)
-        with transaction.atomic():
+        with transaction.atomic(), traced(
+            "paragraph.replace", document_id=document.id, selected_count=len(children)
+        ):
             locked_document = (
                 Document.objects.select_for_update()
                 .get(pk=document.pk)
@@ -156,7 +162,8 @@ def process_document(
                     "parsing_warnings",
                 ]
             )
-        report("DONE", 100)
+        with traced("document.finalize", document_id=document.id):
+            report("DONE", 100)
     except DocumentProcessingCancelled:
         raise
     except Document.DoesNotExist as exc:

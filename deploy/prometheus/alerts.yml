@@ -1,0 +1,87 @@
+groups:
+  - name: zhishu-production
+    rules:
+      - alert: BackendDown
+        expr: up{job="django"} == 0
+        for: 2m
+        labels: {severity: critical}
+        annotations:
+          summary: 后端实例不可采集
+          description: Django 指标端点连续 2 分钟不可达。Runbook：stage-15-operations-runbook.md#backenddown
+      - alert: HighHttp5xxRate
+        expr: sum(rate(http_requests_total{status_class="5xx"}[5m])) / clamp_min(sum(rate(http_requests_total[5m])), 0.001) > 0.05
+        for: 5m
+        labels: {severity: warning}
+        annotations:
+          summary: HTTP 5xx 比例偏高
+          description: 最近 5 分钟 5xx 比例持续高于初始阈值 5%。Runbook：#highhttp5xxrate
+      - alert: HighHttpP95Latency
+        expr: histogram_quantile(0.95, sum by (le) (rate(http_request_duration_seconds_bucket[5m]))) > 1.5
+        for: 10m
+        labels: {severity: warning}
+        annotations:
+          summary: HTTP P95 延迟偏高
+          description: HTTP P95 连续 10 分钟超过初始阈值 1.5 秒。Runbook：#highhttpp95latency
+      - alert: NoCeleryWorkers
+        expr: up{job="celery-worker"} == 0
+        for: 2m
+        labels: {severity: critical}
+        annotations:
+          summary: Celery Worker 离线
+          description: Worker 指标端点连续 2 分钟不可达。Runbook：#noceleryworkers
+      - alert: CeleryQueueBacklog
+        expr: celery_queue_depth{queue="celery"} > 100
+        for: 10m
+        labels: {severity: warning}
+        annotations:
+          summary: Celery 队列积压
+          description: 默认队列连续 10 分钟超过 100 条。Runbook：#celeryqueuebacklog
+      - alert: CeleryOldestTaskTooOld
+        expr: celery_oldest_task_age_seconds > 120
+        for: 5m
+        labels: {severity: warning}
+        annotations:
+          summary: 最老任务等待过久
+          description: 活跃任务年龄连续 5 分钟超过 120 秒。Runbook：#celeryoldesttasktooold
+      - alert: DocumentTaskFailureRateHigh
+        expr: sum(rate(document_tasks_total{result="failure"}[15m])) / clamp_min(sum(rate(document_tasks_total[15m])), 0.001) > 0.10
+        for: 10m
+        labels: {severity: warning}
+        annotations:
+          summary: 文档任务失败率偏高
+          description: 15 分钟窗口失败比例持续超过初始阈值 10%。Runbook：#documenttaskfailureratehigh
+      - alert: StaleProcessingTasks
+        expr: increase(document_task_stale_total[10m]) > 0
+        for: 2m
+        labels: {severity: warning}
+        annotations:
+          summary: 出现僵尸任务收敛
+          description: 10 分钟内至少一个任务因长时间无心跳被收敛。Runbook：#staleprocessingtasks
+      - alert: ModelTimeoutRateHigh
+        expr: sum(rate(model_timeouts_total[10m])) / clamp_min(sum(rate(model_requests_total[10m])), 0.001) > 0.05
+        for: 5m
+        labels: {severity: warning}
+        annotations:
+          summary: 模型超时率偏高
+          description: 模型超时率连续 5 分钟超过初始阈值 5%。Runbook：#modeltimeoutratehigh
+      - alert: ModelRateLimited
+        expr: increase(model_rate_limits_total[10m]) > 0
+        for: 2m
+        labels: {severity: warning}
+        annotations:
+          summary: 模型服务限流
+          description: 10 分钟内出现模型 429。Runbook：#modelratelimited
+      - alert: DatabaseUnavailable
+        expr: dependency_up{dependency="postgresql"} == 0
+        for: 2m
+        labels: {severity: critical}
+        annotations:
+          summary: PostgreSQL 不可用
+          description: 就绪检查连续 2 分钟无法连接数据库。Runbook：#databaseunavailable
+      - alert: RedisUnavailable
+        expr: dependency_up{dependency="redis"} == 0
+        for: 2m
+        labels: {severity: critical}
+        annotations:
+          summary: Redis 不可用
+          description: 就绪检查连续 2 分钟无法连接 Redis。Runbook：#redisunavailable

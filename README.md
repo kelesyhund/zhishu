@@ -4,9 +4,9 @@
 
 前端品牌、信息架构和页面改造记录见 [第十二阶段：知枢品牌与前端体验改造](docs/stage-12-zhishu-frontend-redesign.md)，多租户治理设计与验证记录见 [第十三阶段：组织、工作空间、RBAC与审计](docs/stage-13-enterprise-workspace-rbac-audit.md)。
 
-## 当前版本为什么可以零配置运行
+## 本地体验与生产边界
 
-为了优先得到三天内可运行的版本，默认使用 SQLite，并内置一个确定性的哈希向量算法。未配置大模型时，系统会把检索到的最相关原文作为演示答案。既可以继续使用环境变量，也可以在页面中为不同知识库分别选择 OpenAI 兼容的 Chat 与 Embedding 配置。
+本地体验默认使用 SQLite，并内置一个确定性的哈希向量算法。未配置大模型时，系统会把检索到的最相关原文作为演示答案。既可以继续使用环境变量，也可以在页面中为不同知识库分别选择 OpenAI 兼容的 Chat 与 Embedding 配置。生产部署必须配置独立密钥、可信主机、HTTPS、PostgreSQL、Redis 与独立 Celery Worker。
 
 Windows简单启动脚本会启用Celery eager和进程内锁，便于无Redis学习；真正的异步上传使用阶段Compose中的Redis、Celery和PostgreSQL。向量仍保存为JSON并由Python计算，后续可按数据规模升级pgvector。
 
@@ -58,6 +58,8 @@ cd C:\Users\777\Documents\Codex\2026-07-30\w\work\knowledge-chat
 ```env
 ALLOW_USER_REGISTRATION=false
 ```
+
+后台浏览器使用 HttpOnly Session Cookie 和 CSRF 防护，页面刷新通过 `/api/auth/me/` 恢复身份；历史 Token 认证只作为兼容接口保留，不再写入浏览器 `localStorage`。组织管理员可以发送一次性成员邀请，成员通过邀请注册或加入指定组织与工作空间。
 
 该方式为了零基础学习启用eager模式：API契约仍返回202和Task，但Worker在请求进程内执行。要观察真实队列、跨进程Worker和分布式锁，使用：
 
@@ -192,6 +194,29 @@ POST /api/v1/applications/{application_id}/chat/completions
 
 第十一阶段25个核心概念与实际调用链的新手讲解见
 [`docs/stage-11-learning-guide.md`](docs/stage-11-learning-guide.md)。
+
+第十四阶段Session/CSRF、成员邀请、企业工作台、任务中心与账号安全设计见
+[`docs/stage-14-enterprise-workbench-invitations-security.md`](docs/stage-14-enterprise-workbench-invitations-security.md)，新手学习讲解见
+[`docs/stage-14-learning-guide.md`](docs/stage-14-learning-guide.md)。
+
+第十五阶段生产Compose、Nginx、健康检查、JSON日志、OpenTelemetry、Prometheus/Grafana、任务恢复和备份方案见
+[`docs/stage-15-production-observability.md`](docs/stage-15-production-observability.md)，可复制运维命令见
+[`docs/stage-15-operations-runbook.md`](docs/stage-15-operations-runbook.md)，新手学习讲解见
+[`docs/stage-15-learning-guide.md`](docs/stage-15-learning-guide.md)。
+
+## 生产Compose（第十五阶段）
+
+生产拓扑与Stage08学习环境分离。请先复制并安全填写环境文件；所有业务和监控端口默认只绑定本机：
+
+```powershell
+Copy-Item .env.production.example .env.production
+docker compose -f docker-compose.production.yml config --quiet
+docker compose -f docker-compose.production.yml build
+docker compose -f docker-compose.production.yml --profile ops run --rm migrate
+docker compose -f docker-compose.production.yml up -d
+```
+
+正式配置要求可信HTTPS终结。仅在loopback本机验收且没有TLS终结器时，可叠加`docker-compose.production.local.yml`后访问`http://127.0.0.1:18080`；该覆盖不能用于公网。不要提交`.env.production`、数据库dump或media。
 
 ## 第十一阶段可复现工作流
 

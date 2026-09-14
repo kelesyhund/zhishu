@@ -142,6 +142,91 @@ class AuditEvent(models.Model):
         ordering = ["-created_at", "-id"]
 
 
+class AccountProfile(models.Model):
+    """可渐进迁移的邮箱身份层，避免在已有项目中替换 Django User。"""
+
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="account_profile")
+    normalized_email = models.EmailField(max_length=254, null=True, blank=True, unique=True)
+    email_verified_at = models.DateTimeField(null=True, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+
+class AccountSession(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="account_sessions")
+    public_id = models.UUIDField(default=uuid.uuid4, unique=True, editable=False)
+    session_key_digest = models.CharField(max_length=64, unique=True)
+    user_agent_summary = models.CharField(max_length=200, blank=True, default="")
+    ip_hash = models.CharField(max_length=64, blank=True, default="")
+    created_at = models.DateTimeField(auto_now_add=True)
+    last_seen_at = models.DateTimeField(auto_now=True)
+    revoked_at = models.DateTimeField(null=True, blank=True)
+
+    class Meta:
+        ordering = ["-last_seen_at", "-id"]
+
+
+class OrganizationInvitation(models.Model):
+    class Status(models.TextChoices):
+        PENDING = "PENDING", "待接受"
+        ACCEPTED = "ACCEPTED", "已接受"
+        REVOKED = "REVOKED", "已撤销"
+        EXPIRED = "EXPIRED", "已过期"
+
+    organization = models.ForeignKey(
+        Organization, on_delete=models.CASCADE, related_name="invitations"
+    )
+    email_normalized = models.EmailField(max_length=254)
+    organization_role = models.CharField(
+        max_length=20, choices=OrganizationMembership.Role.choices,
+        default=OrganizationMembership.Role.MEMBER,
+    )
+    token_digest = models.CharField(max_length=64, unique=True)
+    status = models.CharField(max_length=20, choices=Status.choices, default=Status.PENDING)
+    expires_at = models.DateTimeField()
+    invited_by = models.ForeignKey(
+        User, null=True, on_delete=models.SET_NULL, related_name="sent_organization_invitations"
+    )
+    accepted_by = models.ForeignKey(
+        User, null=True, blank=True, on_delete=models.SET_NULL,
+        related_name="accepted_organization_invitations",
+    )
+    accepted_at = models.DateTimeField(null=True, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ["-created_at", "-id"]
+        constraints = [
+            models.UniqueConstraint(
+                fields=["organization", "email_normalized"],
+                condition=models.Q(status="PENDING"),
+                name="unique_pending_organization_invitation",
+            )
+        ]
+
+
+class InvitationWorkspaceGrant(models.Model):
+    invitation = models.ForeignKey(
+        OrganizationInvitation, on_delete=models.CASCADE, related_name="workspace_grants"
+    )
+    workspace = models.ForeignKey(
+        Workspace, on_delete=models.CASCADE, related_name="invitation_grants"
+    )
+    workspace_role = models.CharField(
+        max_length=20, choices=WorkspaceMembership.Role.choices,
+        default=WorkspaceMembership.Role.VIEWER,
+    )
+
+    class Meta:
+        ordering = ["workspace_id", "id"]
+        constraints = [
+            models.UniqueConstraint(
+                fields=["invitation", "workspace"], name="unique_invitation_workspace_grant"
+            )
+        ]
+
+
 class ModelConfig(models.Model):
     class ModelType(models.TextChoices):
         CHAT = "CHAT", "Chat模型"

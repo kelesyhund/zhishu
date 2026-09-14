@@ -1,25 +1,44 @@
 import { defineStore } from 'pinia'
 import { computed, ref } from 'vue'
+import { getCurrentUser, type CurrentUser } from '../api'
 
 export const useAuthStore = defineStore('auth', () => {
-  const token = ref(localStorage.getItem('token') || '')
-  const username = ref(localStorage.getItem('username') || '')
-  const loggedIn = computed(() => Boolean(token.value))
+  localStorage.removeItem('token')
+  const currentUser = ref<CurrentUser | null>(null)
+  const username = computed(() => currentUser.value?.username || '')
+  const authInitializing = ref(false)
+  const initialized = ref(false)
+  const loggedIn = computed(() => Boolean(currentUser.value))
 
-  function setAuth(nextToken: string, nextUsername: string) {
-    token.value = nextToken
-    username.value = nextUsername
-    localStorage.setItem('token', nextToken)
-    localStorage.setItem('username', nextUsername)
-  }
-
-  function logout() {
-    token.value = ''
-    username.value = ''
+  function setAuth(user: CurrentUser) {
+    currentUser.value = user
+    initialized.value = true
     localStorage.removeItem('token')
     localStorage.removeItem('username')
     localStorage.removeItem('active_workspace_id')
   }
 
-  return { token, username, loggedIn, setAuth, logout }
+  function logout() {
+    currentUser.value = null
+    initialized.value = true
+    localStorage.removeItem('token')
+    localStorage.removeItem('active_workspace_id')
+  }
+
+  async function initialize(force = false) {
+    if ((initialized.value && !force) || authInitializing.value) return
+    authInitializing.value = true
+    localStorage.removeItem('token')
+    localStorage.removeItem('username')
+    try {
+      currentUser.value = await getCurrentUser()
+    } catch {
+      currentUser.value = null
+    } finally {
+      initialized.value = true
+      authInitializing.value = false
+    }
+  }
+
+  return { currentUser, username, loggedIn, authInitializing, initialized, setAuth, logout, initialize }
 })

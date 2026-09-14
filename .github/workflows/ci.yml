@@ -1,0 +1,88 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  backend:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: backend
+    env:
+      CELERY_TASK_ALWAYS_EAGER: "true"
+      DOCUMENT_TASK_LOCK_BACKEND: memory
+      EMAIL_BACKEND: django.core.mail.backends.locmem.EmailBackend
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+          cache: pip
+          cache-dependency-path: backend/requirements.txt
+      - run: pip install -r requirements.txt
+      - run: python manage.py test
+      - run: python manage.py makemigrations --check --dry-run
+      - run: python manage.py check
+      - name: Django production deployment check
+        env:
+          APP_ENV: production
+          DEBUG: "false"
+          DJANGO_SECRET_KEY: ci-only-secret-that-is-long-and-never-used-outside-ci
+          ALLOWED_HOSTS: ci.local
+          CSRF_TRUSTED_ORIGINS: https://ci.local
+          DATABASE_ENGINE: postgresql
+          POSTGRES_DB: ci
+          POSTGRES_USER: ci
+          POSTGRES_PASSWORD: ci-only-password
+          CELERY_TASK_ALWAYS_EAGER: "false"
+        run: python manage.py check --deploy
+
+  frontend:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: frontend
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+      - run: npm ci
+      - run: npm run type-check
+      - run: npm run build
+
+  production-containers:
+    runs-on: ubuntu-latest
+    needs: [backend, frontend]
+    env:
+      ZHISHU_ENV_FILE: .env.production.example
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate Compose model
+        run: docker compose -f docker-compose.production.yml config --quiet
+      - name: Build production images
+        run: docker compose -f docker-compose.production.yml build backend nginx
+      - name: Validate Nginx configuration
+        run: docker compose -f docker-compose.production.yml run --rm --no-deps nginx nginx -t
+      - name: Assert backend image excludes local secrets and data
+        run: docker compose -f docker-compose.production.yml run --rm --no-deps backend sh -c 'test ! -e /app/.git && test ! -e /app/.env && test ! -e /app/db.sqlite3 && test ! -e /app/media'
+      - name: Start production dependencies and migrate
+        run: |
+          docker compose -f docker-compose.production.yml up -d postgres redis jaeger otel-collector
+          docker compose -f docker-compose.production.yml --profile ops run --rm migrate
+      - name: Start web path and smoke health
+        run: |
+          docker compose -f docker-compose.production.yml up -d backend nginx
+          for attempt in {1..30}; do curl --fail http://127.0.0.1:18080/health/live/ && break; sleep 2; done
+          curl --fail http://127.0.0.1:18080/
+      - name: Container diagnostics
+        if: always()
+        run: docker compose -f docker-compose.production.yml ps && docker compose -f docker-compose.production.yml logs --no-color --tail=200
+      - name: Stop temporary stack
+        if: always()
+        run: docker compose -f docker-compose.production.yml down -v

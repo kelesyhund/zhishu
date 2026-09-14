@@ -1,5 +1,6 @@
 import json
 from collections.abc import Iterator
+from time import perf_counter
 
 from api.models import KnowledgeBase
 
@@ -8,6 +9,15 @@ from .model_clients import ModelServiceError, create_openai_client, map_model_ex
 from .model_resolution import resolve_chat_config
 from .prompt_builder import build_no_answer_message, build_rag_messages
 from .retrieval import retrieve_candidates
+from ..observability import (
+    MODEL_FIRST_TOKEN_DURATION,
+    MODEL_REQUEST_DURATION,
+    MODEL_REQUESTS_TOTAL,
+    RAG_NO_ANSWER_TOTAL,
+    model_provider,
+    record_model_failure,
+    traced,
+)
 
 
 def search_paragraphs(
@@ -29,6 +39,7 @@ def stream_answer(
     references: list[dict],
 ) -> Iterator[str]:
     if not references:
+        RAG_NO_ANSWER_TOTAL.inc()
         message = build_no_answer_message(knowledge_base)
         for index in range(0, len(message), 16):
             yield message[index : index + 16]
@@ -36,28 +47,41 @@ def stream_answer(
 
     config = resolve_chat_config(knowledge_base)
     if config:
+        provider = model_provider(getattr(config, "source", "DATABASE"))
+        started = perf_counter()
+        first_token = False
         try:
-            with create_openai_client(config) as client:
+            with traced("context.build", selected_count=len(references)):
+                messages = build_rag_messages(knowledge_base, question, references)
+            with traced("llm.chat", model_type="CHAT", provider=provider), create_openai_client(config) as client:
                 stream = client.chat.completions.create(
                     model=config.model_name,
-                    messages=build_rag_messages(knowledge_base, question, references),
+                    messages=messages,
                     stream=True,
                 )
                 for chunk in stream:
                     content = chunk.choices[0].delta.content or ""
                     if content:
+                        if not first_token:
+                            first_token = True
+                            MODEL_FIRST_TOKEN_DURATION.labels(provider).observe(max(0, perf_counter() - started))
                         yield content
+            MODEL_REQUESTS_TOTAL.labels("CHAT", provider, "success").inc()
         except Exception as exc:
-            raise map_model_exception(exc) from exc
+            mapped = map_model_exception(exc)
+            record_model_failure("CHAT", provider, mapped.error_code)
+            raise mapped from exc
+        finally:
+            MODEL_REQUEST_DURATION.labels("CHAT", provider).observe(max(0, perf_counter() - started))
         return
 
     best = references[0]
-    demo_answer = (
-        "当前处于本地演示模式，尚未配置大模型。根据检索到的资料，最相关内容如下：\n\n"
+    fallback_answer = (
+        "当前未配置生成模型，系统已切换为证据检索模式。根据知识库资料，最相关内容如下：\n\n"
         f"{best['content'][:600]}\n\n[资料1：{best['document_name']}]"
     )
-    for index in range(0, len(demo_answer), 16):
-        yield demo_answer[index : index + 16]
+    for index in range(0, len(fallback_answer), 16):
+        yield fallback_answer[index : index + 16]
 
 
 def sse(event: str, data) -> str:

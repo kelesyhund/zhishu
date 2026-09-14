@@ -1,4 +1,4 @@
-import client from './client'
+import client, { csrfToken } from './client'
 
 export interface KnowledgeBase {
   id: number
@@ -608,8 +608,30 @@ function isRecord(value: unknown): value is Record<string, unknown> {
   return typeof value === 'object' && value !== null && !Array.isArray(value)
 }
 
-export async function login(username: string, password: string) {
-  return (await client.post('/login/', { username, password })).data.data
+export interface CurrentUser {
+  id: number
+  username: string
+  email_masked: string
+  email_configured: boolean
+  email_verified: boolean
+}
+
+export async function initializeCsrf(): Promise<void> {
+  await client.get('/auth/csrf/')
+}
+
+export async function getCurrentUser(): Promise<CurrentUser> {
+  return (await client.get('/auth/me/')).data.data
+}
+
+export async function login(username: string, password: string): Promise<CurrentUser> {
+  await initializeCsrf()
+  await client.post('/auth/login/', { username, password })
+  return getCurrentUser()
+}
+
+export async function logout(): Promise<void> {
+  await client.post('/auth/logout/')
 }
 
 export interface RegisterPayload {
@@ -620,12 +642,13 @@ export interface RegisterPayload {
 }
 
 export interface AuthResult {
-  token: string
+  id: number
   username: string
 }
 
 export async function register(payload: RegisterPayload): Promise<AuthResult> {
-  return (await client.post('/register/', payload)).data.data
+  await initializeCsrf()
+  return (await client.post('/auth/register/', payload)).data.data
 }
 
 export async function listKnowledgeBases(params: KnowledgeBaseListParams = {}): Promise<KnowledgeBasePage> {
@@ -957,9 +980,10 @@ export async function streamChat(
 ) {
   const response = await fetch(`/api/knowledge-bases/${id}/chat/stream/`, {
     method: 'POST',
+    credentials: 'include',
     headers: {
       'Content-Type': 'application/json',
-      Authorization: `Token ${localStorage.getItem('token') || ''}`,
+      'X-CSRFToken': csrfToken(),
       'X-Workspace-ID': localStorage.getItem('active_workspace_id') || '',
     },
     body: JSON.stringify({ message, conversation_id: conversationId }),
@@ -1223,9 +1247,10 @@ export async function streamApplicationPreview(
 ) {
   const response = await fetch(`/api/applications/${id}/preview/chat/stream/`, {
     method: 'POST',
+    credentials: 'include',
     headers: {
       'Content-Type': 'application/json',
-      Authorization: `Token ${localStorage.getItem('token') || ''}`,
+      'X-CSRFToken': csrfToken(),
       'X-Workspace-ID': localStorage.getItem('active_workspace_id') || '',
     },
     body: JSON.stringify({ message, conversation_id: conversationId }),
@@ -1267,4 +1292,91 @@ export async function streamPublicApplicationChat(
     body: JSON.stringify({ message, conversation_id: conversationId }),
   })
   return readSseResponse(response, onEvent)
+}
+
+export interface DashboardOverview {
+  range: '7d' | '30d'
+  counts: Record<string, number>
+  application_calls: { total: number; success: number; success_rate: number; average_latency_ms: number; p95_latency_ms: number; no_answer: number }
+  document_processing: { total: number; success: number; success_rate: number }
+  task_counts: { active: number; failure: number }
+  trend: { date: string; total: number; success: number }[]
+}
+
+export interface AttentionItem { type: string; title: string; description: string; resource_id: number }
+export async function getDashboardOverview(range: '7d' | '30d' = '7d'): Promise<DashboardOverview> {
+  return (await client.get('/dashboard/overview/', { params: { range } })).data.data
+}
+export async function getDashboardAttention(): Promise<{ items: AttentionItem[]; total: number }> {
+  return (await client.get('/dashboard/attention-items/')).data.data
+}
+export async function getDashboardActivity(): Promise<PageResult<AuditEventItem>> {
+  return (await client.get('/dashboard/activity/')).data.data
+}
+
+export interface GlobalTaskItem {
+  id: number; document_id: number; document_name: string; knowledge_base_id: number | null
+  knowledge_base_name: string; task_type: string; status: string; progress: number
+  current_stage: string; attempt_count: number; error_message: string; created_at: string; updated_at: string
+}
+export async function listGlobalTasks(params: Record<string, string | number> = {}): Promise<PageResult<GlobalTaskItem>> {
+  return (await client.get('/processing-tasks/', { params })).data.data
+}
+export async function retryGlobalTask(id: number): Promise<GlobalTaskItem> {
+  return (await client.post(`/processing-tasks/${id}/retry/`)).data.data
+}
+export async function cancelGlobalTask(id: number): Promise<GlobalTaskItem> {
+  return (await client.post(`/processing-tasks/${id}/cancel/`)).data.data
+}
+
+export interface AccountSessionItem {
+  id: string; user_agent: string; ip_summary: string; created_at: string; last_seen_at: string; current: boolean
+}
+export async function listAccountSessions(): Promise<{ items: AccountSessionItem[]; total: number }> {
+  return (await client.get('/auth/sessions/')).data.data
+}
+export async function revokeAccountSession(id: string): Promise<void> { await client.delete(`/auth/sessions/${id}/`) }
+export async function logoutOtherSessions(): Promise<number> {
+  return (await client.post('/auth/sessions/logout-others/')).data.data.revoked_count
+}
+export async function changePassword(currentPassword: string, newPassword: string): Promise<void> {
+  await client.post('/auth/change-password/', { current_password: currentPassword, new_password: newPassword })
+}
+export async function requestPasswordReset(email: string): Promise<void> {
+  await initializeCsrf(); await client.post('/auth/password-reset/request/', { email })
+}
+export async function confirmPasswordReset(uid: string, token: string, newPassword: string): Promise<void> {
+  await initializeCsrf(); await client.post('/auth/password-reset/confirm/', { uid, token, new_password: newPassword })
+}
+export async function requestEmailVerification(): Promise<void> { await client.post('/auth/email-verification/request/') }
+export async function confirmEmailVerification(token: string): Promise<void> {
+  await initializeCsrf(); await client.post('/auth/email-verification/confirm/', { token })
+}
+
+export interface InvitationItem {
+  id: number; email_masked: string; organization_role: OrganizationRole; status: string
+  expires_at: string; workspace_grants: { workspace_id: number; workspace_name: string; role: WorkspaceRole }[]; created_at: string
+  invitation_url?: string
+}
+export async function listInvitations(organizationId: number): Promise<{ items: InvitationItem[]; total: number }> {
+  return (await client.get(`/organizations/${organizationId}/invitations/`)).data.data
+}
+export async function createInvitation(organizationId: number, payload: {
+  email: string; organization_role: OrganizationRole; workspace_grants: { workspace_id: number; role: WorkspaceRole }[]
+}): Promise<InvitationItem> {
+  return (await client.post(`/organizations/${organizationId}/invitations/`, payload)).data.data
+}
+export async function invitationAction(organizationId: number, invitationId: number, action: 'revoke' | 'resend'): Promise<InvitationItem> {
+  return (await client.post(`/organizations/${organizationId}/invitations/${invitationId}/${action}/`)).data.data
+}
+export interface InvitationPreview { organization_name: string; email_masked: string; expires_at: string; status: string }
+export async function previewInvitation(token: string): Promise<InvitationPreview> {
+  return (await client.get(`/invitations/${encodeURIComponent(token)}/preview/`)).data.data
+}
+export async function acceptInvitation(token: string): Promise<void> {
+  await initializeCsrf(); await client.post(`/invitations/${encodeURIComponent(token)}/accept/`)
+}
+export async function registerAndAcceptInvitation(token: string, payload: Omit<RegisterPayload, 'email'>): Promise<AuthResult> {
+  await initializeCsrf()
+  return (await client.post(`/invitations/${encodeURIComponent(token)}/register-and-accept/`, payload)).data.data
 }

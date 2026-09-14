@@ -1,11 +1,19 @@
 import hashlib
 import math
+from time import perf_counter
 
 from api.models import KnowledgeBase
 
 from .model_clients import create_openai_client, map_model_exception
 from .model_resolution import resolve_embedding_config
 from .retrieval_tokenizer import tokenize_text
+from ..observability import (
+    MODEL_REQUEST_DURATION,
+    MODEL_REQUESTS_TOTAL,
+    model_provider,
+    record_model_failure,
+    traced,
+)
 
 
 VECTOR_SIZE = 256
@@ -25,15 +33,27 @@ def local_embedding(text: str) -> list[float]:
 def embed_texts(texts: list[str], knowledge_base: KnowledgeBase | None = None) -> list[list[float]]:
     config = resolve_embedding_config(knowledge_base) if knowledge_base else None
     if config:
+        provider = model_provider(getattr(config, "source", "DATABASE"))
+        started = perf_counter()
         try:
-            with create_openai_client(config) as client:
+            with traced(
+                "embedding.batch",
+                model_type="EMBEDDING",
+                provider=provider,
+                selected_count=len(texts),
+            ), create_openai_client(config) as client:
                 response = client.embeddings.create(model=config.model_name, input=texts)
             vectors = [item.embedding for item in response.data]
             if len(vectors) != len(texts) or any(not vector for vector in vectors):
                 raise ValueError("invalid embedding response")
+            MODEL_REQUESTS_TOTAL.labels("EMBEDDING", provider, "success").inc()
             return vectors
         except Exception as exc:
-            raise map_model_exception(exc) from exc
+            mapped = map_model_exception(exc)
+            record_model_failure("EMBEDDING", provider, mapped.error_code)
+            raise mapped from exc
+        finally:
+            MODEL_REQUEST_DURATION.labels("EMBEDDING", provider).observe(max(0, perf_counter() - started))
     return [local_embedding(text) for text in texts]
 
 

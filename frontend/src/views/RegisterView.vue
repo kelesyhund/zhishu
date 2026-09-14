@@ -4,7 +4,7 @@ import { useRouter } from 'vue-router'
 import type { FormInstance, FormRules } from 'element-plus'
 import { ElMessage } from 'element-plus'
 
-import { register } from '../api'
+import { getCurrentUser, register } from '../api'
 import { errorMessage } from '../api/client'
 import BrandLogo from '../components/BrandLogo.vue'
 import { useAuthStore } from '../stores/auth'
@@ -32,7 +32,10 @@ const rules: FormRules<RegisterForm> = {
     { required: true, message: '请输入用户名', trigger: 'blur' },
     { min: 3, max: 30, message: '用户名长度为 3～30 个字符', trigger: 'blur' },
   ],
-  email: [{ type: 'email', message: '请输入正确的邮箱地址', trigger: 'blur' }],
+  email: [
+    { required: true, message: '请输入邮箱地址', trigger: 'blur' },
+    { type: 'email', message: '请输入正确的邮箱地址', trigger: 'blur' },
+  ],
   password: [
     { required: true, message: '请输入密码', trigger: 'blur' },
     { min: 8, max: 128, message: '密码长度至少为 8 个字符', trigger: 'blur' },
@@ -49,17 +52,17 @@ async function submit() {
   if (!valid) return
   loading.value = true
   try {
-    const data = await register({
+    await register({
       username: form.username.trim(),
-      email: form.email.trim() || undefined,
+      email: form.email.trim(),
       password: form.password,
       password_confirm: form.passwordConfirm,
     })
     form.password = ''
     form.passwordConfirm = ''
-    auth.setAuth(data.token, data.username)
+    auth.setAuth(await getCurrentUser())
     ElMessage.success('注册成功，已为你创建个人组织和默认工作空间')
-    await router.push('/knowledge')
+    await router.push('/dashboard')
   } catch (error) {
     ElMessage.error(errorMessage(error))
   } finally {
@@ -94,7 +97,7 @@ async function submit() {
           <el-form-item label="用户名" prop="username">
             <el-input v-model="form.username" size="large" maxlength="30" placeholder="3～30 个字符" autocomplete="username" />
           </el-form-item>
-          <el-form-item label="邮箱（选填）" prop="email">
+          <el-form-item label="邮箱" prop="email">
             <el-input v-model="form.email" size="large" maxlength="254" placeholder="用于后续接收账号通知" autocomplete="email" />
           </el-form-item>
           <div class="password-grid">

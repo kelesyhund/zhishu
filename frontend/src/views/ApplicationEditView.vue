@@ -20,7 +20,7 @@
           <el-form-item label="应用名称"><el-input v-model="form.name" maxlength="100" /></el-form-item>
           <el-form-item label="应用说明"><el-input v-model="form.description" type="textarea" maxlength="1000" /></el-form-item>
           <el-form-item label="Chat模型">
-            <el-select v-model="form.chat_model_config_id" clearable placeholder="系统默认/本地演示">
+            <el-select v-model="form.chat_model_config_id" clearable placeholder="使用工作空间默认配置">
               <el-option v-for="item in chatModels" :key="item.id" :label="`${item.name} / ${item.model_name}`" :value="item.id" />
             </el-select>
           </el-form-item>

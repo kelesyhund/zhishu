@@ -12,6 +12,7 @@ from api.models import Document, DocumentProcessingTask
 from .document_processor import DocumentProcessingCancelled, process_document, safe_document_error
 from .document_task_lock import DocumentTaskLockError, document_processing_lock
 from .model_clients import ModelServiceError
+from ..observability import current_request_id, traced
 
 
 @dataclass(frozen=True)
@@ -84,7 +85,15 @@ def dispatch_processing_task(task_id: int) -> TaskDispatchResult:
     def send():
         nonlocal dispatched
         try:
-            result = process_document_task.apply_async(args=[task_id])
+            from ..telemetry_compat import inject
+
+            headers = {}
+            if current_request_id():
+                headers["x-request-id"] = current_request_id()
+            inject(headers)
+            with traced("task.enqueue", task_id=task_id):
+                options = {"headers": headers} if headers else {}
+                result = process_document_task.apply_async(args=[task_id], **options)
             DocumentProcessingTask.objects.filter(pk=task_id).update(
                 celery_task_id=result.id or "",
                 updated_at=timezone.now(),

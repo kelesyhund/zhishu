@@ -1,6 +1,9 @@
 backend/.env
 .models/
 .env.stage08
+.env.production
+backups/*.dump
+backups/*.sha256
 backend/db.sqlite3
 *.sqlite3
 backend/media/

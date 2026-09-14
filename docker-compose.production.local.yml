@@ -1,0 +1,7 @@
+# Only for loopback acceptance without a TLS terminator. Never expose this override publicly.
+services:
+  backend:
+    environment:
+      SECURE_SSL_REDIRECT: "false"
+      SESSION_COOKIE_SECURE: "false"
+      CSRF_COOKIE_SECURE: "false"

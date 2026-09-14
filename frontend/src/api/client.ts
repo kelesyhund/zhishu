@@ -3,14 +3,15 @@ import axios from 'axios'
 const client = axios.create({
   baseURL: '/api',
   timeout: 120000,
+  withCredentials: true,
+  xsrfCookieName: 'csrftoken',
+  xsrfHeaderName: 'X-CSRFToken',
 })
 
 client.interceptors.request.use((config) => {
-  const token = localStorage.getItem('token')
-  if (token) config.headers.Authorization = `Token ${token}`
   const workspaceId = localStorage.getItem('active_workspace_id')
   const url = config.url || ''
-  if (token && workspaceId && !url.startsWith('/public/') && !url.startsWith('/v1/')) {
+  if (workspaceId && !url.startsWith('/public/') && !url.startsWith('/v1/')) {
     config.headers['X-Workspace-ID'] = workspaceId
   }
   return config
@@ -20,9 +21,9 @@ client.interceptors.response.use(
   (response) => response,
   (error) => {
     if (error.response?.status === 401) {
-      localStorage.removeItem('token')
       localStorage.removeItem('active_workspace_id')
-      if (location.pathname !== '/login') location.href = '/login'
+      const publicPath = location.pathname.startsWith('/share/') || location.pathname.startsWith('/invite/') || ['/reset-password','/verify-email'].includes(location.pathname)
+      if (!publicPath && location.pathname !== '/login') location.href = '/login'
     }
     return Promise.reject(error)
   },
@@ -51,3 +52,8 @@ export function errorStatus(error: unknown): number | undefined {
 }
 
 export default client
+
+export function csrfToken(): string {
+  const entry = document.cookie.split('; ').find((item) => item.startsWith('csrftoken='))
+  return entry ? decodeURIComponent(entry.slice('csrftoken='.length)) : ''
+}

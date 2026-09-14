@@ -17,6 +17,15 @@ from .vector_retrieval import (
     normalize_vector_score,
     rank_vector_scores,
 )
+from ..observability import (
+    RAG_BM25_DURATION,
+    RAG_CANDIDATES_TOTAL,
+    RAG_RERANK_DURATION,
+    RAG_RERANK_FALLBACKS_TOTAL,
+    RAG_RETRIEVAL_DURATION,
+    RAG_VECTOR_DURATION,
+    traced,
+)
 
 
 @dataclass(frozen=True)
@@ -239,16 +248,24 @@ def prepare_retrieval(knowledge_base, query, *, embedding_function=None) -> Prep
     if not paragraph_list:
         return PreparedRetrieval(query, settings, (), round((perf_counter() - started) * 1000))
 
-    query_vector = (embedding_function or embed_texts)([query], knowledge_base)[0]
+    with traced("query.embedding"):
+        query_vector = (embedding_function or embed_texts)([query], knowledge_base)[0]
+    vector_started = perf_counter()
     try:
-        vector_scores = calculate_vector_scores(query_vector, paragraph_list)
+        with traced("retrieval.vector", candidate_count=len(paragraph_list)):
+            vector_scores = calculate_vector_scores(query_vector, paragraph_list)
     except ValueError as exc:
         raise ModelServiceError(
             "文档向量与当前Embedding配置不兼容，请重新处理文档",
             "VECTOR_MISMATCH",
         ) from exc
-    tokenized = {paragraph.id: tokenize_text(paragraph.content) for paragraph in paragraph_list}
-    keyword_scores = calculate_bm25_scores(tokenize_text(query), tokenized)
+    finally:
+        RAG_VECTOR_DURATION.observe(max(0, perf_counter() - vector_started))
+    bm25_started = perf_counter()
+    with traced("retrieval.bm25", candidate_count=len(paragraph_list)):
+        tokenized = {paragraph.id: tokenize_text(paragraph.content) for paragraph in paragraph_list}
+        keyword_scores = calculate_bm25_scores(tokenize_text(query), tokenized)
+    RAG_BM25_DURATION.observe(max(0, perf_counter() - bm25_started))
     candidates = tuple(
         RetrievalCandidate(
             paragraph_id=paragraph.id,
@@ -382,7 +399,8 @@ def retrieve_from_prepared(
     fallback_code = fallback_reason = ""
     if effective.rerank_enabled and uses_rrf and eligible:
         rerank_input = eligible[: effective.rerank_candidate_k]
-        outcome = (reranker_function or rerank_candidates)(prepared.query, rerank_input)
+        with traced("retrieval.rerank", candidate_count=len(rerank_input)):
+            outcome = (reranker_function or rerank_candidates)(prepared.query, rerank_input)
         rerank_applied = outcome.applied
         fallback_code = outcome.fallback_code
         fallback_reason = outcome.fallback_reason
@@ -476,10 +494,28 @@ def retrieve_candidates(
     settings_override=None,
     reranker_function=None,
 ) -> RetrievalResult:
-    prepared = prepare_retrieval(knowledge_base, query, embedding_function=embedding_function)
-    return retrieve_from_prepared(
-        prepared,
-        settings=settings_override,
-        top_k_override=top_k_override,
-        reranker_function=reranker_function,
+    started = perf_counter()
+    with traced("rag.prepare", knowledge_base_id=knowledge_base.id):
+        prepared = prepare_retrieval(knowledge_base, query, embedding_function=embedding_function)
+    uses_rrf = (
+        prepared.settings.mode == KnowledgeBase.RetrievalMode.HYBRID
+        and prepared.settings.fusion_method == KnowledgeBase.FusionMethod.RRF
     )
+    with traced("retrieval.rrf" if uses_rrf else "retrieval.rank", candidate_count=len(prepared.candidates)):
+        result = retrieve_from_prepared(
+            prepared,
+            settings=settings_override,
+            top_k_override=top_k_override,
+            reranker_function=reranker_function,
+        )
+    strategy = (
+        "VECTOR" if result.settings.mode == KnowledgeBase.RetrievalMode.VECTOR
+        else result.settings.fusion_method
+    )
+    RAG_RETRIEVAL_DURATION.labels(strategy).observe(max(0, perf_counter() - started))
+    RAG_CANDIDATES_TOTAL.labels(strategy).inc(result.candidate_count)
+    RAG_RERANK_DURATION.observe(max(0, result.stage_timings.get("rerank_ms", 0) / 1000))
+    if result.rerank_fallback_code:
+        code = result.rerank_fallback_code[:40].upper().replace("-", "_")
+        RAG_RERANK_FALLBACKS_TOTAL.labels(code if code else "OTHER").inc()
+    return result

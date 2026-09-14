@@ -7,6 +7,7 @@ from rest_framework import serializers
 
 from .models import (
     AgentRun,
+    AccountProfile,
     Application,
     ApplicationAccessLog,
     ApplicationCredential,
@@ -55,7 +56,10 @@ class RegisterSerializer(serializers.Serializer):
         return username
 
     def validate_email(self, value):
-        return value.strip().lower()
+        normalized = value.strip().lower()
+        if normalized and AccountProfile.objects.filter(normalized_email=normalized).exists():
+            raise serializers.ValidationError("该邮箱已被使用")
+        return normalized
 
     def validate(self, attrs):
         if attrs["password"] != attrs.pop("password_confirm"):
@@ -66,7 +70,13 @@ class RegisterSerializer(serializers.Serializer):
         return attrs
 
     def create(self, validated_data):
-        return User.objects.create_user(**validated_data)
+        user = User.objects.create_user(**validated_data)
+        email = validated_data.get("email", "")
+        if email:
+            profile, _ = AccountProfile.objects.get_or_create(user=user)
+            profile.normalized_email = email
+            profile.save(update_fields=["normalized_email", "updated_at"])
+        return user
 
 
 class KnowledgeBaseSerializer(serializers.ModelSerializer):

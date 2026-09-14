@@ -3,7 +3,7 @@ from django.db.models.signals import post_delete, post_save
 from django.dispatch import receiver
 from django.contrib.auth.models import User
 
-from .models import Document
+from .models import AccountProfile, Document
 
 
 @receiver(post_delete, sender=Document)
@@ -22,6 +22,7 @@ def delete_document_file(sender, instance, **kwargs):
 def create_personal_workspace(sender, instance, created, **kwargs):
     if not created:
         return
+    AccountProfile.objects.get_or_create(user=instance)
     from .services.workspaces import ensure_personal_workspace
 
     ensure_personal_workspace(instance)

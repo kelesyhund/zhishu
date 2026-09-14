@@ -1,22 +1,36 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
-import KnowledgeDetailView from './views/KnowledgeDetailView.vue'
-import KnowledgeListView from './views/KnowledgeListView.vue'
-import LoginView from './views/LoginView.vue'
-import RegisterView from './views/RegisterView.vue'
-import ModelConfigView from './views/ModelConfigView.vue'
-import ApplicationEditView from './views/ApplicationEditView.vue'
-import ApplicationListView from './views/ApplicationListView.vue'
-import ApplicationOverviewView from './views/ApplicationOverviewView.vue'
-import PublicChatView from './views/PublicChatView.vue'
-import OrganizationGovernanceView from './views/OrganizationGovernanceView.vue'
+import { useAuthStore } from './stores/auth'
+
+const KnowledgeDetailView = () => import('./views/KnowledgeDetailView.vue')
+const KnowledgeListView = () => import('./views/KnowledgeListView.vue')
+const LoginView = () => import('./views/LoginView.vue')
+const RegisterView = () => import('./views/RegisterView.vue')
+const ModelConfigView = () => import('./views/ModelConfigView.vue')
+const ApplicationEditView = () => import('./views/ApplicationEditView.vue')
+const ApplicationListView = () => import('./views/ApplicationListView.vue')
+const ApplicationOverviewView = () => import('./views/ApplicationOverviewView.vue')
+const PublicChatView = () => import('./views/PublicChatView.vue')
+const OrganizationGovernanceView = () => import('./views/OrganizationGovernanceView.vue')
+const DashboardView = () => import('./views/DashboardView.vue')
+const TaskCenterView = () => import('./views/TaskCenterView.vue')
+const AccountSecurityView = () => import('./views/AccountSecurityView.vue')
+const InvitationAcceptView = () => import('./views/InvitationAcceptView.vue')
+const PasswordResetView = () => import('./views/PasswordResetView.vue')
+const EmailVerificationView = () => import('./views/EmailVerificationView.vue')
 
 const router = createRouter({
   history: createWebHistory(),
   routes: [
-    { path: '/', redirect: '/knowledge' },
+    { path: '/', redirect: '/dashboard' },
     { path: '/login', component: LoginView },
     { path: '/register', component: RegisterView },
+    { path: '/reset-password', component: PasswordResetView },
+    { path: '/verify-email', component: EmailVerificationView },
+    { path: '/invite/:token', component: InvitationAcceptView },
+    { path: '/dashboard', component: DashboardView },
+    { path: '/tasks', component: TaskCenterView },
+    { path: '/account/security', component: AccountSecurityView },
     { path: '/knowledge', component: KnowledgeListView },
     { path: '/knowledge/:id', component: KnowledgeDetailView },
     { path: '/model-configs', component: ModelConfigView },
@@ -28,12 +42,13 @@ const router = createRouter({
   ],
 })
 
-router.beforeEach((to) => {
-  const token = localStorage.getItem('token')
-  if (to.path.startsWith('/share/')) return true
+router.beforeEach(async (to) => {
+  const auth = useAuthStore()
+  const publicPath = to.path.startsWith('/share/') || to.path.startsWith('/invite/') || ['/reset-password','/verify-email'].includes(to.path)
+  if (!auth.initialized && !publicPath) await auth.initialize()
   const publicAuthPaths = ['/login', '/register']
-  if (!publicAuthPaths.includes(to.path) && !token) return '/login'
-  if (publicAuthPaths.includes(to.path) && token) return '/knowledge'
+  if (!publicPath && !publicAuthPaths.includes(to.path) && !auth.loggedIn) return '/login'
+  if (publicAuthPaths.includes(to.path) && auth.loggedIn) return '/dashboard'
 })
 
 export default router
