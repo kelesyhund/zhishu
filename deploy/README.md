@@ -1,6 +1,6 @@
 # 知枢生产 Compose
 
-本目录保存 Nginx、Prometheus、Grafana、OpenTelemetry Collector、告警和安全备份脚本。完整操作顺序与故障处理见 `docs/stage-15-operations-runbook.md`。
+本目录保存 Nginx、Prometheus、Grafana、OpenTelemetry Collector、告警和安全备份脚本。完整操作顺序与故障处理见 [`docs/operations-runbook.md`](../docs/operations-runbook.md)。
 
 最短启动流程：
 
