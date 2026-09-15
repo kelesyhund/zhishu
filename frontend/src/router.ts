@@ -18,6 +18,7 @@ const AccountSecurityView = () => import('./views/AccountSecurityView.vue')
 const InvitationAcceptView = () => import('./views/InvitationAcceptView.vue')
 const PasswordResetView = () => import('./views/PasswordResetView.vue')
 const EmailVerificationView = () => import('./views/EmailVerificationView.vue')
+const VectorIndexView = () => import('./views/VectorIndexView.vue')
 
 const router = createRouter({
   history: createWebHistory(),
@@ -30,6 +31,7 @@ const router = createRouter({
     { path: '/invite/:token', component: InvitationAcceptView },
     { path: '/dashboard', component: DashboardView },
     { path: '/tasks', component: TaskCenterView },
+    { path: '/operations/vector-index', component: VectorIndexView },
     { path: '/account/security', component: AccountSecurityView },
     { path: '/knowledge', component: KnowledgeListView },
     { path: '/knowledge/:id', component: KnowledgeDetailView },

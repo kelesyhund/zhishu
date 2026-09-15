@@ -14,7 +14,7 @@ from .services.document_tasks import (
     mark_task_failed,
     mark_task_retrying,
 )
-from .models import DocumentProcessingTask
+from .models import DocumentProcessingTask, VectorMigrationRun
 from .observability import (
     CELERY_OLDEST_TASK_AGE,
     CELERY_QUEUE_DEPTH,
@@ -28,12 +28,14 @@ from .observability import (
     DOCUMENT_TASK_RETRIES_TOTAL,
     DOCUMENT_TASKS_IN_PROGRESS,
     DOCUMENT_TASKS_TOTAL,
+    VECTOR_BACKFILL_DURATION,
     LOG_CONTEXT,
     REQUEST_ID,
     normalized_error_code,
     traced,
 )
 from .services.task_recovery import reconcile_stale_processing_tasks
+from .services.vector_storage import execute_backfill_batch
 
 
 @shared_task(
@@ -116,3 +118,36 @@ def record_worker_heartbeat():
 @shared_task(name="api.tasks.reconcile_stale_document_tasks", ignore_result=True)
 def reconcile_stale_document_tasks():
     return {"converged": reconcile_stale_processing_tasks()}
+
+
+@shared_task(name="api.tasks.process_vector_migration", bind=True, acks_late=True, max_retries=3)
+def process_vector_migration_task(self, migration_run_id: int):
+    scope = VectorMigrationRun.objects.filter(pk=migration_run_id).values_list("workspace_id", "space_id").first()
+    if not scope:
+        return {"migration_run_id": migration_run_id, "status": "MISSING"}
+    lock_key = f"stage16:vector-migration:{scope[0]}:{scope[1]}"
+    if not cache.add(lock_key, self.request.id or "worker", timeout=120):
+        return {"migration_run_id": migration_run_id, "status": "LOCKED"}
+    try:
+        batch_started = perf_counter()
+        with traced("vector.backfill.batch", migration_run_id=migration_run_id):
+            result = execute_backfill_batch(migration_run_id)
+        VECTOR_BACKFILL_DURATION.observe(max(0, perf_counter() - batch_started))
+        if result.status == "RUNNING" and settings.CELERY_TASK_ALWAYS_EAGER:
+            while result.status == "RUNNING":
+                result = execute_backfill_batch(migration_run_id)
+        elif result.status == "RUNNING":
+            self.apply_async(args=[migration_run_id], countdown=0)
+        return {"migration_run_id": migration_run_id, "status": result.status, "processed": result.processed}
+    except Exception as exc:
+        if self.request.retries < self.max_retries:
+            raise self.retry(exc=exc, countdown=min(60, 5 * (2 ** self.request.retries)))
+        VectorMigrationRun.objects.filter(pk=migration_run_id).update(
+            status=VectorMigrationRun.Status.FAILURE,
+            error_message="向量迁移失败，请检查数据库与向量数据",
+            finished_at=timezone.now(),
+            updated_at=timezone.now(),
+        )
+        return {"migration_run_id": migration_run_id, "status": "FAILURE"}
+    finally:
+        cache.delete(lock_key)

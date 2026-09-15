@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "django.contrib.postgres",
     "corsheaders",
     "rest_framework",
     "rest_framework.authtoken",
@@ -295,3 +296,24 @@ RERANKER_TIMEOUT_SECONDS = max(
     min(float(os.getenv("RERANKER_TIMEOUT_SECONDS", "3")), 30.0),
 )
 RERANKER_ALLOW_DOWNLOAD = os.getenv("RERANKER_ALLOW_DOWNLOAD", "false").lower() == "true"
+
+# 第十六阶段向量迁移开关。默认保留旧 JSON/Python 链路，便于无损灰度和回滚。
+VECTOR_WRITE_MODE = os.getenv("VECTOR_WRITE_MODE", "LEGACY").strip().upper()
+VECTOR_READ_MODE = os.getenv("VECTOR_READ_MODE", "LEGACY").strip().upper()
+VECTOR_SHADOW_SAMPLE_RATE = float(os.getenv("VECTOR_SHADOW_SAMPLE_RATE", "0"))
+VECTOR_SEARCH_MODE = os.getenv("VECTOR_SEARCH_MODE", "EXACT").strip().upper()
+VECTOR_HNSW_EF_SEARCH = max(1, min(int(os.getenv("VECTOR_HNSW_EF_SEARCH", "100")), 1000))
+if VECTOR_WRITE_MODE not in {"LEGACY", "DUAL", "PGVECTOR"}:
+    raise RuntimeError("VECTOR_WRITE_MODE 必须为 LEGACY、DUAL 或 PGVECTOR")
+if VECTOR_READ_MODE not in {"LEGACY", "SHADOW", "PGVECTOR"}:
+    raise RuntimeError("VECTOR_READ_MODE 必须为 LEGACY、SHADOW 或 PGVECTOR")
+if VECTOR_SEARCH_MODE not in {"EXACT", "HNSW"}:
+    raise RuntimeError("VECTOR_SEARCH_MODE 必须为 EXACT 或 HNSW")
+if not 0 <= VECTOR_SHADOW_SAMPLE_RATE <= 1:
+    raise RuntimeError("VECTOR_SHADOW_SAMPLE_RATE 必须在 0 到 1 之间")
+if VECTOR_WRITE_MODE == "PGVECTOR" and VECTOR_READ_MODE != "PGVECTOR":
+    raise RuntimeError("PGVECTOR 单写必须与 PGVECTOR 读取组合")
+if os.getenv("DATABASE_ENGINE", "sqlite").lower() not in {"postgres", "postgresql"} and (
+    VECTOR_WRITE_MODE != "LEGACY" or VECTOR_READ_MODE != "LEGACY"
+):
+    raise RuntimeError("非PostgreSQL环境只能使用LEGACY向量读写模式")

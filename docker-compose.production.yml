@@ -12,10 +12,15 @@ x-backend-environment: &backend-environment
   OTEL_ENABLED: "true"
   OTEL_EXPORTER_OTLP_ENDPOINT: http://otel-collector:4317
   CACHE_REDIS_URL: redis://redis:6379/4
+  VECTOR_WRITE_MODE: "${VECTOR_WRITE_MODE:-LEGACY}"
+  VECTOR_READ_MODE: "${VECTOR_READ_MODE:-LEGACY}"
+  VECTOR_SEARCH_MODE: "${VECTOR_SEARCH_MODE:-EXACT}"
+  VECTOR_SHADOW_SAMPLE_RATE: "${VECTOR_SHADOW_SAMPLE_RATE:-0}"
+  VECTOR_HNSW_EF_SEARCH: "${VECTOR_HNSW_EF_SEARCH:-100}"
 
 services:
   postgres:
-    image: postgres:16-alpine
+    image: pgvector/pgvector:0.8.1-pg16
     restart: unless-stopped
     env_file: ["${ZHISHU_ENV_FILE:-.env.production}"]
     healthcheck:

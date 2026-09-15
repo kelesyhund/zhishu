@@ -33,7 +33,7 @@ services:
     networks: [stage08]
 
   postgres:
-    image: postgres:16-alpine
+    image: pgvector/pgvector:0.8.1-pg16
     restart: unless-stopped
     env_file:
       - .env.stage08

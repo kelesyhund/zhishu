@@ -2,6 +2,7 @@ import uuid
 
 from django.contrib.auth.models import User
 from django.db import models
+from pgvector.django import VectorField
 
 
 def generate_document_source_id():
@@ -760,6 +761,115 @@ class Paragraph(models.Model):
         ordering = ["position"]
         constraints = [
             models.UniqueConstraint(fields=["document", "position"], name="unique_document_position")
+        ]
+
+
+class EmbeddingSpace(models.Model):
+    class Status(models.TextChoices):
+        DISCOVERED = "DISCOVERED", "已发现"
+        BUILDING = "BUILDING", "构建中"
+        READY = "READY", "可用"
+        DEGRADED = "DEGRADED", "降级"
+        RETIRED = "RETIRED", "已停用"
+
+    class DistanceMetric(models.TextChoices):
+        COSINE = "COSINE", "余弦距离"
+
+    workspace = models.ForeignKey(Workspace, on_delete=models.CASCADE, related_name="embedding_spaces")
+    model_config = models.ForeignKey(
+        ModelConfig, null=True, blank=True, on_delete=models.SET_NULL, related_name="embedding_spaces"
+    )
+    signature = models.CharField(max_length=160)
+    model_name = models.CharField(max_length=200)
+    revision = models.PositiveIntegerField(default=1)
+    dimension = models.PositiveIntegerField()
+    distance_metric = models.CharField(
+        max_length=20, choices=DistanceMetric.choices, default=DistanceMetric.COSINE
+    )
+    status = models.CharField(max_length=20, choices=Status.choices, default=Status.DISCOVERED)
+    indexed = models.BooleanField(default=False)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ["-updated_at", "-id"]
+        constraints = [
+            models.UniqueConstraint(
+                fields=["workspace", "signature", "dimension"], name="unique_workspace_embedding_space"
+            ),
+            models.CheckConstraint(condition=models.Q(dimension__gte=1), name="embedding_space_dimension_positive"),
+        ]
+
+
+class ParagraphEmbedding(models.Model):
+    paragraph = models.ForeignKey(Paragraph, on_delete=models.CASCADE, related_name="vector_embeddings")
+    knowledge_base = models.ForeignKey(
+        KnowledgeBase,
+        on_delete=models.CASCADE,
+        related_name="paragraph_embeddings",
+    )
+    space = models.ForeignKey(EmbeddingSpace, on_delete=models.CASCADE, related_name="paragraph_embeddings")
+    embedding = VectorField(dimensions=None)
+    dimension = models.PositiveIntegerField()
+    content_hash = models.CharField(max_length=64, db_index=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(
+                fields=["paragraph", "space"], name="unique_paragraph_embedding_space"
+            ),
+            models.CheckConstraint(condition=models.Q(dimension__gte=1), name="paragraph_embedding_dimension_positive"),
+        ]
+        indexes = [
+            models.Index(
+                fields=["knowledge_base", "space", "dimension"],
+                name="paragraph_kb_space_dim_idx",
+            )
+        ]
+
+
+class VectorMigrationRun(models.Model):
+    class Status(models.TextChoices):
+        PENDING = "PENDING", "等待迁移"
+        RUNNING = "RUNNING", "迁移中"
+        SUCCESS = "SUCCESS", "迁移成功"
+        FAILURE = "FAILURE", "迁移失败"
+        CANCEL_REQUESTED = "CANCEL_REQUESTED", "正在取消"
+        CANCELLED = "CANCELLED", "已取消"
+
+    workspace = models.ForeignKey(Workspace, on_delete=models.CASCADE, related_name="vector_migrations")
+    space = models.ForeignKey(EmbeddingSpace, on_delete=models.RESTRICT, related_name="migration_runs")
+    status = models.CharField(max_length=30, choices=Status.choices, default=Status.PENDING)
+    total_count = models.PositiveIntegerField(default=0)
+    succeeded_count = models.PositiveIntegerField(default=0)
+    failed_count = models.PositiveIntegerField(default=0)
+    skipped_count = models.PositiveIntegerField(default=0)
+    cursor_id = models.PositiveBigIntegerField(default=0)
+    batch_size = models.PositiveSmallIntegerField(default=200)
+    error_message = models.CharField(max_length=500, blank=True, default="")
+    created_by = models.ForeignKey(
+        User, null=True, blank=True, on_delete=models.SET_NULL, related_name="created_vector_migrations"
+    )
+    celery_task_id = models.CharField(max_length=255, blank=True, default="")
+    created_at = models.DateTimeField(auto_now_add=True)
+    started_at = models.DateTimeField(null=True, blank=True)
+    finished_at = models.DateTimeField(null=True, blank=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ["-created_at", "-id"]
+        constraints = [
+            models.CheckConstraint(
+                condition=models.Q(batch_size__gte=10, batch_size__lte=2000),
+                name="vector_migration_batch_size_range",
+            ),
+            models.UniqueConstraint(
+                fields=["space"],
+                condition=models.Q(status__in=("PENDING", "RUNNING", "CANCEL_REQUESTED")),
+                name="unique_active_vector_migration_space",
+            ),
         ]
 
 

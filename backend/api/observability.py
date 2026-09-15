@@ -71,6 +71,31 @@ RAG_RERANK_FALLBACKS_TOTAL = Counter(
 )
 RAG_NO_ANSWER_TOTAL = Counter("rag_no_answer_total", "RAG responses with no evidence")
 
+VECTOR_QUERIES_TOTAL = Counter(
+    "vector_queries_total", "Vector query outcomes", ("backend", "mode", "outcome")
+)
+VECTOR_QUERY_DURATION = Histogram(
+    "vector_query_duration_seconds", "Vector query duration", ("backend", "mode"), buckets=LONG_BUCKETS
+)
+VECTOR_CANDIDATES_TOTAL = Counter(
+    "vector_candidates_total", "Vector candidates returned", ("backend",)
+)
+VECTOR_SHADOW_OVERLAP_RATIO = Histogram(
+    "vector_shadow_overlap_ratio", "Legacy and pgvector Top-K overlap ratio", buckets=(0, .25, .5, .75, .9, .95, 1)
+)
+VECTOR_SHADOW_MISMATCHES_TOTAL = Counter(
+    "vector_shadow_mismatches_total", "Vector shadow mismatches", ("reason",)
+)
+VECTOR_BACKFILL_ROWS_TOTAL = Counter(
+    "vector_backfill_rows_total", "Vector backfill row outcomes", ("outcome",)
+)
+VECTOR_BACKFILL_DURATION = Histogram(
+    "vector_backfill_duration_seconds", "Vector backfill batch duration", buckets=LONG_BUCKETS
+)
+VECTOR_SPACE_COVERAGE_RATIO = Gauge(
+    "vector_space_coverage_ratio", "Current workspace vector coverage", ("status",)
+)
+
 MODEL_REQUESTS_TOTAL = Counter(
     "model_requests_total", "Model requests", ("model_type", "provider", "result")
 )
