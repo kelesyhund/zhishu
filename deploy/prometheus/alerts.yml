@@ -85,3 +85,17 @@ groups:
         annotations:
           summary: Redis 不可用
           description: 就绪检查连续 2 分钟无法连接 Redis。Runbook：#redisunavailable
+      - alert: PgvectorQueryP95High
+        expr: histogram_quantile(0.95, sum by (le) (rate(vector_query_duration_seconds_bucket{backend="pgvector"}[10m]))) > 0.5
+        for: 10m
+        labels: {severity: warning}
+        annotations:
+          summary: pgvector 查询延迟偏高
+          description: pgvector 查询 P95 连续 10 分钟超过 500ms，请检查索引、过滤选择性与数据库负载。
+      - alert: VectorShadowMismatchHigh
+        expr: rate(vector_shadow_mismatches_total[15m]) > 0.1
+        for: 10m
+        labels: {severity: warning}
+        annotations:
+          summary: 向量 Shadow 结果差异偏高
+          description: Legacy 与 pgvector 的 Top-K 差异持续偏高，暂勿切换正式读取。

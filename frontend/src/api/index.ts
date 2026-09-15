@@ -1380,3 +1380,37 @@ export async function registerAndAcceptInvitation(token: string, payload: Omit<R
   await initializeCsrf()
   return (await client.post(`/invitations/${encodeURIComponent(token)}/register-and-accept/`, payload)).data.data
 }
+
+export interface EmbeddingSpaceItem {
+  id: number; signature: string; model_name: string; revision: number; dimension: number
+  distance_metric: 'COSINE'; status: 'DISCOVERED' | 'BUILDING' | 'READY' | 'DEGRADED' | 'RETIRED'
+  indexed: boolean; vector_count: number; created_at: string; updated_at: string
+}
+export interface VectorMigrationItem {
+  id: number; space: EmbeddingSpaceItem; status: 'PENDING' | 'RUNNING' | 'SUCCESS' | 'FAILURE' | 'CANCEL_REQUESTED' | 'CANCELLED'
+  total_count: number; succeeded_count: number; failed_count: number; skipped_count: number
+  cursor_id: number; batch_size: number; progress: number; error_message: string
+  created_at: string; started_at: string | null; finished_at: string | null; updated_at: string
+}
+export interface VectorIndexStatus {
+  write_mode: 'LEGACY' | 'DUAL' | 'PGVECTOR'; read_mode: 'LEGACY' | 'SHADOW' | 'PGVECTOR'
+  search_mode: 'EXACT' | 'HNSW'; shadow_sample_rate: number; database_vendor: string
+  pgvector_available: boolean; legacy_vector_count: number; pgvector_row_count: number
+  covered_paragraph_count: number; coverage_ratio: number; spaces: EmbeddingSpaceItem[]
+  recent_migrations: VectorMigrationItem[]
+}
+export async function getVectorIndexStatus(): Promise<VectorIndexStatus> {
+  return (await client.get('/vector-index/status/')).data.data
+}
+export async function listVectorMigrations(page = 1): Promise<PageResult<VectorMigrationItem>> {
+  return (await client.get('/vector-index/migrations/', { params: { page, page_size: 20 } })).data.data
+}
+export async function createVectorMigration(knowledgeBaseId: number, batchSize: number): Promise<VectorMigrationItem> {
+  return (await client.post('/vector-index/migrations/', { knowledge_base_id: knowledgeBaseId, batch_size: batchSize })).data.data
+}
+export async function retryVectorMigration(id: number): Promise<VectorMigrationItem> {
+  return (await client.post(`/vector-index/migrations/${id}/retry/`)).data.data
+}
+export async function cancelVectorMigration(id: number): Promise<VectorMigrationItem> {
+  return (await client.post(`/vector-index/migrations/${id}/cancel/`)).data.data
+}

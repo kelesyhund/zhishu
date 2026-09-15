@@ -1,5 +1,6 @@
 from collections.abc import Callable
 
+from django.conf import settings
 from django.db import transaction
 
 from api.models import Document, DocumentSection, Paragraph
@@ -9,6 +10,7 @@ from .document_parser import CHUNKER_VERSION, PARSER_VERSION
 from .embeddings import embed_texts
 from .model_clients import ModelServiceError
 from .model_resolution import active_embedding_signature
+from .vector_storage import bulk_write_paragraph_embeddings, validate_vectors
 from ..observability import traced
 
 
@@ -78,6 +80,7 @@ def process_document(
             completed = min(len(children), start + len(batch))
             report("EMBEDDING", 50 + int((completed / len(children)) * 30))
         target_signature = active_embedding_signature(document.knowledge_base)
+        validate_vectors(vectors)
         target_chunking_signature = chunking_signature(document)
         check_cancelled()
 
@@ -112,13 +115,16 @@ def process_document(
                 ]
             )
             parent_by_position = {parent.position: parent for parent in parent_rows}
-            Paragraph.objects.bulk_create(
+            paragraph_rows = Paragraph.objects.bulk_create(
                 [
                     Paragraph(
                         document=locked_document,
                         position=child.position,
                         content=child.content,
-                        embedding=vectors[index],
+                        embedding=(
+                            [] if settings.VECTOR_WRITE_MODE == "PGVECTOR"
+                            else vectors[index]
+                        ),
                         chunk_type=(
                             Paragraph.ChunkType.LEGACY
                             if requested_strategy == Document.ChunkStrategy.LEGACY
@@ -138,6 +144,7 @@ def process_document(
                     for index, child in enumerate(children)
                 ]
             )
+            bulk_write_paragraph_embeddings(locked_document.knowledge_base, paragraph_rows, vectors)
             locked_document.status = Document.Status.SUCCESS
             locked_document.error_message = ""
             locked_document.paragraph_count = len(children)

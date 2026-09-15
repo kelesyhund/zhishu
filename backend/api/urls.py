@@ -96,6 +96,13 @@ from .enterprise_views import (
     PublicInvitationPreviewView,
     PublicInvitationRegisterView,
 )
+from .vector_views import (
+    KnowledgeBaseVectorStatusView,
+    VectorIndexStatusView,
+    VectorMigrationActionView,
+    VectorMigrationDetailView,
+    VectorMigrationListView,
+)
 
 
 urlpatterns = [
@@ -145,10 +152,16 @@ urlpatterns = [
     path("processing-tasks/", GlobalTaskListView.as_view()),
     path("processing-tasks/<int:task_id>/", GlobalTaskDetailView.as_view()),
     path("processing-tasks/<int:task_id>/<str:action>/", GlobalTaskActionView.as_view()),
+    path("vector-index/status/", VectorIndexStatusView.as_view()),
+    path("vector-index/migrations/", VectorMigrationListView.as_view()),
+    path("vector-index/migrations/<int:migration_id>/", VectorMigrationDetailView.as_view()),
+    path("vector-index/migrations/<int:migration_id>/<str:action>/", VectorMigrationActionView.as_view()),
     path("model-configs/", ModelConfigListView.as_view()),
     path("model-configs/<int:config_id>/", ModelConfigDetailView.as_view()),
     path("model-configs/<int:config_id>/test/", ModelConfigTestView.as_view()),
     path("retrieval/capabilities/", RetrievalCapabilitiesView.as_view()),
+    path("knowledge-bases/<int:knowledge_id>/vector-status/", KnowledgeBaseVectorStatusView.as_view()),
+    path("knowledge-bases/<int:knowledge_id>/vector-verify/", KnowledgeBaseVectorStatusView.as_view()),
     path("applications/", ApplicationListView.as_view()),
     path("applications/<int:application_id>/", ApplicationDetailView.as_view()),
     path(

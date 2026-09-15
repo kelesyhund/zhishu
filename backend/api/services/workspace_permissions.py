@@ -12,6 +12,7 @@ CAPABILITIES_BY_ROLE = {
         "workspace.read", "knowledge.read", "knowledge.chat", "knowledge.write",
         "document.process", "model.read", "model.manage", "application.read",
         "application.write", "application.operate", "member.manage", "audit.read",
+        "vector.manage",
     },
     WorkspaceMembership.Role.DEVELOPER: {
         "workspace.read", "knowledge.read", "knowledge.chat", "knowledge.write",

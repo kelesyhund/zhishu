@@ -33,7 +33,7 @@ PostgreSQL      └──────────► OpenTelemetry / Prometheus 
 | --- | --- |
 | 前端 | Vue 3、TypeScript、Pinia、Vue Router、Element Plus、Axios |
 | 后端 | Python 3.10+、Django 5、Django REST Framework、Gunicorn |
-| 数据与任务 | PostgreSQL、Redis、Celery |
+| 数据与任务 | PostgreSQL + pgvector、Redis、Celery |
 | AI 与检索 | OpenAI Compatible API、BM25、Embedding、RRF、Sentence Transformers |
 | 交付与运维 | Docker Compose、Nginx、Prometheus、Grafana、OpenTelemetry、GitHub Actions |
 
@@ -104,11 +104,13 @@ npm run build
 
 ## 文档
 
-- [企业工作空间、RBAC 与审计](docs/stage-13-enterprise-workspace-rbac-audit.md)
-- [账号安全、成员邀请与企业工作台](docs/stage-14-enterprise-workbench-invitations-security.md)
-- [真实语料、结构化切片与可信评测](docs/stage-11-real-corpus-structured-chunking-evaluation.md)
-- [生产部署与可观测性](docs/stage-15-production-observability.md)
-- [生产运维手册](docs/stage-15-operations-runbook.md)
+- [系统架构](docs/architecture.md)
+- [安全与租户隔离](docs/security-and-tenancy.md)
+- [检索与质量评测](docs/retrieval-and-evaluation.md)
+- [pgvector 向量存储与迁移](docs/vector-storage.md)
+- [pgvector 基准测试](docs/pgvector-benchmark.md)
+- [生产运维手册](docs/operations-runbook.md)
+- [产品路线图](TODO.md)
 - [安全策略](SECURITY.md)
 
 ## 安全说明

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, onMounted } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
-import { Collection, Connection, DataAnalysis, List, Lock, OfficeBuilding, Promotion, SwitchButton } from '@element-plus/icons-vue'
+import { Collection, Connection, DataAnalysis, List, Lock, OfficeBuilding, Promotion, SetUp, SwitchButton } from '@element-plus/icons-vue'
 import { ElMessage } from 'element-plus'
 
 import { useAuthStore } from '../stores/auth'
@@ -26,14 +26,17 @@ const navItems = [
   { label: '模型服务', caption: '模型与密钥管理', path: '/model-configs', icon: Connection },
   { label: '组织治理', caption: '成员、空间与审计', path: '/organization', icon: OfficeBuilding },
   { label: '任务中心', caption: '跨知识库处理任务', path: '/tasks', icon: List },
+  { label: '向量索引', caption: '迁移、覆盖与检索状态', path: '/operations/vector-index', icon: SetUp, capability: 'vector.manage' },
   { label: '账号安全', caption: '密码与登录设备', path: '/account/security', icon: Lock },
 ]
+const visibleNavItems = computed(() => navItems.filter((item) => !item.capability || workspaceStore.can(item.capability)))
 const activePath = computed(() => {
   if (route.path.startsWith('/applications')) return '/applications'
   if (route.path.startsWith('/model-configs')) return '/model-configs'
   if (route.path.startsWith('/organization')) return '/organization'
   if (route.path.startsWith('/dashboard')) return '/dashboard'
   if (route.path.startsWith('/tasks')) return '/tasks'
+  if (route.path.startsWith('/operations/vector-index')) return '/operations/vector-index'
   if (route.path.startsWith('/account/security')) return '/account/security'
   return '/knowledge'
 })
@@ -85,7 +88,7 @@ onMounted(async () => {
       </el-select>
       <nav class="sidebar-nav" aria-label="主导航">
         <button
-          v-for="item in navItems"
+          v-for="item in visibleNavItems"
           :key="item.path"
           class="nav-item"
           :class="{ active: activePath === item.path }"

@@ -1,5 +1,8 @@
 from dataclasses import dataclass, replace
+import random
 from time import perf_counter
+
+from django.conf import settings as django_settings
 
 from api.models import KnowledgeBase, Paragraph
 
@@ -7,6 +10,7 @@ from .embeddings import embed_texts
 from .keyword_retrieval import KeywordScore, calculate_bm25_scores, rank_keyword_scores
 from .model_clients import ModelServiceError
 from .model_resolution import active_embedding_signature
+from .pgvector_retrieval import query_pgvector_candidates
 from .prompt_builder import format_reference_block
 from .reranker import rerank_candidates
 from .retrieval_tokenizer import tokenize_text
@@ -24,6 +28,9 @@ from ..observability import (
     RAG_RERANK_FALLBACKS_TOTAL,
     RAG_RETRIEVAL_DURATION,
     RAG_VECTOR_DURATION,
+    VECTOR_CANDIDATES_TOTAL,
+    VECTOR_QUERIES_TOTAL,
+    VECTOR_QUERY_DURATION,
     traced,
 )
 
@@ -244,16 +251,54 @@ def prepare_retrieval(knowledge_base, query, *, embedding_function=None) -> Prep
     signature = active_embedding_signature(knowledge_base)
     if signature:
         paragraphs = paragraphs.filter(document__embedding_signature=signature)
-    paragraph_list = list(paragraphs)
-    if not paragraph_list:
+    if not paragraphs.exists():
         return PreparedRetrieval(query, settings, (), round((perf_counter() - started) * 1000))
 
     with traced("query.embedding"):
         query_vector = (embedding_function or embed_texts)([query], knowledge_base)[0]
     vector_started = perf_counter()
     try:
+        pg_candidates = None
+        shadow_selected = (
+            django_settings.VECTOR_READ_MODE == "SHADOW"
+            and random.random() < django_settings.VECTOR_SHADOW_SAMPLE_RATE
+        )
+        if django_settings.VECTOR_READ_MODE == "PGVECTOR" or shadow_selected:
+            pg_candidates = query_pgvector_candidates(
+                knowledge_base, query_vector, max(settings.vector_candidate_k, settings.top_k)
+            )
+        use_pgvector = bool(
+            django_settings.VECTOR_READ_MODE == "PGVECTOR"
+            and pg_candidates
+            and not pg_candidates.fallback_code
+        )
+        if use_pgvector and settings.mode == KnowledgeBase.RetrievalMode.VECTOR:
+            paragraphs = paragraphs.filter(id__in=pg_candidates.paragraph_ids)
+        paragraph_list = list(paragraphs)
         with traced("retrieval.vector", candidate_count=len(paragraph_list)):
-            vector_scores = calculate_vector_scores(query_vector, paragraph_list)
+            if use_pgvector:
+                vector_scores = pg_candidates.scores
+            else:
+                vector_scores = calculate_vector_scores(query_vector, paragraph_list)
+                elapsed = max(0, perf_counter() - vector_started)
+                VECTOR_QUERIES_TOTAL.labels("legacy", "EXACT", "success").inc()
+                VECTOR_QUERY_DURATION.labels("legacy", "EXACT").observe(elapsed)
+                VECTOR_CANDIDATES_TOTAL.labels("legacy").inc(len(vector_scores))
+            if (
+                shadow_selected
+                and pg_candidates
+                and not pg_candidates.fallback_code
+            ):
+                legacy_ids = [
+                    item_id for item_id, _ in sorted(
+                        vector_scores.items(), key=lambda pair: (-pair[1].normalized, pair[0])
+                    )[: settings.vector_candidate_k]
+                ]
+                overlap = len(set(legacy_ids) & set(pg_candidates.paragraph_ids)) / max(1, len(legacy_ids))
+                from ..observability import VECTOR_SHADOW_MISMATCHES_TOTAL, VECTOR_SHADOW_OVERLAP_RATIO
+                VECTOR_SHADOW_OVERLAP_RATIO.observe(overlap)
+                if overlap < 1:
+                    VECTOR_SHADOW_MISMATCHES_TOTAL.labels("TOP_K_DIFFERENCE").inc()
     except ValueError as exc:
         raise ModelServiceError(
             "文档向量与当前Embedding配置不兼容，请重新处理文档",
@@ -286,8 +331,8 @@ def prepare_retrieval(knowledge_base, query, *, embedding_function=None) -> Prep
             page_start=paragraph.page_start,
             page_end=paragraph.page_end,
             source_block_ids=list(paragraph.source_block_ids),
-            vector_score_raw=vector_scores[paragraph.id].raw,
-            vector_score_normalized=vector_scores[paragraph.id].normalized,
+            vector_score_raw=vector_scores.get(paragraph.id, VectorScore(-1.0, 0.0)).raw,
+            vector_score_normalized=vector_scores.get(paragraph.id, VectorScore(-1.0, 0.0)).normalized,
             keyword_score_raw=keyword_scores[paragraph.id].raw,
             keyword_score=keyword_scores[paragraph.id].normalized,
         )
