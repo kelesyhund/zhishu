@@ -55,7 +55,9 @@ test('stage17 isolated enterprise knowledge flow', async ({ page }) => {
     const conversationUrl = page.url()
     await page.reload()
     await expect(page).toHaveURL(conversationUrl)
-    await expect(page.getByText('错误码 E1701 如何处理？')).toBeVisible()
+    await expect(
+      page.getByTestId('chat-message-user').getByText('错误码 E1701 如何处理？', { exact: true }),
+    ).toBeVisible()
   })
 
   await test.step('create and isolate a second conversation', async () => {
