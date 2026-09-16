@@ -1,4 +1,4 @@
-import { computed, nextTick, ref, type ComputedRef, type Ref } from 'vue'
+import { computed, nextTick, reactive, ref, type ComputedRef, type Ref } from 'vue'
 import type { RouteLocationNormalizedLoaded, Router } from 'vue-router'
 import { ElMessage, ElMessageBox } from 'element-plus'
 
@@ -36,6 +36,10 @@ interface ConversationChatOptions {
 
 function toChatMessage(message: MessageItem): ChatMessage {
   return { id: message.id, role: message.role, content: message.content, references: message.references, agentTrace: message.agent_trace, created_at: message.created_at }
+}
+
+export function createStreamingAnswer(): ChatMessage {
+  return reactive<ChatMessage>({ role: 'assistant', content: '', references: [] })
 }
 
 export function useConversationChat(knowledgeId: number, options: ConversationChatOptions) {
@@ -224,7 +228,9 @@ export function useConversationChat(knowledgeId: number, options: ConversationCh
     const controller = new AbortController()
     streamController = controller
     messages.value.push({ role: 'user', content: question, references: [] })
-    const answer: ChatMessage = { role: 'assistant', content: '', references: [] }
+    // Keep mutating the same proxy while SSE events arrive. Mutating the raw
+    // object after it has been pushed into a reactive array does not notify Vue.
+    const answer = createStreamingAnswer()
     messages.value.push(answer)
     input.value = ''; sending.value = true; generationState.value = 'CONNECTING'
     await scrollBottom()
