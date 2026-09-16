@@ -27,7 +27,7 @@ test('stage17 isolated enterprise knowledge flow', async ({ page }) => {
     await page.getByLabel('描述').fill('stage17 自动化隔离数据')
     await page.getByRole('button', { name: '创建', exact: true }).click()
     await expect(page.getByRole('heading', { name: knowledgeName })).toBeVisible()
-    await page.getByRole('heading', { name: knowledgeName }).click()
+    await page.locator('.knowledge-card').filter({ hasText: knowledgeName }).click()
     await expect(page).toHaveURL(/\/knowledge\/\d+/)
   })
 
@@ -69,7 +69,7 @@ test('stage17 isolated enterprise knowledge flow', async ({ page }) => {
     await page.getByTestId('chat-send').click()
     await expect(page).toHaveURL(/conversation=\d+/, { timeout: 60_000 })
     await page.getByRole('button', { name: '历史会话' }).click()
-    await expect(page.locator('[data-testid^="conversation-"]')).toHaveCount(2)
+    await expect(page.getByTestId(/^conversation-\d+$/)).toHaveCount(2)
   })
 
   await test.step('model secrets remain blank and application can be created', async () => {
