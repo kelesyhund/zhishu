@@ -45,6 +45,12 @@ const client = axios.create({
   xsrfHeaderName: 'X-CSRFToken',
 })
 
+export function isAnonymousEntryPath(pathname: string): boolean {
+  return pathname.startsWith('/share/')
+    || pathname.startsWith('/invite/')
+    || ['/login', '/register', '/reset-password', '/verify-email'].includes(pathname)
+}
+
 client.interceptors.request.use((config) => {
   const workspaceId = localStorage.getItem('active_workspace_id')
   const url = config.url || ''
@@ -59,8 +65,7 @@ client.interceptors.response.use(
   (error) => {
     if (error.response?.status === 401) {
       localStorage.removeItem('active_workspace_id')
-      const publicPath = location.pathname.startsWith('/share/') || location.pathname.startsWith('/invite/') || ['/reset-password','/verify-email'].includes(location.pathname)
-      if (!publicPath && location.pathname !== '/login') location.href = '/login'
+      if (!isAnonymousEntryPath(location.pathname)) location.href = '/login'
     }
     return Promise.reject(error)
   },

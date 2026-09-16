@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { describe, expect, it } from 'vitest'
 
-import { requestErrorInfo, unwrapEnvelope } from '../../src/api/client'
+import { isAnonymousEntryPath, requestErrorInfo, unwrapEnvelope } from '../../src/api/client'
 
 function axiosError(status: number, message = '', requestId = 'req-test') {
   return new axios.AxiosError(
@@ -20,6 +20,21 @@ function axiosError(status: number, message = '', requestId = 'req-test') {
 }
 
 describe('requestErrorInfo', () => {
+  it.each([
+    '/login',
+    '/register',
+    '/reset-password',
+    '/verify-email',
+    '/invite/stage17-token',
+    '/share/stage17-token',
+  ])('keeps the anonymous entry route %s on an expected 401', (pathname) => {
+    expect(isAnonymousEntryPath(pathname)).toBe(true)
+  })
+
+  it('redirects protected routes after a 401', () => {
+    expect(isAnonymousEntryPath('/knowledge')).toBe(false)
+  })
+
   it('unwraps the unified response envelope', () => {
     expect(unwrapEnvelope<{ id: number }>({ code: 200, message: 'success', data: { id: 7 } })).toEqual({ id: 7 })
     expect(() => unwrapEnvelope({ data: { id: 7 } })).toThrow('后端响应格式无效')
