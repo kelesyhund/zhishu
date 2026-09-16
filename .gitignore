@@ -7,6 +7,10 @@ backups/*.sha256
 backend/db.sqlite3
 *.sqlite3
 backend/media/
+backend/.stage17-e2e.sqlite3
+backend/.stage17-e2e-media/
+frontend/playwright-report/
+frontend/test-results/
 backend/**/__pycache__/
 backend/.local-deps/
 backend/**/*.pyc

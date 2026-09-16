@@ -6,12 +6,18 @@
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc -b && vite build",
+    "build:budget": "npm run build && node scripts/check-build-budget.mjs",
     "preview": "vite preview",
-    "type-check": "vue-tsc -b"
+    "type-check": "vue-tsc -b",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "test:e2e": "playwright test"
   },
   "dependencies": {
     "@element-plus/icons-vue": "^2.3.2",
     "axios": "^1.11.0",
+    "dompurify": "^3.4.15",
     "element-plus": "^2.10.7",
     "marked": "^16.2.1",
     "pinia": "^3.0.3",
@@ -19,9 +25,16 @@
     "vue-router": "^4.5.1"
   },
   "devDependencies": {
+    "@playwright/test": "^1.63.0",
+    "@types/node": "^22.20.3",
     "@vitejs/plugin-vue": "^6.0.1",
+    "@vitest/coverage-v8": "^5.0.1",
+    "@vue/test-utils": "^2.5.0",
+    "jsdom": "^30.0.1",
     "typescript": "~5.9.2",
+    "unplugin-vue-components": "^32.1.0",
     "vite": "^7.1.5",
+    "vitest": "^5.0.1",
     "vue-tsc": "^3.0.6"
   }
 }
