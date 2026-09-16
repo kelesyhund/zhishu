@@ -10,10 +10,11 @@ test('stage17 isolated enterprise knowledge flow', async ({ page }) => {
 
   await test.step('register isolated user and enter protected workspace', async () => {
     await page.goto('/register')
-    await page.getByLabel('用户名').fill(username)
-    await page.getByLabel('邮箱').fill(email)
-    await page.getByLabel('密码', { exact: true }).fill(password)
-    await page.getByLabel('确认密码').fill(password)
+    await page.locator('input[autocomplete="username"]').fill(username)
+    await page.locator('input[autocomplete="email"]').fill(email)
+    const passwordInputs = page.locator('input[autocomplete="new-password"]')
+    await passwordInputs.nth(0).fill(password)
+    await passwordInputs.nth(1).fill(password)
     await page.getByRole('button', { name: '创建账号并进入工作台' }).click()
     await expect(page).toHaveURL(/\/dashboard/)
   })
