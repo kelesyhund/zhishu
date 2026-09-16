@@ -239,6 +239,7 @@ E2E 在隔离服务和临时数据库中运行，失败上传截图、trace 和�
 - 建立 Vitest、Vue Test Utils 和 jsdom，覆盖统一错误、请求 ID、SSE、请求守卫、URL 会话状态、状态映射、Markdown XSS、文档面板、会话抽屉和消息引用。
 - 建立 Playwright 隔离流程，使用 `stage17_e2e_` 前缀、独立 SQLite 与 MEDIA_ROOT，不接入真实模型和密钥；覆盖注册、知识库、上传、切片、问答、引用、刷新恢复、第二会话、模型密钥空值、应用和注销。
 - CI 前端顺序调整为 `npm ci → type-check → test → build:budget`；E2E 独立启动前后端，失败上传 trace/截图，最后清理数据库和媒体目录。
+- CI 同时监听 `main`、`feat/**` 推送和 Pull Request，使功能分支在创建 PR 前也能得到完整门禁结果。
 - 构建预算：总 JS 不超过 1.5 MB、最大 Chunk 不超过 650 KB、入口 Chunk 不超过 100 KB。预算以审计基线留出兼容余量，后续可根据真实 CI 产物逐步收紧。
 
 ### 15.3 已执行验证
