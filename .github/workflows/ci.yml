@@ -67,18 +67,27 @@ jobs:
         run: docker compose -f docker-compose.production.yml config --quiet
       - name: Build production images
         run: docker compose -f docker-compose.production.yml build backend nginx
-      - name: Validate Nginx configuration
-        run: docker compose -f docker-compose.production.yml run --rm --no-deps nginx nginx -t
       - name: Assert backend image excludes local secrets and data
         run: docker compose -f docker-compose.production.yml run --rm --no-deps backend sh -c 'test ! -e /app/.git && test ! -e /app/.env && test ! -e /app/db.sqlite3 && test ! -e /app/media'
       - name: Start production dependencies and migrate
         run: |
           docker compose -f docker-compose.production.yml up -d postgres redis jaeger otel-collector
           docker compose -f docker-compose.production.yml --profile ops run --rm migrate
-      - name: Start web path and smoke health
+      - name: Start backend, validate Nginx and smoke health
         run: |
-          docker compose -f docker-compose.production.yml up -d backend nginx
-          for attempt in {1..30}; do curl --fail http://127.0.0.1:18080/health/live/ && break; sleep 2; done
+          docker compose -f docker-compose.production.yml up -d backend
+          docker compose -f docker-compose.production.yml run --rm --no-deps nginx nginx -t
+          docker compose -f docker-compose.production.yml up -d nginx
+          for attempt in {1..30}; do
+            if curl --fail http://127.0.0.1:18080/health/live/; then
+              break
+            fi
+            if [ "$attempt" -eq 30 ]; then
+              echo "Backend live check timed out" >&2
+              exit 1
+            fi
+            sleep 2
+          done
           curl --fail http://127.0.0.1:18080/
       - name: Container diagnostics
         if: always()
