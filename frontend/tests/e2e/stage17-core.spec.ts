@@ -41,7 +41,8 @@ test('stage17 isolated enterprise knowledge flow', async ({ page }) => {
     await expect(page.getByTestId('paragraph-drawer')).toContainText('错误码 E1701')
     await page.keyboard.press('Escape')
     await page.getByRole('button', { name: '重新处理' }).click()
-    await expect(page.getByText(/后台处理队列|处理成功/).first()).toBeVisible()
+    await expect(page.getByText(/重新处理任务已进入队列/)).toBeVisible()
+    await expect(page.getByText('处理成功').first()).toBeVisible({ timeout: 60_000 })
   })
 
   await test.step('stream answer, citations and URL-backed conversation restore', async () => {

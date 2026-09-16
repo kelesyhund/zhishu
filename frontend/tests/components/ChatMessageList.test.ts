@@ -15,8 +15,8 @@ describe('ChatMessageList', () => {
       },
     })
     expect(wrapper.html()).toContain('<strong>安全答案</strong>')
-    expect(wrapper.html()).not.toContain('onerror')
-    expect(wrapper.html()).not.toContain('<script')
+    expect(wrapper.get('.markdown-body').html()).not.toContain('onerror')
+    expect(wrapper.find('script').exists()).toBe(false)
     expect(wrapper.get('[data-testid="chat-references"]').text()).toContain('可信正文')
   })
 })

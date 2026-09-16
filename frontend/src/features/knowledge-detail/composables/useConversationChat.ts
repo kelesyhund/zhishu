@@ -110,7 +110,11 @@ export function useConversationChat(knowledgeId: number, options: ConversationCh
     sending.value = false
     if (generationState.value === 'CONNECTING' || generationState.value === 'STREAMING') generationState.value = state
   }
-  function stopGenerating() { cancelStream('CANCELLED'); ElMessage.info('已停止生成') }
+  function stopGenerating() {
+    cancelStream('CANCELLED')
+    void loadConversations(1)
+    ElMessage.info('已停止生成')
+  }
 
   async function selectConversation(id: number, updateUrl = true) {
     if (sending.value) cancelStream()
