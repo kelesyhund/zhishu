@@ -1,5 +1,5 @@
 import { gzipSync } from 'node:zlib'
-import { readdirSync, readFileSync, statSync } from 'node:fs'
+import { readdirSync, readFileSync, statSync, writeFileSync } from 'node:fs'
 import { join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
@@ -19,6 +19,23 @@ const budgets = [
   ['最大 Chunk', largest?.raw || 0, 650_000],
   ['首屏入口 Chunk', entry?.raw || 0, 100_000],
 ]
+
+const report = {
+  assets: metrics,
+  totals: {
+    javascriptRaw: totalRaw,
+    javascriptGzip: metrics.reduce((sum, item) => sum + item.gzip, 0),
+    largestChunkRaw: largest?.raw || 0,
+    entryChunkRaw: entry?.raw || 0,
+  },
+  budgets: budgets.map(([label, actual, limit]) => ({
+    label,
+    actual,
+    limit,
+    passed: actual <= limit,
+  })),
+}
+writeFileSync(new URL('../dist/build-budget.json', import.meta.url), `${JSON.stringify(report, null, 2)}\n`)
 
 console.table(metrics)
 let failed = false
