@@ -236,11 +236,12 @@ E2E 在隔离服务和临时数据库中运行，失败上传截图、trace 和�
 
 ### 15.2 测试与 CI
 
-- 建立 Vitest、Vue Test Utils 和 jsdom，覆盖统一错误、请求 ID、SSE、请求守卫、URL 会话状态、状态映射、Markdown XSS、文档面板、会话抽屉和消息引用。
+- 建立 Vitest、Vue Test Utils 和 jsdom，共 27 项单元/组件测试，覆盖统一错误、请求 ID、SSE、请求守卫、URL 会话状态、状态映射、Markdown XSS、文档面板、会话抽屉和消息引用。
 - 建立 Playwright 隔离流程，使用 `stage17_e2e_` 前缀、独立 SQLite 与 MEDIA_ROOT，不接入真实模型和密钥；覆盖注册、知识库、上传、切片、问答、引用、刷新恢复、第二会话、模型密钥空值、应用和注销。
+- Playwright 使用 `vite build + vite preview` 验收优化后的生产前端，避免开发服务器在发现按需依赖时整页刷新，干扰会话与路由验收。
 - CI 前端顺序调整为 `npm ci → type-check → test → build:budget`；E2E 独立启动前后端，失败上传 trace/截图，最后清理数据库和媒体目录。
 - CI 同时监听 `main`、`feat/**` 推送和 Pull Request，使功能分支在创建 PR 前也能得到完整门禁结果。
-- 构建预算：总 JS 不超过 1.5 MB、最大 Chunk 不超过 650 KB、入口 Chunk 不超过 100 KB。预算以审计基线留出兼容余量，后续可根据真实 CI 产物逐步收紧。
+- 构建预算：总 JS 不超过 1.5 MB、最大 Chunk 不超过 650 KB、入口 Chunk 不超过 100 KB；每次 CI 保存 `build-budget.json` 作为 raw/gzip 可复核证据。
 
 ### 15.3 已执行验证
 
@@ -251,15 +252,16 @@ E2E 在隔离服务和临时数据库中运行，失败上传截图、trace 和�
 | `manage.py check` | 无问题 |
 | `npm run type-check` | 通过 |
 | `docker compose ... config --quiet` | 使用 `.env.production.example` 通过 |
-| `npm run test` | 本机未执行：Node 启动 esbuild 时被当前沙箱以 `spawn EPERM` 拒绝；由 CI 补验 |
-| `npm run build` | 同上，由 CI Linux Runner 补验 |
-| 生产镜像构建 | Docker Engine 已运行，但当前进程无权访问 `dockerDesktopLinuxEngine` 命名管道；由 CI 补验 |
+| `npm run test` | GitHub Actions Ubuntu Runner：27 项通过；本机受 `spawn EPERM` 限制 |
+| `npm run build:budget` | GitHub Actions 通过，三个体积预算全部达标并上传 JSON 报告 |
+| Playwright 核心流程 | GitHub Actions 运行 `35173545833` 通过；覆盖注册至注销的完整隔离流程 |
+| 生产镜像构建与冒烟 | GitHub Actions 运行 `35173545833` 通过；包含 Compose、迁移、Nginx 配置与健康检查 |
 
 ### 15.4 性能证据
 
 优化前可复现基线：Element Plus JS 786,432 B / gzip 248,115 B，CSS 357,406 B / gzip 47,356 B，入口约 21 KB / gzip 5.9 KB，知识库详情约 51.5 KB / gzip 15 KB。
 
-优化后 raw/gzip 数值必须取自 GitHub Actions 的真实 Vite 输出和预算脚本，CI 未完成前不填写估算值。长回答由“每个 SSE 事件立即更新并滚动”改为最长 32 ms 合并一次响应式提交。
+优化后数据来自 GitHub Actions 上传的 `build-budget.json`：全部 JavaScript 为 855,724 B（gzip 319,743 B），最大 Chunk 为 172,095 B（gzip 63,882 B），入口 Chunk 为 62,200 B（gzip 23,569 B），三个预算均通过。原 786,432 B 的 Element Plus 单一 Chunk 已被消除，最大 Chunk 降低约 78.1%。知识库详情路由 Chunk 为 76,317 B（gzip 26,406 B），低频抽屉继续独立分包。长回答由“每个 SSE 事件立即更新并滚动”改为最长 32 ms 合并一次响应式提交。
 
 ## 16. 已知限制
 
