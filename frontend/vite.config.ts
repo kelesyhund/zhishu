@@ -19,6 +19,14 @@ export default defineConfig(({ mode }) => {
         '/media': backendTarget,
       },
     },
+    preview: {
+      host: '0.0.0.0',
+      port: 5173,
+      proxy: {
+        '/api': backendTarget,
+        '/media': backendTarget,
+      },
+    },
     build: {
       rollupOptions: {
         output: {

@@ -39,7 +39,10 @@ export default defineConfig({
       },
     },
     {
-      command: 'npm run dev -- --host 127.0.0.1',
+      // Exercise the optimized production bundle. Vite's development dependency
+      // optimizer can reload the whole page when a lazy route discovers a new
+      // Element Plus import, which makes an otherwise valid user flow flaky.
+      command: 'npm run build && npm run preview -- --host 127.0.0.1 --port 5173',
       cwd: frontendDirectory,
       url: 'http://127.0.0.1:5173/login',
       timeout: 120_000,
